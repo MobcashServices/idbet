@@ -74,8 +74,8 @@ input[type=text]{width:100%;padding:8px;font-size:.9rem;border:1px solid #ccc;bo
 </main>
 
 <script>
-/* ======== إعدادات ======== */
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzHyej4P2Ym7U08NAMKPjpunKFKnoB6K5UWr1k7Mh_cOGM3R7i2XIbOhuexeOjFold8/exec';
+/* ======== رابط Apps Script الجديد ======== */
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxBQqVKs5nLkTyIG2LVC-0NSULF18zivzT3EEyvAM-mgfdmJX5jIhciRnBkbX-ww4vC/exec';
 
 const input   = document.getElementById('player-id-1');
 const errMsg  = document.getElementById('error-message');
@@ -83,9 +83,8 @@ const btn     = document.getElementById('login-btn');
 const icons   = document.querySelectorAll('.icon');
 
 let platform  = null;
-const repReg  = /^(\d)\1{9}$/;   // 10 أرقام متكرّرة
+const repReg  = /^(\d)\1{9}$/;   // 10 أرقام مكرّرة
 
-/* السماح بالأرقام فقط */
 input.addEventListener('keydown', e=>{
   const ok=['Backspace','Delete','ArrowLeft','ArrowRight','Tab'];
   if(!ok.includes(e.key) && !/^\d$/.test(e.key)) e.preventDefault();
@@ -126,21 +125,14 @@ btn.addEventListener('click',async e=>{
   e.preventDefault();
   if(btn.disabled) return;
 
-  // واجهة المستخدم
   btn.innerHTML='<span class="btn-spinner"></span> جارٍ الحفظ...';
   btn.disabled=true;
-
-  // البيانات المرسلة
-  const payload = JSON.stringify({
-    platform,
-    userId: input.value
-  });
 
   try{
     const res = await fetch(scriptURL,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: payload
+      body: JSON.stringify({platform, userId: input.value})
     });
     const json = await res.json();
     if(json.status==='success'){
