@@ -2,9 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>تسجيل الدخول - خطوات متعددة</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscription</title>
   <style>
     :root {
       --header-height: 70px;
@@ -22,178 +21,117 @@
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f5f5f5;
       color: #333;
-      min-height: 100vh;
-      direction: rtl;
     }
 
-    /* الهيدر */
     header {
       height: var(--header-height);
       background-color: var(--header-bg);
       display: flex;
       align-items: center;
+      justify-content: flex-start;
       padding: 0 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       border-bottom: 1px solid #eee;
-      z-index: 10;
     }
+
     .header-brand {
       display: flex;
       align-items: center;
       gap: 12px;
+      font-size: 1rem;
       font-weight: 500;
     }
-    .header-brand .idbet   { color: var(--idbet-color); font-weight: 700; font-size: 1.2rem; }
-    .header-brand .separator{ color:#ccc; font-size:1.2rem; }
-    .header-brand .slogan  { color:#555; font-size:.95rem; }
 
-    /* المنطقة الرئيسة */
+    .header-brand .idbet {
+      color: var(--idbet-color);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .header-brand .separator {
+      color: #ccc;
+      font-weight: normal;
+      font-size: 1.2rem;
+    }
+
+    .header-brand .slogan {
+      color: #555;
+      font-size: 0.95rem;
+    }
+
     main {
-      min-height: calc(100vh - var(--header-height));
-      display: flex;
-      flex-direction: column;     /* تجميع الخطوات عمودياً */
-      align-items: center;        /* توسيط النموذج أفقياً */
-      padding: 20px 10vw;
-      background: #f5f5f5;
-      gap: 24px;                  /* مسافة بين الخطوات */
+      padding: 24px;
     }
 
-    /* صندوق تسجيل الدخول */
     .login-box {
-      width: 100%;
-      max-width: 420px;
-      border-radius: 0;
-      padding: 32px 24px;
-      box-sizing: border-box;
       background: #fff;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      padding: 24px;
+      max-width: 400px;
+      margin: 40px auto;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
-    /* العنوان والرقم داخل الخطوة */
-    .login-box .title-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .login-box h2 {
+      font-size: 1.5rem;
       margin-bottom: 20px;
-      font-size: 1.35rem;
       color: #222;
-      font-weight: 600;
-    }
-    .title-wrapper .step {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      background: var(--idbet-color);
-      color: #fff;
-      font-size: 1rem;
-      flex-shrink: 0;
     }
 
-    /* تسمية الحقل مع أيقونة الاستفهام */
-    .input-label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .login-box label {
+      display: block;
       margin-bottom: 8px;
-      font-weight: 600;
+      font-weight: bold;
     }
-    .info-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      border: 1.5px solid #999;
-      color: #666;
-      font-size: .8rem;
-      cursor: help;
-      background: transparent;
-      transition: background .25s;
-    }
-    .info-icon:hover { background: rgba(0,0,0,.05); }
 
-    /* حقل الإدخال وزر الدخول */
-    .input-group {
+    .login-box .input-group {
       display: flex;
       margin-bottom: 16px;
     }
-    .input-group input {
+
+    .login-box input[type="text"] {
       flex: 1;
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 0 8px 8px 0;
       outline: none;
-      font-size: .95rem;
+      font-size: 0.95rem;
     }
-    .input-group button {
-      background: var(--idbet-color);
-      color: #fff;
+
+    .login-box button {
+      background-color: var(--idbet-color);
+      color: white;
       border: none;
       padding: 10px 16px;
       border-radius: 8px 0 0 8px;
-      font-weight: 700;
+      font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .input-group button:hover {
-      background-color: #b20710;
     }
 
-    /* نص وانتقاء المنصة */
     .login-box p {
       text-align: center;
       margin-bottom: 12px;
       color: #555;
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
+
     .platform-icons {
       display: flex;
       justify-content: center;
       gap: 12px;
+      margin-bottom: 8px;
     }
+
     .platform-icons .icon {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       background: #ddd;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .platform-icons .icon:hover {
-      background-color: var(--idbet-color);
-    }
-
-    /* ميديا كويري للجوال */
-    @media (max-width: 600px) {
-      main {
-        padding: 16px 16px;
-        gap: 16px;
-      }
-      .login-box {
-        max-width: 100%;
-        border-radius: 12px;
-        padding: 24px 16px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-      }
-      .input-group input {
-        font-size: 1rem;
-      }
-      .input-group button {
-        font-size: 1rem;
-        padding: 12px 20px;
-      }
-      .platform-icons .icon {
-        width: 36px;
-        height: 36px;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- الهيدر -->
   <header>
     <div class="header-brand">
       <span class="idbet">Idbet</span>
@@ -202,53 +140,28 @@
     </div>
   </header>
 
-  <!-- المنطقة الرئيسية مع خطوات متعددة -->
   <main>
-    <!-- الخطوة 1 -->
+    <!-- قسم تسجيل الدخول -->
     <section class="login-box">
-      <div class="title-wrapper">
-        <span class="step">1</span>
-        <h2>تسجيل الدخول</h2>
-      </div>
+      <h2>تسجيل الدخول</h2>
 
-      <div class="input-label">
-        <label for="player-id-1">معرف اللاعب</label>
-        <span class="info-icon" title="ما هو معرف التارغ؟">؟</span>
-      </div>
-
+      <label>
+        معرف اللاعب <span title="ما هو معرف التارغ؟" style="cursor: help;">❓</span>
+      </label>
       <div class="input-group">
-        <input id="player-id-1" type="text" placeholder="الرجاء إدخال المعرف الـ ID" />
+        <input type="text" placeholder="الرجاء إدخال المعرف الـ ID" />
         <button>تسجيل الدخول</button>
       </div>
 
       <p>اختر المنصة المطلوبة. يمكنك اختيارها عبر الضغط.</p>
 
       <div class="platform-icons">
-        <div class="icon" title="منصة 1"></div>
-        <div class="icon" title="منصة 2"></div>
-        <div class="icon" title="منصة 3"></div>
-        <div class="icon" title="منصة 4"></div>
+        <div class="icon"></div>
+        <div class="icon"></div>
+        <div class="icon"></div>
+        <div class="icon"></div>
       </div>
     </section>
-
-    <!-- الخطوة 2 -->
-    <section class="login-box">
-      <div class="title-wrapper">
-        <span class="step">2</span>
-        <h2>التحقق من المعلومات</h2>
-      </div>
-
-      <div class="input-label">
-        <label for="verification-code">رمز التحقق</label>
-        <span class="info-icon" title="أدخل رمز التحقق المرسل إليك">؟</span>
-      </div>
-
-      <div class="input-group">
-        <input id="verification-code" type="text" placeholder="أدخل رمز التحقق" />
-        <button>تحقق</button>
-      </div>
-    </section>
-
   </main>
 
 </body>
