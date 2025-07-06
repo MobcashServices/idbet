@@ -100,10 +100,10 @@
     const val = input.value.replace(/\D/g,'');
     input.value = val;
     let msg = '';
-    if(!val)                  msg = 'الرجاء إدخال المعرّف';
-    else if(val.length<10)    msg = 'يجب إدخال 10 أرقام';
-    else if(repReg.test(val)) msg = 'المعرّف مكرر وغير مقبول';
-    else if(!platform)        msg = 'اختر منصة';
+    if(!val)                  msg = 'يُرجى إدخال المعرّف للمتابعة.';
+    else if(val.length<10)    msg = 'جاري فحص المعرف... الصيغة غير مكتملة.';
+    else if(repReg.test(val)) msg = 'تعذر التحقق: المعرف لا يطابق معايير النظام.';
+    else if(!platform)        msg = 'حدد المنصة المطلوبة لاستكمال التحقق.';
     errMsg.textContent = msg;
     btn.disabled = !!msg;
   }
