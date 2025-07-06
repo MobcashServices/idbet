@@ -230,10 +230,6 @@ main {
     <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet">
     <div class="icon-name">LineBet</div>
   </div>
-  <div class="icon" data-name="1XBET">
-    <img src="https://i.postimg.cc/R0bNVDJ5/1xbet-logo1-scorimg.webp" alt="1XBET">
-    <div class="icon-name">1XBET</div>
-  </div>
   <div class="icon" data-name="MegaPari">
     <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari">
     <div class="icon-name">MegaPari</div>
@@ -242,65 +238,10 @@ main {
     <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet">
     <div class="icon-name">Melbet</div>
   </div>
-</div>
-
-<button class="login-btn" id="login-btn" disabled>تسجيل الدخول</button>
-
-  </section>
-</main><script>
-  const input = document.getElementById('player-id-1');
-  const errorMsg = document.getElementById('error-message');
-  const loginBtn = document.getElementById('login-btn');
-  const icons = document.querySelectorAll('.icon');
-  let selectedPlatform = null;
-
-  const repReg = /^(٠|۰|\d)\1{9}$/;
-
-  input.addEventListener('keydown', e => {
-    const allowed = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
-    if (!allowed.includes(e.key) && !/^[0-9]$/.test(e.key)) e.preventDefault();
-  });
-
-  input.addEventListener('input', validate);
-
-  icons.forEach(icon => {
-    icon.addEventListener('click', () => {
-      icons.forEach(i => i.classList.remove('selected'));
-      icon.classList.add('selected');
-      selectedPlatform = icon.dataset.name;
-      validate();
-    });
-  });
-
-  function validate() {
-    const val = input.value.replace(/\D/g, '');
-    input.value = val;
-
-    let message = '';
-    if (!val) {
-      message = 'الرجاء تعبئة هذا الحقل.';
-    } else if (val.length < 10) {
-      message = 'يجب إدخال 10 أرقام بالضبط.';
-    } else if (/^(\d)\1{9}$/.test(val)) {
-      message = 'المعرف غير صالح: لا يمكن تكرار نفس الرقم 10 مرات.';
-    } else if (!selectedPlatform) {
-      message = 'يرجى اختيار منصة أولاً.';
-    }
-
-    errorMsg.textContent = message;
-    loginBtn.disabled = !!message;
-  }
-
-  loginBtn.addEventListener('click', e => {
-    e.preventDefault();
-    if (loginBtn.disabled) return;
-
-    loginBtn.innerHTML = '<span class="btn-spinner"></span> جارٍ التحقق...';
-    loginBtn.disabled = true;
-
-    setTimeout(() => {
-      loginBtn.innerHTML = '✔ تم التحقق';
-    }, 2500);
-  });
-</script></body>
-</html>
+  <!-- Placeholder 1 -->
+  <div class="icon" data-name="Placeholder-1">
+    <img src="" alt="">
+    <div class="icon-name">&nbsp;</div>
+  </div>
+  <!-- Placeholder 2 -->
+  <div class="icon
