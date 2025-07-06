@@ -23,7 +23,7 @@
     .info-icon:hover{border-color:var(--idbet-color);background:rgba(229,9,20,.1);color:var(--idbet-color)}
     .input-group{margin-bottom:16px}
     .input-group input{width:100%;padding:10px;font-size:.95rem;border:1px solid #ccc;border-radius:8px;outline:none}
-    .error-message{color:var(--idbet-color);font-size:.85rem;margin-top:6px;min-height:20px}
+    .error-message{color:var(--idbet-color);font-size:.85rem;margin-top:6px;min-height:22px}
     .platform-icons{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:20px;justify-items:center;margin:20px 0}
     .icon{position:relative;width:110px;height:110px;border-radius:14px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;transition:.3s;border:1px solid #eee;cursor:pointer}
     .icon:hover{transform:translateY(-4px);box-shadow:0 6px 14px rgba(0,0,0,.1)}
@@ -34,7 +34,9 @@
     .login-btn{background:var(--idbet-color);color:#fff;font-weight:bold;border:none;padding:10px 16px;width:100%;border-radius:8px;cursor:pointer;transition:.3s}
     .login-btn:disabled{background:#ccc;cursor:not-allowed}
     .login-btn:hover:not(:disabled){background:#b20710}
-    .btn-spinner{display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.6);border-top:3px solid #fff;border-radius:50%;animation:spin .8s linear infinite;margin-right:6px;vertical-align:middle}
+    .btn-spinner,.loader{display:inline-block;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}
+    .btn-spinner{width:16px;height:16px;border:3px solid rgba(255,255,255,.6);border-top:3px solid #fff;margin-right:6px}
+    .loader{width:14px;height:14px;border:2px solid var(--idbet-color);border-top-color:transparent;margin-left:4px}
     @keyframes spin{to{transform:rotate(360deg)}}
   </style>
 </head>
@@ -100,12 +102,17 @@
     const val = input.value.replace(/\D/g,'');
     input.value = val;
     let msg = '';
-    if(!val)                  msg = 'يُرجى إدخال المعرّف للمتابعة.';
-    else if(val.length<10)    msg = 'جاري فحص المعرف... الصيغة غير مكتملة.';
-    else if(repReg.test(val)) msg = 'تعذر التحقق: المعرف لا يطابق معايير النظام.';
-    else if(!platform)        msg = 'حدد المنصة المطلوبة لاستكمال التحقق.';
-    errMsg.textContent = msg;
-    btn.disabled = !!msg;
+    if(!val){
+      msg = 'يُرجى إدخال المعرّف للمتابعة.';
+    }else if(val.length < 10){
+      msg = '<span class="loader"></span> جارٍ فحص المعرّف...';
+    }else if(repReg.test(val)){
+      msg = 'تعذر التحقق: المعرف لا يطابق معايير النظام.';
+    }else if(!platform){
+      msg = 'حدد المنصة المطلوبة لاستكمال التحقق.';
+    }
+    errMsg.innerHTML = msg;
+    btn.disabled = !!msg && !msg.includes('loader'); // still disabled if any message except loader
   }
 
   btn.addEventListener('click',e=>{
