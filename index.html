@@ -26,7 +26,6 @@
       direction: rtl;
     }
 
-    /* الهيدر */
     header {
       height: var(--header-height);
       background-color: var(--header-bg);
@@ -47,7 +46,6 @@
     .header-brand .separator{ color:#ccc; font-size:1.2rem; }
     .header-brand .slogan  { color:#555; font-size:.95rem; }
 
-    /* المنطقة الرئيسة */
     main {
       min-height: calc(100vh - var(--header-height));
       display: flex;
@@ -58,7 +56,6 @@
       gap: 24px;
     }
 
-    /* صندوق تسجيل الدخول */
     .login-box {
       width: 100%;
       max-width: 420px;
@@ -69,7 +66,6 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
-    /* العنوان مع رقم الدائرة */
     .title-wrapper {
       display: flex;
       align-items: center;
@@ -93,7 +89,6 @@
       user-select: none;
     }
 
-    /* تسمية الحقل مع أيقونة الاستفهام داخل دائرة مجوفة */
     .input-label {
       display: flex;
       align-items: center;
@@ -125,16 +120,16 @@
       color: #e50914;
     }
 
-    /* حقل الإدخال وزر الدخول */
     .input-group {
       display: flex;
+      flex-direction: column;
       margin-bottom: 16px;
     }
     .input-group input {
       flex: 1;
       padding: 10px;
       border: 1px solid #ccc;
-      border-radius: 0 8px 8px 0;
+      border-radius: 8px;
       outline: none;
       font-size: .95rem;
     }
@@ -143,16 +138,28 @@
       color: #fff;
       border: none;
       padding: 10px 16px;
-      border-radius: 8px 0 0 8px;
+      border-radius: 8px;
       font-weight: 700;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      margin-top: 12px;
+      width: 100%;
     }
-    .input-group button:hover {
+    .input-group button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    .input-group button:hover:not(:disabled) {
       background-color: #b20710;
     }
 
-    /* نص وانتقاء المنصة */
+    .error-message {
+      color: #e50914;
+      font-size: 0.85rem;
+      margin-top: 6px;
+      min-height: 20px;
+    }
+
     .login-box p {
       text-align: center;
       margin-bottom: 12px;
@@ -176,7 +183,6 @@
       background-color: var(--idbet-color);
     }
 
-    /* ميديا كويري للجوال */
     @media (max-width: 600px) {
       main {
         padding: 16px 16px;
@@ -204,7 +210,6 @@
 </head>
 <body>
 
-  <!-- الهيدر -->
   <header>
     <div class="header-brand">
       <span class="idbet">Idbet</span>
@@ -213,9 +218,7 @@
     </div>
   </header>
 
-  <!-- المنطقة الرئيسية -->
   <main>
-    <!-- الخطوة 1 فقط -->
     <section class="login-box">
       <div class="title-wrapper">
         <div class="step-box">1</div>
@@ -228,8 +231,9 @@
       </div>
 
       <div class="input-group">
-        <input id="player-id-1" type="text" placeholder="الرجاء إدخال المعرف الـ ID" />
-        <button>تسجيل الدخول</button>
+        <input id="player-id-1" type="text" placeholder="الرجاء إدخال المعرف الـ ID" maxlength="10" />
+        <div class="error-message" id="error-message"></div>
+        <button id="login-btn" disabled>تسجيل الدخول</button>
       </div>
 
       <p>اختر المنصة المطلوبة. يمكنك اختيارها عبر الضغط.</p>
@@ -242,6 +246,55 @@
       </div>
     </section>
   </main>
+
+<script>
+  const input = document.getElementById('player-id-1');
+  const errorMessage = document.getElementById('error-message');
+  const loginBtn = document.getElementById('login-btn');
+
+  function isRepeatedNumber(value) {
+    return /^(\d)\1{9}$/.test(value);  // رقم متكرر 10 مرات مثل 1111111111
+  }
+
+  input.addEventListener('input', () => {
+    let val = input.value;
+
+    // السماح فقط بالأرقام (حذف أي شيء غير رقم)
+    val = val.replace(/\D/g, '');
+    input.value = val;
+
+    if(val.length === 0) {
+      errorMessage.textContent = "الرجاء تعبئة هذا الحقل.";
+      loginBtn.disabled = true;
+      return;
+    }
+
+    if(val.length < 10) {
+      errorMessage.textContent = "يجب إدخال 10 أرقام بالضبط.";
+      loginBtn.disabled = true;
+      return;
+    }
+
+    if(isRepeatedNumber(val)) {
+      errorMessage.textContent = "المعرف غير صالح: لا يمكن تكرار نفس الرقم 10 مرات.";
+      loginBtn.disabled = true;
+      return;
+    }
+
+    errorMessage.textContent = "";
+    loginBtn.disabled = false;
+  });
+
+  // منع إرسال الفورم بدون تحقق
+  document.getElementById('login-btn').addEventListener('click', (e) => {
+    if(loginBtn.disabled) {
+      e.preventDefault();
+      input.focus();
+    } else {
+      alert("تم تسجيل الدخول (محاكاة)"); // بدّل هذا بالسيرفر أو الوظيفة الفعلية
+    }
+  });
+</script>
 
 </body>
 </html>
