@@ -1,98 +1,95 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>تسجيل الدخول - خطوة واحدة</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>تسجيل الدخول - خطوة واحدة</title>
 
-  <style>
-    :root {
-      --header-height: 70px;
-      --header-bg: #ffffff;
-      --idbet-color: #e50914;
-    }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
-      background:#f5f5f5;color:#333;min-height:100vh;direction:rtl}
-    header{
-      height:var(--header-height);background:var(--header-bg);
-      display:flex;align-items:center;padding:0 24px;
-      box-shadow:0 2px 8px rgba(0,0,0,.05);border-bottom:1px solid #eee}
-    .header-brand{display:flex;align-items:center;gap:12px;font-weight:500}
-    .header-brand .idbet{color:var(--idbet-color);font-weight:700;font-size:1.2rem}
-    .header-brand .separator{color:#ccc;font-size:1.2rem}
-    .header-brand .slogan{color:#555;font-size:.95rem}
+<style>
+  :root{
+    --header-height:70px;--header-bg:#fff;--idbet-color:#e50914;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+    background:#f5f5f5;color:#333;min-height:100vh;direction:rtl}
+  header{
+    height:var(--header-height);background:var(--header-bg);
+    display:flex;align-items:center;padding:0 24px;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);border-bottom:1px solid #eee}
+  .header-brand{display:flex;align-items:center;gap:12px;font-weight:500}
+  .header-brand .idbet{color:var(--idbet-color);font-weight:700;font-size:1.2rem}
+  .header-brand .separator{color:#ccc;font-size:1.2rem}
+  .header-brand .slogan{color:#555;font-size:.95rem}
 
-    main{
-      min-height:calc(100vh - var(--header-height));
-      display:flex;flex-direction:column;align-items:center;
-      padding:20px 10vw;gap:24px}
-    .login-box{
-      width:100%;max-width:420px;padding:32px 24px;background:#fff;
-      box-shadow:0 4px 20px rgba(0,0,0,.1)}
-    /* العنوان */
-    .title-wrapper{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-size:1.35rem;font-weight:600}
-    .step-box{
-      background:var(--idbet-color);color:#fff;width:36px;height:36px;border-radius:50%;
-      display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;user-select:none}
-    /* الحقول */
-    .input-label{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-weight:600}
-    .info-icon{
-      width:24px;height:24px;border:2px solid #666;border-radius:50%;color:#666;
-      font-weight:700;font-size:1.2rem;display:inline-flex;align-items:center;justify-content:center;
-      transition:.25s;cursor:help}
-    .info-icon:hover{background:rgba(229,9,20,.1);border-color:#e50914;color:#e50914}
-    .input-group{display:flex;flex-direction:column;margin-bottom:16px}
-    .input-group input{
-      padding:10px;border:1px solid #ccc;border-radius:8px;font-size:.95rem;outline:none}
-    /* زرّ التحقق */
-    .login-btn{
-      background:var(--idbet-color);color:#fff;border:none;padding:10px 16px;border-radius:8px;
-      font-weight:700;cursor:pointer;transition:.3s;width:100%}
-    .login-btn:disabled{background:#ccc;color:#666;cursor:not-allowed}
-    .login-btn:hover:not(:disabled){background:#b20710}
+  main{
+    min-height:calc(100vh - var(--header-height));display:flex;flex-direction:column;
+    align-items:center;padding:20px 10vw;gap:24px}
+  .login-box{
+    width:100%;max-width:420px;padding:32px 24px;background:#fff;
+    box-shadow:0 4px 20px rgba(0,0,0,.1)}
+  .title-wrapper{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-size:1.35rem;font-weight:600}
+  .step-box{
+    background:var(--idbet-color);color:#fff;width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;user-select:none}
 
-    .error-message{color:#e50914;font-size:.85rem;min-height:20px;margin-top:6px}
+  /* الحقول */
+  .input-label{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-weight:600}
+  .info-icon{
+    width:24px;height:24px;border:2px solid #666;border-radius:50%;color:#666;
+    font-weight:700;font-size:1.2rem;display:inline-flex;align-items:center;justify-content:center;
+    cursor:help;transition:.25s}
+  .info-icon:hover{background:rgba(229,9,20,.1);border-color:#e50914;color:#e50914}
+  .input-group{display:flex;flex-direction:column;margin-bottom:16px}
+  .input-group input{
+    padding:10px;border:1px solid #ccc;border-radius:8px;outline:none;font-size:.95rem}
+  .error-message{color:#e50914;font-size:.85rem;min-height:20px;margin-top:6px}
 
-    /* المستطيلات الخاصة بالمنصّات */
-    .platform-icons{
-      display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
-    .platform-icons .icon{
-      width:100px;height:60px;border:2px solid #ddd;border-radius:10px;
-      display:flex;align-items:center;justify-content:center;cursor:pointer;
-      transition:.3s;overflow:hidden;background:#fff}
-    .platform-icons .icon:hover{border-color:var(--idbet-color);box-shadow:0 0 6px rgba(229,9,20,.3)}
-    .platform-icons .icon img{max-width:90%;max-height:90%;object-fit:contain}
+  /* منصات الدفع */
+  .platform-icons{
+    display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+  .platform-icons .icon{
+    width:100px;height:60px;border:2px solid #ddd;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;background:#fff;
+    cursor:pointer;transition:.25s;overflow:hidden}
+  .platform-icons .icon img{max-width:90%;max-height:90%;object-fit:contain}
+  .platform-icons .icon:hover{border-color:var(--idbet-color)}
+  .platform-icons .icon.selected{
+    border-color:var(--idbet-color);box-shadow:0 0 6px rgba(229,9,20,.4)
+  }
 
-    /* Spinner */
-    .btn-spinner{
-      display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.6);
-      border-top:3px solid #fff;border-radius:50%;animation:spin .8s linear infinite;margin-right:6px;vertical-align:middle}
-    @keyframes spin{to{transform:rotate(360deg)}}
+  /* زرّ الدخول */
+  .login-btn{
+    background:var(--idbet-color);color:#fff;border:none;padding:10px 16px;border-radius:8px;
+    font-weight:700;cursor:pointer;transition:.3s;width:100%}
+  .login-btn:disabled{background:#ccc;color:#666;cursor:not-allowed}
+  .login-btn:hover:not(:disabled){background:#b20710}
 
-    @media(max-width:600px){
-      .login-box{padding:24px 16px}
-      .platform-icons{gap:12px}
-      .platform-icons .icon{width:90px;height:56px}
-    }
-  </style>
+  /* Spinner */
+  .btn-spinner{
+    display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.6);
+    border-top:3px solid #fff;border-radius:50%;animation:spin .8s linear infinite;
+    margin-right:6px;vertical-align:middle}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  @media(max-width:600px){
+    .login-box{padding:24px 16px}
+    .platform-icons{gap:12px}
+    .platform-icons .icon{width:90px;height:56px}
+  }
+</style>
 </head>
 <body>
 
 <header>
   <div class="header-brand">
-    <span class="idbet">Idbet</span>
-    <span class="separator">|</span>
-    <span class="slogan">وكيل الشحن الرسمي</span>
+    <span class="idbet">Idbet</span><span class="separator">|</span><span class="slogan">وكيل الشحن الرسمي</span>
   </div>
 </header>
 
 <main>
   <section class="login-box">
-    <div class="title-wrapper">
-      <div class="step-box">1</div><h2>تسجيل الدخول</h2>
-    </div>
+    <div class="title-wrapper"><div class="step-box">1</div><h2>تسجيل الدخول</h2></div>
 
     <div class="input-label">
       <label for="player-id-1">معرّف اللاعب</label>
@@ -104,14 +101,13 @@
       <div class="error-message" id="error-message"></div>
     </div>
 
-    <p>اختر المنصة المطلوبة. يمكنك اختيارها عبر الضغط.</p>
+    <p>اختر المنصة المطلوبة، ثم اضغط تسجيل الدخول.</p>
 
-    <!-- مستطيلات المنصات مع الشعارات -->
-    <div class="platform-icons">
+    <div class="platform-icons" id="platforms">
       <div class="icon"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="Logo 1"></div>
       <div class="icon"><img src="https://i.postimg.cc/R0bNVDJ5/1xbet-logo1-scorimg.webp" alt="Logo 2"></div>
-      <div class="icon"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png"   alt="Logo 3"></div>
-      <div class="icon"><img src="https://i.postimg.cc/wjCr86FS/melbet.png"                 alt="Logo 4"></div>
+      <div class="icon"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="Logo 3"></div>
+      <div class="icon"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Logo 4"></div>
     </div>
 
     <button class="login-btn" id="login-btn" disabled>تسجيل الدخول</button>
@@ -119,29 +115,54 @@
 </main>
 
 <script>
-/* التحققات السابقة باقية كما هي */
-const input  = document.getElementById('player-id-1');
-const errMsg = document.getElementById('error-message');
-const btn    = document.getElementById('login-btn');
+/* عناصر DOM */
+const input   = document.getElementById('player-id-1');
+const errMsg  = document.getElementById('error-message');
+const btn     = document.getElementById('login-btn');
+const icons   = document.querySelectorAll('.platform-icons .icon');
+let   chosen  = null;
+
+/* تحقق من تكرار الرقم */
 const repReg = /^(\d)\1{9}$/;
 
+/* منع كتابة غير الأرقام */
 input.addEventListener('keydown',e=>{
   const ok=['Backspace','Delete','ArrowLeft','ArrowRight','Tab','Home','End'];
   if(!ok.includes(e.key)&&!/^\d$/.test(e.key))e.preventDefault();
 });
-input.addEventListener('input',()=>{
-  let v=input.value.replace(/\D/g,'');input.value=v;
-  if(!v)errMsg.textContent="الرجاء تعبئة هذا الحقل.";
-  else if(v.length<10)errMsg.textContent="يجب إدخال 10 أرقام بالضبط.";
-  else if(repReg.test(v))errMsg.textContent="المعرف غير صالح: تكرار الرقم 10 مرات.";
-  else errMsg.textContent="";
-  btn.disabled=!!errMsg.textContent;
+
+/* تحقّق حيّ للـID */
+input.addEventListener('input',validateForm);
+
+/* اختيار منصة */
+icons.forEach(icon=>{
+  icon.addEventListener('click',()=>{
+    icons.forEach(i=>i.classList.remove('selected')); // أزل الاختيار السابق
+    icon.classList.add('selected');
+    chosen = icon;                                   // حدّد المختار
+    validateForm();
+  });
 });
+
+/* دالة التحقُّق الموحّدة */
+function validateForm(){
+  let v=input.value.replace(/\D/g,'');
+  input.value=v;
+  let msg="";
+  if(!v)            msg="الرجاء تعبئة هذا الحقل.";
+  else if(v.length<10)         msg="يجب إدخال 10 أرقام بالضبط.";
+  else if(repReg.test(v))      msg="المعرف غير صالح: تكرار الرقم 10 مرات.";
+  else if(!chosen)             msg="يرجى اختيار منصة أولاً.";
+  errMsg.textContent=msg;
+  btn.disabled=!!msg;
+}
+
+/* محاكاة التحقق عند النقر */
 btn.addEventListener('click',e=>{
   e.preventDefault();
   if(btn.disabled)return;
   btn.innerHTML='<span class="btn-spinner"></span> جارٍ التحقق...';btn.disabled=true;
-  setTimeout(()=>btn.innerHTML='✔ تم التحقق',2500);
+  setTimeout(()=>{btn.innerHTML='✔ تم التحقق';},2500);
 });
 </script>
 
