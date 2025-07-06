@@ -148,6 +148,7 @@
     .input-group button:disabled {
       background-color: #ccc;
       cursor: not-allowed;
+      color: #666;
     }
     .input-group button:hover:not(:disabled) {
       background-color: #b20710;
@@ -256,10 +257,22 @@
     return /^(\d)\1{9}$/.test(value);  // رقم متكرر 10 مرات مثل 1111111111
   }
 
+  input.addEventListener('keydown', (e) => {
+    const allowedKeys = [
+      'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Home', 'End'
+    ];
+    if (
+      !allowedKeys.includes(e.key) &&
+      !/^\d$/.test(e.key)
+    ) {
+      e.preventDefault();
+    }
+  });
+
   input.addEventListener('input', () => {
     let val = input.value;
 
-    // السماح فقط بالأرقام (حذف أي شيء غير رقم)
+    // تنظيف من غير أرقام (في حال تم اللصق)
     val = val.replace(/\D/g, '');
     input.value = val;
 
@@ -285,13 +298,12 @@
     loginBtn.disabled = false;
   });
 
-  // منع إرسال الفورم بدون تحقق
-  document.getElementById('login-btn').addEventListener('click', (e) => {
+  loginBtn.addEventListener('click', (e) => {
     if(loginBtn.disabled) {
       e.preventDefault();
       input.focus();
     } else {
-      alert("تم تسجيل الدخول (محاكاة)"); // بدّل هذا بالسيرفر أو الوظيفة الفعلية
+      alert("تم تسجيل الدخول (محاكاة)"); // يمكنك استبداله بعملية حقيقية
     }
   });
 </script>
