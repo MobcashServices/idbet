@@ -48,23 +48,23 @@
 
     /* المنطقة الرئيسة */
     main{
-      padding: 24px 16px;
+      padding: 24px 0;         /* لا حواف جانبية */
       display: flex;
-      justify-content: flex-start;
-      padding-left: 80px;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
+      justify-content: center; /* تمركز أفقياً */
+      width: 100vw;            /* عرض الشاشة كامل */
+      max-width: 100%;
+      margin: 0;
     }
 
     /* صندوق تسجيل الدخول */
     .login-box{
-      flex: 0 0 40%; /* يشغل 40% من عرض main */
-      background:#fff;
-      border-radius:0; /* حواف حادة */
-      box-shadow:0 2px 12px rgba(0,0,0,.07);
-      padding:24px;
+      width: 100%;        /* عرض كامل */
+      max-width: none;
+      border-radius: 0;   /* حواف حادة */
+      padding: 24px 32px; /* padding داخلي */
       box-sizing: border-box;
+      background:#fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
     }
 
     /* العنوان والرقم 1 داخله */
@@ -89,7 +89,7 @@
       flex-shrink:0;
     }
 
-    /* تسمية الحقل مع أيقونة الاستفهام المحسَّنة */
+    /* تسمية الحقل مع أيقونة الاستفهام */
     .input-label{
       display:flex;
       align-items:center;
@@ -107,7 +107,7 @@
       color:#666;
       font-size:.8rem;
       cursor:help;
-      background:transparent;          /* مجوَّفة */
+      background:transparent;
       transition:background .25s;
     }
     .info-icon:hover{ background:rgba(0,0,0,.05); }
@@ -146,21 +146,17 @@
     .platform-icons .icon{
       width:40px; height:40px;
       border-radius:50%;
-      background:#ddd;                 /* خامة مؤقتة */
+      background:#ddd;
     }
 
     /* تحسين على الشاشات الصغيرة */
     @media(max-width:768px){
       main {
-        justify-content: center;
-        padding-left: 16px;
+        padding: 24px 16px;
       }
       .login-box{
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 420px;
-        border-radius: 12px; /* ترجع الحواف المستديرة للجوال */
         padding: 20px 16px;
+        border-radius: 12px; /* ترجع الحواف المستديرة للجوال */
       }
       .login-box .title-wrapper{ font-size:1.15rem; }
       .title-wrapper .step{ width:28px; height:28px; font-size:.9rem; }
@@ -187,7 +183,7 @@
         <h2 style="margin:0;">تسجيل الدخول</h2>
       </div>
 
-      <!-- الحقل مع أيقونة الاستفهام المجوَّفة -->
+      <!-- الحقل مع أيقونة الاستفهام -->
       <div class="input-label">
         <label for="player-id">معرف اللاعب</label>
         <span class="info-icon" title="ما هو معرف التارغ؟">؟</span>
