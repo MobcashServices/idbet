@@ -4,40 +4,220 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>تسجيل الدخول</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root { --header-height:70px; --idbet-color:#e50914; }
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Tajawal',sans-serif;background:#f5f5f5;direction:rtl;color:#333}
-    header{height:var(--header-height);background:#fff;display:flex;align-items:center;padding:0 24px;box-shadow:0 2px 8px rgba(0,0,0,.05);border-bottom:1px solid #eee}
-    .header-brand{display:flex;align-items:center;gap:12px;font-weight:500}
-    .header-brand .idbet{color:var(--idbet-color);font-size:1.2rem;font-weight:bold}
-    .header-brand .separator{color:#ccc}
-    .header-brand .slogan{color:#555;font-size:.95rem}
-    main{display:flex;justify-content:center;padding:30px 16px}
-    .login-box{background:#fff;padding:32px 24px;max-width:420px;width:100%;box-shadow:0 4px 20px rgba(0,0,0,.1)}
-    .title-wrapper{display:flex;align-items:center;gap:10px;font-size:1.35rem;font-weight:bold;margin-bottom:20px}
-    .step-box{width:36px;height:36px;background:var(--idbet-color);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold}
-    .input-label{margin-bottom:8px;font-weight:600;display:flex;align-items:center;gap:6px}
-    .info-icon{width:24px;height:24px;border:2px solid #666;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.1rem;cursor:help;color:#666;transition:.3s}
-    .info-icon:hover{border-color:var(--idbet-color);background:rgba(229,9,20,.1);color:var(--idbet-color)}
-    .input-group{margin-bottom:16px}
-    .input-group input{width:100%;padding:10px;font-size:.95rem;border:1px solid #ccc;border-radius:8px;outline:none}
-    .error-message{font-size:.85rem;margin-top:6px;min-height:22px;transition: color .3s ease;}
-    .platform-icons{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:20px;justify-items:center;margin:20px 0}
-    .icon{position:relative;width:110px;height:110px;border-radius:14px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.05);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px;transition:.3s;border:1px solid #eee;cursor:pointer}
-    .icon:hover{transform:translateY(-4px);box-shadow:0 6px 14px rgba(0,0,0,.1)}
-    .icon.selected{border-color:var(--idbet-color);box-shadow:0 0 10px rgba(229,9,20,.3)}
-    .icon.selected::after{content:"✓";position:absolute;top:6px;left:6px;width:20px;height:20px;background:var(--idbet-color);color:#fff;border-radius:50%;font-size:12px;display:flex;align-items:center;justify-content:center}
-    .icon img{height:50px;max-width:90%;object-fit:contain;display:block}
-    .icon-name{margin-top:8px;font-weight:600;font-size:.85rem;color:#333;text-align:center}
-    .login-btn{background:var(--idbet-color);color:#fff;font-weight:bold;border:none;padding:10px 16px;width:100%;border-radius:8px;cursor:pointer;transition:.3s}
-    .login-btn:disabled{background:#ccc;cursor:not-allowed}
-    .login-btn:hover:not(:disabled){background:#b20710}
-    .btn-spinner,.loader{display:inline-block;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}
-    .btn-spinner{width:16px;height:16px;border:3px solid rgba(255,255,255,.6);border-top:3px solid #fff;margin-right:6px}
-    .loader{width:14px;height:14px;border:2px solid var(--idbet-color);border-top-color:transparent;margin-left:4px}
-    @keyframes spin{to{transform:rotate(360deg)}}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f5f5f5;
+      direction: rtl;
+      color: #333;
+    }
+    header {
+      height: var(--header-height);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+      border-bottom: 1px solid #eee;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+    }
+    .header-brand .idbet {
+      color: var(--idbet-color);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .header-brand .separator {
+      color: #ccc;
+    }
+    .header-brand .slogan {
+      color: #555;
+      font-size: .95rem;
+    }
+    main {
+      display: flex;
+      justify-content: center;
+      padding: 30px 16px;
+    }
+    .login-box {
+      background: #fff;
+      padding: 32px 24px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
+    }
+    .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.35rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .step-box {
+      width: 36px;
+      height: 36px;
+      background: var(--idbet-color);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .input-label {
+      margin-bottom: 8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .info-icon {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #666;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: help;
+      color: #666;
+      transition: .3s;
+    }
+    .info-icon:hover {
+      border-color: var(--idbet-color);
+      background: rgba(229, 9, 20, .1);
+      color: var(--idbet-color);
+    }
+    .input-group {
+      margin-bottom: 16px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: .95rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+    }
+    .error-message {
+      font-size: .85rem;
+      margin-top: 6px;
+      min-height: 22px;
+      transition: color .3s ease;
+    }
+    .platform-icons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      margin: 20px 0;
+    }
+    .icon {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      transition: .3s;
+      border: 1px solid #eee;
+      cursor: pointer;
+    }
+    .icon:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, .1);
+    }
+    .icon.selected {
+      border-color: var(--idbet-color);
+      box-shadow: 0 0 10px rgba(229, 9, 20, .3);
+    }
+    .icon.selected::after {
+      content: "✓";
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 20px;
+      height: 20px;
+      background: var(--idbet-color);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon img {
+      height: 50px;
+      max-width: 90%;
+      object-fit: contain;
+      display: block;
+    }
+    .icon-name {
+      margin-top: 8px;
+      font-weight: 600;
+      font-size: .85rem;
+      color: #333;
+      text-align: center;
+    }
+    .login-btn {
+      background: var(--idbet-color);
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 10px 16px;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: .3s;
+    }
+    .login-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .login-btn:hover:not(:disabled) {
+      background: #b20710;
+    }
+    .btn-spinner,
+    .loader {
+      display: inline-block;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      vertical-align: middle;
+    }
+    .btn-spinner {
+      width: 16px;
+      height: 16px;
+      border: 3px solid rgba(255, 255, 255, .6);
+      border-top: 3px solid #fff;
+      margin-right: 6px;
+    }
+    .loader {
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--idbet-color);
+      border-top-color: transparent;
+      margin-left: 4px;
+    }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 <body>
@@ -63,11 +243,11 @@
     </div>
 
     <div class="platform-icons" id="platforms">
-      <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet"><div class="icon-name">LineBet</div></div>
-      <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari"><div class="icon-name">MegaPari</div></div>
-      <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet"><div class="icon-name">Melbet</div></div>
-      <div class="icon" data-name="Gooobet"><img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet"><div class="icon-name">Gooobet</div></div>
-      <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet"><div class="icon-name">1xBet</div></div>
+      <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" /><div class="icon-name">LineBet</div></div>
+      <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari" /><div class="icon-name">MegaPari</div></div>
+      <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet" /><div class="icon-name">Melbet</div></div>
+      <div class="icon" data-name="Gooobet"><img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet" /><div class="icon-name">Gooobet</div></div>
+      <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet" /><div class="icon-name">1xBet</div></div>
     </div>
 
     <button class="login-btn" id="login-btn" disabled>تسجيل الدخول</button>
@@ -75,45 +255,42 @@
 </main>
 
 <script>
-  const input  = document.getElementById('player-id-1');
+  const input = document.getElementById('player-id-1');
   const errMsg = document.getElementById('error-message');
-  const btn    = document.getElementById('login-btn');
-  const icons  = document.querySelectorAll('.icon');
+  const btn = document.getElementById('login-btn');
+  const icons = document.querySelectorAll('.icon');
   let platform = null;
   const repReg = /^(\d)\1{9}$/;
 
-  input.addEventListener('keydown', e=>{
-    const ok=['Backspace','Delete','ArrowLeft','ArrowRight','Tab'];
-    if(!ok.includes(e.key)&&!/^\d$/.test(e.key)) e.preventDefault();
+  input.addEventListener('keydown', e => {
+    const ok = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
+    if (!ok.includes(e.key) && !/^\d$/.test(e.key)) e.preventDefault();
   });
 
   input.addEventListener('input', validate);
 
-  icons.forEach(icon=>{
-    icon.addEventListener('click',()=>{
-      icons.forEach(i=>i.classList.remove('selected'));
+  icons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      icons.forEach(i => i.classList.remove('selected'));
       icon.classList.add('selected');
       platform = icon.dataset.name;
       validate();
     });
   });
 
-  function validate(){
-    const val = input.value.replace(/\D/g,'');
+  function validate() {
+    const val = input.value.replace(/\D/g, '');
     input.value = val;
     let msg = '';
-    let msgColor = 'var(--idbet-color)'; // أحمر افتراضي
+    let msgColor = 'var(--idbet-color)'; // اللون الأحمر افتراضياً
 
-    if(!val){
+    if (!val) {
       msg = 'يُرجى إدخال المعرّف للمتابعة.';
-      msgColor = 'var(--idbet-color)';
-    } else if(val.length < 10){
+    } else if (val.length < 10) {
       msg = '<span class="loader"></span> جارٍ فحص المعرّف...';
-      msgColor = 'var(--idbet-color)';
-    } else if(repReg.test(val)){
-      msg = 'تعذر التحقق: المعرف لا يطابق معايير النظام.';
-      msgColor = 'var(--idbet-color)';
-    } else if(!platform){
+    } else if (repReg.test(val)) {
+      msg = 'تعذر التحقق: المعرّف لا يطابق معايير النظام.';
+    } else if (!platform) {
       msg = 'المعرّف صحيح، الرجاء اختيار المنصة لإتمام تسجيل الدخول.';
       msgColor = 'green';
     } else {
@@ -125,9 +302,9 @@
     btn.disabled = !!msg && !msg.includes('loader');
   }
 
-  btn.addEventListener('click', e=>{
+  btn.addEventListener('click', e => {
     e.preventDefault();
-    if(btn.disabled) return;
+    if (btn.disabled) return;
     btn.innerHTML = '<span class="btn-spinner"></span> جارٍ التحقق...';
     btn.disabled = true;
     setTimeout(() => { btn.innerHTML = '✔ تم التحقق'; }, 2500);
