@@ -47,119 +47,119 @@
     .header-brand .slogan  { color:#555; font-size:.95rem; }
 
     /* المنطقة الرئيسة */
-    main{
-      padding: 24px 0;         /* لا حواف جانبية */
+    main {
+      padding: 24px 16px;
       display: flex;
-      justify-content: center; /* تمركز أفقياً */
-      width: 100vw;            /* عرض الشاشة كامل */
-      max-width: 100%;
+      justify-content: flex-end; /* يلتصق باليمين */
+      width: 100%;
+      max-width: 100vw;
       margin: 0;
     }
 
     /* صندوق تسجيل الدخول */
-    .login-box{
-      width: 100%;        /* عرض كامل */
-      max-width: none;
-      border-radius: 0;   /* حواف حادة */
-      padding: 24px 32px; /* padding داخلي */
+    .login-box {
+      width: 380px;
+      max-width: 100%;
+      border-radius: 0;
+      padding: 24px;
       box-sizing: border-box;
-      background:#fff;
+      background: #fff;
       box-shadow: 0 2px 12px rgba(0,0,0,.07);
     }
 
     /* العنوان والرقم 1 داخله */
-    .login-box .title-wrapper{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      margin-bottom:20px;
-      font-size:1.35rem;
-      color:#222;
-      font-weight:600;
+    .login-box .title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 1.35rem;
+      color: #222;
+      font-weight: 600;
     }
-    .title-wrapper .step{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:32px; height:32px;
-      border-radius:50%;
-      background:var(--idbet-color);
-      color:#fff;
-      font-size:1rem;
-      flex-shrink:0;
+    .title-wrapper .step {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--idbet-color);
+      color: #fff;
+      font-size: 1rem;
+      flex-shrink: 0;
     }
 
     /* تسمية الحقل مع أيقونة الاستفهام */
-    .input-label{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      margin-bottom:8px;
-      font-weight:600;
+    .input-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+      font-weight: 600;
     }
-    .info-icon{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:20px; height:20px;
-      border-radius:50%;
-      border:1.5px solid #999;
-      color:#666;
-      font-size:.8rem;
-      cursor:help;
-      background:transparent;
-      transition:background .25s;
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid #999;
+      color: #666;
+      font-size: .8rem;
+      cursor: help;
+      background: transparent;
+      transition: background .25s;
     }
-    .info-icon:hover{ background:rgba(0,0,0,.05); }
+    .info-icon:hover { background: rgba(0,0,0,.05); }
 
     /* حقل الإدخال وزر الدخول */
-    .input-group{ display:flex; margin-bottom:16px; }
-    .input-group input{
-      flex:1;
-      padding:10px;
-      border:1px solid #ccc;
-      border-radius:0 8px 8px 0;
-      outline:none;
-      font-size:.95rem;
+    .input-group { display: flex; margin-bottom: 16px; }
+    .input-group input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 0 8px 8px 0;
+      outline: none;
+      font-size: .95rem;
     }
-    .input-group button{
-      background:var(--idbet-color);
-      color:#fff;
-      border:none;
-      padding:10px 16px;
-      border-radius:8px 0 0 8px;
-      font-weight:700;
-      cursor:pointer;
+    .input-group button {
+      background: var(--idbet-color);
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px 0 0 8px;
+      font-weight: 700;
+      cursor: pointer;
     }
 
     /* نص وانتقاء المنصة */
-    .login-box p{
-      text-align:center;
-      margin-bottom:12px;
-      color:#555; font-size:.9rem;
+    .login-box p {
+      text-align: center;
+      margin-bottom: 12px;
+      color: #555; font-size: .9rem;
     }
-    .platform-icons{
-      display:flex;
-      justify-content:center;
-      gap:12px;
+    .platform-icons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
     }
-    .platform-icons .icon{
-      width:40px; height:40px;
-      border-radius:50%;
-      background:#ddd;
+    .platform-icons .icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: #ddd;
     }
 
-    /* تحسين على الشاشات الصغيرة */
-    @media(max-width:768px){
+    /* تعديل للشاشات الصغيرة */
+    @media (max-width: 480px) {
       main {
+        justify-content: center; /* في الهاتف نوسّط النموذج */
         padding: 24px 16px;
       }
-      .login-box{
-        padding: 20px 16px;
-        border-radius: 12px; /* ترجع الحواف المستديرة للجوال */
+      .login-box {
+        width: 100%;
+        border-radius: 12px;
+        padding: 20px;
       }
-      .login-box .title-wrapper{ font-size:1.15rem; }
-      .title-wrapper .step{ width:28px; height:28px; font-size:.9rem; }
     }
   </style>
 </head>
