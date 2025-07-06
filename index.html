@@ -133,26 +133,6 @@
       outline: none;
       font-size: .95rem;
     }
-    .input-group button {
-      background: var(--idbet-color);
-      color: #fff;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-top: 12px;
-      width: 100%;
-    }
-    .input-group button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-      color: #666;
-    }
-    .input-group button:hover:not(:disabled) {
-      background-color: #b20710;
-    }
 
     .error-message {
       color: #e50914;
@@ -171,6 +151,7 @@
       display: flex;
       justify-content: center;
       gap: 12px;
+      margin-bottom: 16px; /* إضافة مسافة أسفل الأيقونات */
     }
     .platform-icons .icon {
       width: 40px;
@@ -182,6 +163,26 @@
     }
     .platform-icons .icon:hover {
       background-color: var(--idbet-color);
+    }
+
+    .input-group button {
+      background: var(--idbet-color);
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+    .input-group button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+      color: #666;
+    }
+    .input-group button:hover:not(:disabled) {
+      background-color: #b20710;
     }
 
     @media (max-width: 600px) {
@@ -234,7 +235,6 @@
       <div class="input-group">
         <input id="player-id-1" type="text" placeholder="الرجاء إدخال المعرف الـ ID" maxlength="10" />
         <div class="error-message" id="error-message"></div>
-        <button id="login-btn" disabled>تسجيل الدخول</button>
       </div>
 
       <p>اختر المنصة المطلوبة. يمكنك اختيارها عبر الضغط.</p>
@@ -245,6 +245,11 @@
         <div class="icon" title="منصة 3"></div>
         <div class="icon" title="منصة 4"></div>
       </div>
+
+      <div class="input-group">
+        <button id="login-btn" disabled>تسجيل الدخول</button>
+      </div>
+
     </section>
   </main>
 
@@ -303,7 +308,7 @@
       e.preventDefault();
       input.focus();
     } else {
-      alert("تم تسجيل الدخول (محاكاة)"); // يمكنك استبداله بعملية حقيقية
+      alert("تم تسجيل الدخول (محاكاة)");
     }
   });
 </script>
