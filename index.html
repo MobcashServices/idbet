@@ -48,9 +48,10 @@
 
     /* المنطقة الرئيسة */
     main{
-      padding: 24px 16px;              /* يَظهر النموذج تحت الهيدر فوراً */
+      padding: 24px 16px;
       display: flex;
-      justify-content: center;         /* تمركز أفقي فقط */
+      justify-content: flex-start; /* وضع النموذج على اليسار */
+      padding-left: 80px; /* مسافة فارغة من اليسار */
     }
 
     /* صندوق تسجيل الدخول */
@@ -146,7 +147,11 @@
     }
 
     /* تحسين على الشاشات الصغيرة */
-    @media(max-width:480px){
+    @media(max-width:768px){
+      main {
+        justify-content: center;
+        padding-left: 16px;
+      }
       .login-box{ padding:20px 16px; }
       .login-box .title-wrapper{ font-size:1.15rem; }
       .title-wrapper .step{ width:28px; height:28px; font-size:.9rem; }
