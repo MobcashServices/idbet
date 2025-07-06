@@ -24,16 +24,42 @@
     .input-group input{width:100%;padding:10px;font-size:.95rem;border:1px solid #ccc;border-radius:8px;outline:none}
     .error-message{color:var(--idbet-color);font-size:.85rem;margin-top:6px;min-height:20px}
     .platform-icons{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:20px 0}
-    .icon{width:100px;height:80px;border:2px solid #ddd;border-radius:10px;background:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:.3s}
+    .icon{
+      width:110px;
+      height:100px;
+      border:2px solid #ddd;
+      border-radius:10px;
+      background:#fff;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:space-between;
+      cursor:pointer;
+      transition:.3s;
+      padding:6px;
+    }
     .icon.selected{border-color:var(--idbet-color);box-shadow:0 0 6px rgba(229,9,20,.4)}
-    .icon img{flex:1;object-fit:contain;max-width:90%;margin:auto}
-    .icon-name{background:#333;color:#fff;text-align:center;font-size:.75rem;padding:4px 0;font-family:inherit}
+    .icon img{
+      max-height:60px;
+      max-width:90%;
+      object-fit:contain;
+    }
+    .icon-name{
+      width:100%;
+      background:#333;
+      color:#fff;
+      text-align:center;
+      font-size:.75rem;
+      padding:4px 0;
+      font-family:inherit;
+    }
     .login-btn{background:var(--idbet-color);color:#fff;font-weight:bold;border:none;padding:10px 16px;width:100%;border-radius:8px;cursor:pointer;transition:.3s}
     .login-btn:disabled{background:#ccc;cursor:not-allowed}
     .login-btn:hover:not(:disabled){background:#b20710}
     .btn-spinner{display:inline-block;width:16px;height:16px;border:3px solid rgba(255,255,255,.6);border-top:3px solid #fff;border-radius:50%;animation:spin .8s linear infinite;margin-right:6px;vertical-align:middle}
     @keyframes spin{to{transform:rotate(360deg)}}
-    @media(max-width:600px){.icon{width:90px;height:75px}}
+    @media(max-width:600px){.icon{width:100px;height:90px}}
   </style>
 </head>
 <body>
@@ -60,7 +86,6 @@
 
     <p>اختر المنصة المطلوبة ثم اضغط تسجيل الدخول.</p>
 
-    <!-- بطاقات المنصات (5 بطاقات) -->
     <div class="platform-icons" id="platforms">
       <div class="icon" data-name="LineBet">
         <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet">
@@ -95,9 +120,8 @@
   const icons    = document.querySelectorAll('.icon');
   let selectedPlatform = null;
 
-  const repReg = /^(\d)\1{9}$/;   // 10 أرقام مكرَّرة
+  const repReg = /^(\d)\1{9}$/;
 
-  /* منع إدخال غير الأرقام */
   input.addEventListener('keydown', e => {
     const allowed = ['Backspace','Delete','ArrowLeft','ArrowRight','Tab'];
     if (!allowed.includes(e.key) && !/^\d$/.test(e.key)) e.preventDefault();
