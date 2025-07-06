@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inscription</title>
+
   <style>
     :root {
       --header-height: 70px;
@@ -22,181 +23,139 @@
       background-color: #f5f5f5;
       color: #333;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
+    /* الهيدر */
     header {
       height: var(--header-height);
       background-color: var(--header-bg);
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       padding: 0 24px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       border-bottom: 1px solid #eee;
       z-index: 10;
     }
-
     .header-brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 1rem;
       font-weight: 500;
     }
+    .header-brand .idbet   { color: var(--idbet-color); font-weight: 700; font-size: 1.2rem; }
+    .header-brand .separator{ color:#ccc; font-size:1.2rem; }
+    .header-brand .slogan  { color:#555; font-size:.95rem; }
 
-    .header-brand .idbet {
-      color: var(--idbet-color);
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-
-    .header-brand .separator {
-      color: #ccc;
-      font-weight: normal;
-      font-size: 1.2rem;
-    }
-
-    .header-brand .slogan {
-      color: #555;
-      font-size: 0.95rem;
-    }
-
-    main {
-      flex: 1;
+    /* المنطقة الرئيسة */
+    main{
+      padding: 24px 16px;              /* يَظهر النموذج تحت الهيدر فوراً */
       display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 24px;
+      justify-content: center;         /* تمركز أفقي فقط */
     }
 
-    .login-box {
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      width: 100%;
-      max-width: 420px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    /* صندوق تسجيل الدخول */
+    .login-box{
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 2px 12px rgba(0,0,0,.07);
+      width:100%;
+      max-width:420px;
+      padding:24px;
     }
 
-    .login-box .title-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
+    /* العنوان والرقم 1 داخله */
+    .login-box .title-wrapper{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin-bottom:20px;
+      font-size:1.35rem;
+      color:#222;
+      font-weight:600;
+    }
+    .title-wrapper .step{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:32px; height:32px;
+      border-radius:50%;
+      background:var(--idbet-color);
+      color:#fff;
+      font-size:1rem;
+      flex-shrink:0;
     }
 
-    .login-box .badge {
-      background-color: var(--idbet-color);
-      color: white;
-      font-weight: bold;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.9rem;
+    /* تسمية الحقل مع أيقونة الاستفهام المحسَّنة */
+    .input-label{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      margin-bottom:8px;
+      font-weight:600;
+    }
+    .info-icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:20px; height:20px;
+      border-radius:50%;
+      border:1.5px solid #999;
+      color:#666;
+      font-size:.8rem;
+      cursor:help;
+      background:transparent;          /* مجوَّفة */
+      transition:background .25s;
+    }
+    .info-icon:hover{ background:rgba(0,0,0,.05); }
+
+    /* حقل الإدخال وزر الدخول */
+    .input-group{ display:flex; margin-bottom:16px; }
+    .input-group input{
+      flex:1;
+      padding:10px;
+      border:1px solid #ccc;
+      border-radius:0 8px 8px 0;
+      outline:none;
+      font-size:.95rem;
+    }
+    .input-group button{
+      background:var(--idbet-color);
+      color:#fff;
+      border:none;
+      padding:10px 16px;
+      border-radius:8px 0 0 8px;
+      font-weight:700;
+      cursor:pointer;
     }
 
-    .login-box h2 {
-      font-size: 1.4rem;
-      margin: 0;
-      color: #222;
+    /* نص وانتقاء المنصة */
+    .login-box p{
+      text-align:center;
+      margin-bottom:12px;
+      color:#555; font-size:.9rem;
+    }
+    .platform-icons{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+    }
+    .platform-icons .icon{
+      width:40px; height:40px;
+      border-radius:50%;
+      background:#ddd;                 /* خامة مؤقتة */
     }
 
-    .login-box label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    .input-label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .info-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #ddd;
-      color: #333;
-      font-size: 0.85rem;
-      font-weight: bold;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      cursor: help;
-      transition: background 0.3s;
-    }
-
-    .info-icon:hover {
-      background-color: #bbb;
-    }
-
-    .login-box .input-group {
-      display: flex;
-      margin-bottom: 16px;
-    }
-
-    .login-box input[type="text"] {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 0 8px 8px 0;
-      outline: none;
-      font-size: 0.95rem;
-    }
-
-    .login-box button {
-      background-color: var(--idbet-color);
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px 0 0 8px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .login-box p {
-      text-align: center;
-      margin-bottom: 12px;
-      color: #555;
-      font-size: 0.9rem;
-    }
-
-    .platform-icons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    .platform-icons .icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #ddd;
-    }
-
-    @media (max-width: 480px) {
-      .login-box {
-        padding: 20px 16px;
-      }
-
-      .login-box h2 {
-        font-size: 1.2rem;
-      }
-
-      .login-box .badge {
-        font-size: 0.8rem;
-        padding: 3px 8px;
-      }
+    /* تحسين على الشاشات الصغيرة */
+    @media(max-width:480px){
+      .login-box{ padding:20px 16px; }
+      .login-box .title-wrapper{ font-size:1.15rem; }
+      .title-wrapper .step{ width:28px; height:28px; font-size:.9rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- الهيدر -->
   <header>
     <div class="header-brand">
       <span class="idbet">Idbet</span>
@@ -205,26 +164,29 @@
     </div>
   </header>
 
+  <!-- النموذج تحت الهيدر مباشرة -->
   <main>
-    <!-- صندوق تسجيل الدخول -->
     <section class="login-box">
+      <!-- العنوان + الرقم 1 مدمجان -->
       <div class="title-wrapper">
-        <span class="badge">1</span>
-        <h2>تسجيل الدخول</h2>
+        <span class="step">1</span>
+        <h2 style="margin:0;">تسجيل الدخول</h2>
       </div>
 
+      <!-- الحقل مع أيقونة الاستفهام المجوَّفة -->
       <div class="input-label">
         <label for="player-id">معرف اللاعب</label>
         <span class="info-icon" title="ما هو معرف التارغ؟">؟</span>
       </div>
 
       <div class="input-group">
-        <input id="player-id" type="text" placeholder="الرجاء إدخال المعرف الـ ID" />
+        <input id="player-id" type="text" placeholder="الرجاء إدخال المعرف الـ ID">
         <button>تسجيل الدخول</button>
       </div>
 
       <p>اختر المنصة المطلوبة. يمكنك اختيارها عبر الضغط.</p>
 
+      <!-- خامات مؤقتة لأيقونات المنصات -->
       <div class="platform-icons">
         <div class="icon"></div>
         <div class="icon"></div>
