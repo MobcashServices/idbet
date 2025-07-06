@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,266 +7,258 @@
     :root {
       --header-height: 70px;
       --idbet-color: #e50914;
-    }
+    }* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f5f5;
+  direction: rtl;
+  color: #333;
+}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #f5f5f5;
-      direction: rtl;
-      color: #333;
-    }
+header {
+  height: var(--header-height);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-bottom: 1px solid #eee;
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+.header-brand .idbet { color: var(--idbet-color); font-size: 1.2rem; font-weight: bold; }
+.header-brand .separator { color: #ccc; }
+.header-brand .slogan { color: #555; font-size: .95rem; }
 
-    header {
-      height: var(--header-height);
-      background: #fff;
-      display: flex;
-      align-items: center;
-      padding: 0 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border-bottom: 1px solid #eee;
-    }
-    .header-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 500;
-    }
-    .header-brand .idbet { color: var(--idbet-color); font-size: 1.2rem; font-weight: bold; }
-    .header-brand .separator { color: #ccc; }
-    .header-brand .slogan { color: #555; font-size: .95rem; }
+main {
+  display: flex;
+  justify-content: center;
+  padding: 30px 16px;
+}
 
-    main {
-      display: flex;
-      justify-content: center;
-      padding: 30px 16px;
-    }
+.login-box {
+  background: #fff;
+  padding: 32px 24px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
 
-    .login-box {
-      background: #fff;
-      padding: 32px 24px;
-      max-width: 420px;
-      width: 100%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.35rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
-    .title-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.35rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
+.step-box {
+  width: 36px;
+  height: 36px;
+  background: var(--idbet-color);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
 
-    .step-box {
-      width: 36px;
-      height: 36px;
-      background: var(--idbet-color);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
+.input-label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
-    .input-label {
-      margin-bottom: 8px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+.info-icon {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: help;
+  color: #666;
+  transition: 0.3s;
+}
 
-    .info-icon {
-      width: 24px;
-      height: 24px;
-      border: 2px solid #666;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.1rem;
-      cursor: help;
-      color: #666;
-      transition: 0.3s;
-    }
+.info-icon:hover {
+  border-color: var(--idbet-color);
+  background: rgba(229, 9, 20, 0.1);
+  color: var(--idbet-color);
+}
 
-    .info-icon:hover {
-      border-color: var(--idbet-color);
-      background: rgba(229, 9, 20, 0.1);
-      color: var(--idbet-color);
-    }
+.input-group {
+  margin-bottom: 16px;
+}
 
-    .input-group {
-      margin-bottom: 16px;
-    }
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: .95rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
 
-    .input-group input {
-      width: 100%;
-      padding: 10px;
-      font-size: .95rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      outline: none;
-    }
+.error-message {
+  color: var(--idbet-color);
+  font-size: .85rem;
+  margin-top: 6px;
+  min-height: 20px;
+}
 
-    .error-message {
-      color: var(--idbet-color);
-      font-size: .85rem;
-      margin-top: 6px;
-      min-height: 20px;
-    }
+.platform-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin: 20px 0;
+}
 
-    .platform-icons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-      margin: 20px 0;
-    }
+.icon {
+  width: 100px;
+  height: 80px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    .icon {
-      width: 100px;
-      height: 80px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      background: #fff;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.icon.selected {
+  border-color: var(--idbet-color);
+  box-shadow: 0 0 6px rgba(229, 9, 20, 0.4);
+}
 
-    .icon.selected {
-      border-color: var(--idbet-color);
-      box-shadow: 0 0 6px rgba(229, 9, 20, 0.4);
-    }
+.icon img {
+  flex: 1;
+  object-fit: contain;
+  max-width: 90%;
+  margin: auto;
+}
 
-    .icon img {
-      flex: 1;
-      object-fit: contain;
-      max-width: 90%;
-      margin: auto;
-    }
+.icon-name {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 4px 0;
+  font-family: inherit;
+}
 
-    .icon-name {
-      background: #333;
-      color: #fff;
-      text-align: center;
-      font-size: 0.75rem;
-      padding: 4px 0;
-      font-family: inherit;
-    }
+.login-btn {
+  background: var(--idbet-color);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 10px 16px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    .login-btn {
-      background: var(--idbet-color);
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      padding: 10px 16px;
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.login-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
 
-    .login-btn:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
+.login-btn:hover:not(:disabled) {
+  background: #b20710;
+}
 
-    .login-btn:hover:not(:disabled) {
-      background: #b20710;
-    }
+.btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid rgba(255,255,255,.6);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+  margin-right: 6px;
+  vertical-align: middle;
+}
 
-    .btn-spinner {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 3px solid rgba(255,255,255,.6);
-      border-top: 3px solid #fff;
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-      margin-right: 6px;
-      vertical-align: middle;
-    }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 600px) {
+  .icon { width: 90px; height: 75px; }
+}
 
-    @media (max-width: 600px) {
-      .icon { width: 90px; height: 75px; }
-    }
   </style>
 </head>
-<body>
-
-<header>
+<body><header>
   <div class="header-brand">
     <span class="idbet">Idbet</span>
     <span class="separator">|</span>
     <span class="slogan">وكيل الشحن الرسمي</span>
   </div>
-</header>
-
-<main>
+</header><main>
   <section class="login-box">
     <div class="title-wrapper">
       <div class="step-box">1</div>
       <h2>تسجيل الدخول</h2>
-    </div>
+    </div><div class="input-label">
+  <label for="player-id-1">معرّف اللاعب</label>
+  <span class="info-icon" title="ما هو معرف التارغ؟">?</span>
+</div>
 
-    <div class="input-label">
-      <label for="player-id-1">معرّف اللاعب</label>
-      <span class="info-icon" title="ما هو معرف التارغ؟">?</span>
-    </div>
+<div class="input-group">
+  <input id="player-id-1" type="text" placeholder="الرجاء إدخال المعرف الـ ID" maxlength="10" />
+  <div class="error-message" id="error-message"></div>
+</div>
 
-    <div class="input-group">
-      <input id="player-id-1" type="text" placeholder="الرجاء إدخال المعرف الـ ID" maxlength="10" />
-      <div class="error-message" id="error-message"></div>
-    </div>
+<p>اختر المنصة المطلوبة ثم اضغط تسجيل الدخول.</p>
 
-    <p>اختر المنصة المطلوبة ثم اضغط تسجيل الدخول.</p>
+<div class="platform-icons" id="platforms">
+  <div class="icon" data-name="LineBet">
+    <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet">
+    <div class="icon-name">LineBet</div>
+  </div>
+  <div class="icon" data-name="1XBET">
+    <img src="https://i.postimg.cc/R0bNVDJ5/1xbet-logo1-scorimg.webp" alt="1XBET">
+    <div class="icon-name">1XBET</div>
+  </div>
+  <div class="icon" data-name="MegaPari">
+    <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari">
+    <div class="icon-name">MegaPari</div>
+  </div>
+  <div class="icon" data-name="Melbet">
+    <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet">
+    <div class="icon-name">Melbet</div>
+  </div>
+</div>
 
-    <div class="platform-icons" id="platforms">
-      <div class="icon" data-name="LineBet">
-        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet">
-        <div class="icon-name">LineBet</div>
-      </div>
-      <div class="icon" data-name="1XBET">
-        <img src="https://i.postimg.cc/R0bNVDJ5/1xbet-logo1-scorimg.webp" alt="1XBET">
-        <div class="icon-name">1XBET</div>
-      </div>
-      <div class="icon" data-name="MegaPari">
-        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari">
-        <div class="icon-name">MegaPari</div>
-      </div>
-      <div class="icon" data-name="Melbet">
-        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet">
-        <div class="icon-name">Melbet</div>
-      </div>
-    </div>
+<button class="login-btn" id="login-btn" disabled>تسجيل الدخول</button>
 
-    <button class="login-btn" id="login-btn" disabled>تسجيل الدخول</button>
   </section>
-</main>
-
-<script>
+</main><script>
   const input = document.getElementById('player-id-1');
   const errorMsg = document.getElementById('error-message');
   const loginBtn = document.getElementById('login-btn');
   const icons = document.querySelectorAll('.icon');
   let selectedPlatform = null;
 
-  const repReg = /^(\d)\1{9}$/;
+  const repReg = /^(٠|۰|\d)\1{9}$/;
 
   input.addEventListener('keydown', e => {
     const allowed = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
-    if (!allowed.includes(e.key) && !/^\d$/.test(e.key)) e.preventDefault();
+    if (!allowed.includes(e.key) && !/^[0-9]$/.test(e.key)) e.preventDefault();
   });
 
   input.addEventListener('input', validate);
@@ -290,7 +281,7 @@
       message = 'الرجاء تعبئة هذا الحقل.';
     } else if (val.length < 10) {
       message = 'يجب إدخال 10 أرقام بالضبط.';
-    } else if (repReg.test(val)) {
+    } else if (/^(\d)\1{9}$/.test(val)) {
       message = 'المعرف غير صالح: لا يمكن تكرار نفس الرقم 10 مرات.';
     } else if (!selectedPlatform) {
       message = 'يرجى اختيار منصة أولاً.';
@@ -311,7 +302,5 @@
       loginBtn.innerHTML = '✔ تم التحقق';
     }, 2500);
   });
-</script>
-
-</body>
+</script></body>
 </html>
