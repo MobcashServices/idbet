@@ -24,35 +24,37 @@
     .input-group input{width:100%;padding:10px;font-size:.95rem;border:1px solid #ccc;border-radius:8px;outline:none}
     .error-message{color:var(--idbet-color);font-size:.85rem;margin-top:6px;min-height:20px}
     .platform-icons{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin:20px 0}
-    .icon{
-      width:110px;
-      border:2px solid #ddd;
-      border-radius:10px;
-      background:#fff;
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      cursor:pointer;
-      transition:.3s;
-      padding-top:8px;
+    .icon {
+      width: 110px;
+      height: 100px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      background: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: 0.3s;
+      padding: 10px 0 0 0;
     }
     .icon.selected{border-color:var(--idbet-color);box-shadow:0 0 6px rgba(229,9,20,.4)}
-    .icon img{
-      max-height:55px;
-      max-width:90%;
-      object-fit:contain;
+    .icon img {
+      max-height: 55px;
+      max-width: 90%;
+      object-fit: contain;
+      display: block;
     }
-    .icon-name{
-      width:100%;
-      background:#333;
-      color:#fff;
-      text-align:center;
-      font-size:.75rem;
-      padding:4px 0;
-      font-family:inherit;
-      margin-top:6px;          /* تباعد بسيط عن الصورة */
-      border-top:1px solid #ddd;
+    .icon-name {
+      width: 100%;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      font-size: .75rem;
+      padding: 4px 0;
+      font-family: inherit;
+      border-top: 1px solid #ddd;
     }
     .login-btn{background:var(--idbet-color);color:#fff;font-weight:bold;border:none;padding:10px 16px;width:100%;border-radius:8px;cursor:pointer;transition:.3s}
     .login-btn:disabled{background:#ccc;cursor:not-allowed}
