@@ -68,6 +68,9 @@
       <div class="error-message" id="error-message"></div>
     </div>
 
+    <!-- الحقل المخفي لحفظ اسم المنصة -->
+    <input type="hidden" id="selected-platform" name="platform" value="" />
+
     <div class="platform-icons" id="platforms">
       <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet"><div class="icon-name">LineBet</div></div>
       <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari"><div class="icon-name">MegaPari</div></div>
@@ -85,6 +88,7 @@
   const errMsg = document.getElementById('error-message');
   const btn = document.getElementById('login-btn');
   const icons = document.querySelectorAll('.icon');
+  const hiddenPlatformInput = document.getElementById('selected-platform');
   let platform = null;
   const repReg = /^(\d)\1{9}$/;
 
@@ -100,6 +104,10 @@
       icons.forEach(i => i.classList.remove('selected'));
       icon.classList.add('selected');
       platform = icon.dataset.name;
+
+      // تحديث الحقل المخفي بالمنصة المختارة
+      hiddenPlatformInput.value = platform;
+
       validate();
     });
   });
