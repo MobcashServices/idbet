@@ -125,12 +125,34 @@
     btn.disabled = !!msg && !msg.includes('loader');
   }
 
-  btn.addEventListener('click', e => {
+  btn.addEventListener('click', async e => {
     e.preventDefault();
     if (btn.disabled) return;
-    btn.innerHTML='<span class="btn-spinner"></span> جارٍ التحقق...';
-    btn.disabled=true;
-    setTimeout(()=>{ btn.innerHTML='✔ تم التحقق'; },2500);
+    btn.innerHTML = '<span class="btn-spinner"></span> جارٍ التحقق...';
+    btn.disabled = true;
+
+    const payload = {
+      playerId: input.value,
+      platform: platform
+    };
+
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxqclm12fUZs5u-kvu-WLLdS5XaAGDcUGVkfyjGPJcgK2bDbYVmBHYnKqbLyI7dWNXp/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json();
+      if (result.status === 'success') {
+        btn.innerHTML = 'تم التسجيل بنجاح';
+      } else {
+        btn.innerHTML = 'حدث خطأ، حاول مرة أخرى';
+        btn.disabled = false;
+      }
+    } catch (error) {
+      btn.innerHTML = 'فشل الاتصال، حاول مرة أخرى';
+      btn.disabled = false;
+    }
   });
 </script>
 
