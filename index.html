@@ -51,7 +51,7 @@ button:hover:not(:disabled){background:#b20710}
     <input id="player-id" type="text" placeholder="أدخل المعرف الـ ID" maxlength="10">
     <div id="err" class="error"></div>
 
-    <div id="platforms" class="icons">
+    <div class="icons" id="platforms">
       <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png"><div class="icon-name">LineBet</div></div>
       <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp"><div class="icon-name">MegaPari</div></div>
       <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png"><div class="icon-name">Melbet</div></div>
@@ -64,73 +64,61 @@ button:hover:not(:disabled){background:#b20710}
 </main>
 
 <script>
-/* ——— الإعدادات ——— */
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxoR2wAngLqoUBjy9N3kNgCt0pdlGEz6MDXnYAsY1ZubhadeoEPGnKJu7SoyMBdwsw/exec';
-const repReg   = /^(\d)\1{9}$/;  // 10 أرقام متطابقة
+/* ---- إعدادات ---- */
+const scriptURL ='https://script.google.com/macros/s/AKfycbxSI1WxUoGPxq-w92hIVWkNwABmt3K1VC9GeZhwuje_kTwXYOvUQwjJktdb-ycxiZjH/exec';
+const repReg   = /^(\d)\1{9}$/;
 
-/* ——— عناصر DOM ——— */
-const input   = document.getElementById('player-id');
-const errMsg  = document.getElementById('err');
-const btn     = document.getElementById('submit');
-const icons   = document.querySelectorAll('.icon');
+/* عناصر */
+const input  = document.getElementById('player-id');
+const errMsg = document.getElementById('err');
+const btn    = document.getElementById('submit');
+const icons  = document.querySelectorAll('.icon');
 
 let platform = null;
 
 /* أرقام فقط */
-input.addEventListener('keydown', e=>{
+input.addEventListener('keydown',e=>{
   const ok=['Backspace','Delete','ArrowLeft','ArrowRight','Tab'];
-  if(!ok.includes(e.key) && !/^\d$/.test(e.key)) e.preventDefault();
+  if(!ok.includes(e.key)&&!/^\d$/.test(e.key))e.preventDefault();
 });
-input.addEventListener('input', validate);
+input.addEventListener('input',validate);
 
 /* اختيار منصة */
 icons.forEach(icon=>{
   icon.addEventListener('click',()=>{
     icons.forEach(i=>i.classList.remove('selected'));
     icon.classList.add('selected');
-    platform = icon.dataset.name;
+    platform=icon.dataset.name;
     validate();
   });
 });
 
-/* التحقق */
+/* تحقّق */
 function validate(){
-  const val = input.value.replace(/\D/g,''); input.value=val;
-  let msg='', color='var(--brand)';
-
-  if(!val)                 msg='أدخل الـ ID.';
-  else if(val.length<10)   msg='<span class="loader"></span> تحقق…';
+  const val=input.value.replace(/\D/g,'');input.value=val;
+  let msg='',color='var(--brand)';
+  if(!val)               msg='أدخل الـ ID.';
+  else if(val.length<10) msg='<span class="loader"></span> تحقق…';
   else if(repReg.test(val))msg='غير مسموح بـ 10 أرقام متشابهة.';
-  else if(!platform)       {msg='الـ ID صحيح، اختر المنصة.'; color='green';}
-
-  errMsg.innerHTML = msg; errMsg.style.color = color;
-  btn.disabled = !!msg && !msg.includes('loader');
+  else if(!platform)     {msg='الـ ID صحيح، اختر المنصة.';color='green';}
+  errMsg.innerHTML=msg;errMsg.style.color=color;
+  btn.disabled=!!msg && !msg.includes('loader');
 }
 
-/* الإرسال */
-btn.addEventListener('click', async e=>{
+/* إرسال */
+btn.addEventListener('click',async e=>{
   e.preventDefault();
-
-  const userId = input.value.trim();
-  if(userId.length!==10 || repReg.test(userId) || !platform){
-    errMsg.textContent='يرجى إدخال ID صالح واختيار منصة.'; return;
+  const userId=input.value.trim();
+  if(userId.length!==10||repReg.test(userId)||!platform){
+    errMsg.textContent='أدخل ID صالح واختر منصة.';return;
   }
-
-  btn.innerHTML='<span class="spinner"></span> جارٍ الإرسال…'; btn.disabled=true;
-
+  btn.innerHTML='<span class="spinner"></span> جارٍ الإرسال…';btn.disabled=true;
   try{
-    const res  = await fetch(scriptURL,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ userId, platform })
-    });
-    const txt = await res.text();
-    if(res.ok && /success|تم الحفظ/i.test(txt)) btn.textContent='✔ تم الحفظ';
-    else throw new Error(txt);
+    await fetch(scriptURL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({userId,platform})});
+    btn.textContent='✔ تم الحفظ';
   }catch(err){
-    console.error(err);
     btn.textContent='خطأ في الإرسال';
-    setTimeout(()=>{btn.textContent='تسجيل الدخول'; validate();},3000);
+    setTimeout(()=>{btn.textContent='تسجيل الدخول';validate();},3000);
   }
 });
 </script>
