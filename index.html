@@ -12,9 +12,9 @@
     }
     .card-container {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
       gap: 1.5rem;
-      flex-wrap: wrap;
       margin-bottom: 1.5rem;
     }
     .platform-card {
@@ -32,6 +32,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       border: 3px solid transparent;
       user-select: none;
+      text-align: center;
     }
     .platform-card:hover {
       transform: translateY(-5px);
@@ -43,12 +44,20 @@
       transform: translateY(-7px);
       background: #e0e7ff; /* blue-100 */
     }
-    .platform-card img {
-      max-width: 100px;
-      max-height: 70px;
-      object-fit: contain;
+    .platform-card .platform-img {
+      width: 100px;
+      height: 70px;
+      background-color: #cbd5e1; /* رمادي فاتح */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #334155; /* slate-700 */
+      border-radius: 0.5rem;
       margin-bottom: 1rem;
-      pointer-events: none;
+      user-select: none;
+      font-size: 0.9rem;
+      padding: 0 0.3rem;
     }
     .platform-card .platform-name {
       font-weight: 700;
@@ -77,18 +86,28 @@
     <div id="platformCards" class="card-container" role="listbox" aria-label="اختيار المنصة">
       <!-- بطاقة 1 -->
       <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="Mega pari" title="Mega pari">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Mega_Pari_logo.png" alt="Mega pari" />
+        <div class="platform-img">Mega pari</div>
         <div class="platform-name">Mega pari</div>
       </div>
       <!-- بطاقة 2 -->
       <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="Linbet" title="Linbet">
-        <img src="https://linbet.com/assets/img/linbet-logo.svg" alt="Linbet" />
+        <div class="platform-img">Linbet</div>
         <div class="platform-name">Linbet</div>
       </div>
       <!-- بطاقة 3 -->
       <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="Gooobet" title="Gooobet">
-        <img src="https://gooobet.com/logo.png" alt="Gooobet" />
+        <div class="platform-img">Gooobet</div>
         <div class="platform-name">Gooobet</div>
+      </div>
+      <!-- بطاقة 4 -->
+      <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="1xbet" title="1xbet">
+        <div class="platform-img">1xbet</div>
+        <div class="platform-name">1xbet</div>
+      </div>
+      <!-- بطاقة 5 -->
+      <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="Melbet" title="Melbet">
+        <div class="platform-img">Melbet</div>
+        <div class="platform-name">Melbet</div>
       </div>
     </div>
 
