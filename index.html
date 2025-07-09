@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -6,27 +7,81 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    select option { color:#000; }
-    @media (prefers-color-scheme: dark) { select option { color:#fff; } }
-    .fade     { transition:all .3s ease; opacity:0; transform:translateY(-5px); }
-    .fade.show{ opacity:1; transform:translateY(0); }
+    /* إزالة قائمة المنسدلة القديمة */
+    /* تصميم الأيقونات بشكل أفقي وجذاب */
+    .platform-icons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .platform-icon {
+      cursor: pointer;
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f3f4f6; /* bg-gray-100 */
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    .platform-icon:hover {
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.2);
+      background-color: #e5e7eb; /* bg-gray-200 */
+    }
+    .platform-icon.selected {
+      border-color: #2563eb; /* blue-600 */
+      background-color: #3b82f6; /* blue-500 */
+      filter: brightness(1.1);
+      color: white;
+    }
+    .platform-icon img {
+      max-width: 48px;
+      max-height: 48px;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    /* للرسائل */
+    .fade {
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    .fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center px-4">
   <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 w-full max-w-md">
     <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">Sign in to Mobcash</h2>
 
-    <!-- اختيار المنصة -->
-    <div class="mb-4">
-      <label for="platform" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">اختر المنصة</label>
-      <select id="platform" class="w-full px-4 py-2 border rounded-xl text-sm bg-white text-gray-800 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option value="" disabled selected hidden>اختر المنصة</option>
-        <option value="Mega pari">Mega pari</option>
-        <option value="Linbet">Linbet</option>
-        <option value="Gooobet">Gooobet</option>
-        <option value="1xbet">1xbet</option>
-        <option value="Melbet">Melbet</option>
-      </select>
+    <!-- اختيار المنصة بالأيقونات -->
+    <label class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300 text-center">اختر المنصة</label>
+    <div id="platformIcons" class="platform-icons" role="listbox" aria-label="اختيار المنصة">
+      <!-- أيقونات المنصات -->
+      <div tabindex="0" role="option" aria-selected="false" class="platform-icon" data-value="Mega pari" title="Mega pari">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Mega_Pari_logo.png" alt="Mega pari" />
+      </div>
+      <div tabindex="0" role="option" aria-selected="false" class="platform-icon" data-value="Linbet" title="Linbet">
+        <img src="https://linbet.com/assets/img/linbet-logo.svg" alt="Linbet" />
+      </div>
+      <div tabindex="0" role="option" aria-selected="false" class="platform-icon" data-value="Gooobet" title="Gooobet">
+        <img src="https://gooobet.com/logo.png" alt="Gooobet" />
+      </div>
+      <div tabindex="0" role="option" aria-selected="false" class="platform-icon" data-value="1xbet" title="1xbet">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/1xbet_Logo.svg" alt="1xbet" />
+      </div>
+      <div tabindex="0" role="option" aria-selected="false" class="platform-icon" data-value="Melbet" title="Melbet">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Melbet_logo.png" alt="Melbet" />
+      </div>
     </div>
 
     <!-- حقل الـ ID -->
@@ -47,13 +102,43 @@
         <path class="opacity-75" d="M4 12a8 8 0 018-8v8z" fill="currentColor"></path>
       </svg>
     </button>
-  </div>  
+  </div>
 
   <script>
-    // تفعيل الأيقونات
     lucide.createIcons();
 
-    // التحقق من أرقام متشابهة
+    // المتغير لاختيار المنصة
+    let selectedPlatform = "";
+
+    // تفعيل اختيار الأيقونات
+    const platformIcons = document.querySelectorAll(".platform-icon");
+    const platformInput = document.getElementById("platform"); // هذا لم يعد موجود، نستخدم المتغير بدلاً منه
+
+    // تحديث الواجهة عند اختيار أيقونة
+    platformIcons.forEach(icon => {
+      icon.addEventListener("click", () => {
+        selectPlatform(icon);
+      });
+      icon.addEventListener("keydown", e => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          selectPlatform(icon);
+        }
+      });
+    });
+
+    function selectPlatform(icon) {
+      platformIcons.forEach(i => {
+        i.classList.remove("selected");
+        i.setAttribute("aria-selected", "false");
+      });
+      icon.classList.add("selected");
+      icon.setAttribute("aria-selected", "true");
+      selectedPlatform = icon.getAttribute("data-value");
+      clearMessage();
+    }
+
+    // تحقق أرقام متكررة
     const isRepeatedDigits = (id) => /^(\d)\1{9}$/.test(id);
 
     // عرض رسالة
@@ -63,14 +148,19 @@
       msg.textContent = text;
       msg.style.color = type === "success" ? "green" : "red";
     }
+    function clearMessage() {
+      const msg = document.getElementById("message");
+      msg.className = "fade";
+      msg.textContent = "";
+    }
 
-    // التحقق من الـ ID أثناء الكتابة
+    // تحقق ID أثناء الكتابة
     function validateId() {
       const userId = document.getElementById("userId").value;
       if (!/^\d*$/.test(userId))         { showMessage("يرجى إدخال أرقام فقط."); return; }
       if (userId.length !== 10)          { showMessage("يجب أن يحتوي الـ ID على 10 أرقام تماما لإتمام التسجيل."); return; }
       if (isRepeatedDigits(userId))      { showMessage("الرقم المعرف الid غير صالح."); return; }
-      document.getElementById("message").className = "fade";
+      clearMessage();
     }
 
     // إعادة تهيئة النموذج
@@ -82,31 +172,38 @@
       btn.classList.remove("opacity-50", "cursor-not-allowed");
       loader.classList.add("hidden");
       label.classList.remove("hidden");
-      document.getElementById("platform").disabled = false;
+      // إعادة تعيين تحديد المنصة
+      platformIcons.forEach(i => i.classList.remove("selected"));
+      selectedPlatform = "";
       document.getElementById("userId").disabled = false;
-    }
 
-    // تعبئة القيم المخزنة
-    document.addEventListener("DOMContentLoaded", () => {
+      // تحميل القيم المخزنة
       const storedPlatform = localStorage.getItem("platform");
       const storedId = localStorage.getItem("userId");
-      if (storedPlatform) document.getElementById("platform").value = storedPlatform;
-      if (storedId) document.getElementById("userId").value = storedId;
+      if(storedPlatform) {
+        platformIcons.forEach(i => {
+          if(i.getAttribute("data-value") === storedPlatform){
+            selectPlatform(i);
+          }
+        });
+      }
+      if(storedId){
+        document.getElementById("userId").value = storedId;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
       resetForm();
     });
 
-    // عند الرجوع من home.html
-    window.addEventListener("pageshow", (e) => { if (e.persisted) resetForm(); });
-
-    // زر التسجيل مع إرسال البيانات إلى Google Sheets
+    // زر التسجيل
     function login() {
-      const platform = document.getElementById("platform").value;
       const userId = document.getElementById("userId").value;
       const btn = document.getElementById("submitBtn");
       const loader = document.getElementById("loader");
       const label = btn.querySelector(".label");
 
-      if (!platform) { showMessage("يرجى اختيار المنصة."); return; }
+      if (!selectedPlatform) { showMessage("يرجى اختيار المنصة."); return; }
       if (userId.length !== 10 || !/^\d+$/.test(userId)) { showMessage("الرجاء إدخال ID مكوّن من 10 أرقام."); return; }
       if (isRepeatedDigits(userId)) { showMessage("غير مسموح بـ 10 أرقام متشابهة."); return; }
 
@@ -114,18 +211,16 @@
       btn.classList.add("opacity-50", "cursor-not-allowed");
       loader.classList.remove("hidden");
       label.classList.add("hidden");
-      document.getElementById("platform").disabled = true;
       document.getElementById("userId").disabled = true;
 
-      localStorage.setItem("platform", platform);
+      localStorage.setItem("platform", selectedPlatform);
       localStorage.setItem("userId", userId);
 
-      // ✅ رابط Web App الصحيح:
       fetch("https://script.google.com/macros/s/AKfycbx5eBtV9miCzU9nk2oHtZk5hizvzE2U23aph7_g_tkf_8SiEyzxwRgRd5XRiBQ3-a35pQ/exec", {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ platform, userId })
+        body: JSON.stringify({ platform: selectedPlatform, userId })
       }).finally(() => {
         setTimeout(() => {
           window.location.href = "home.html";
