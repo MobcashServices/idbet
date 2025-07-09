@@ -13,35 +13,9 @@
     @media (prefers-color-scheme: dark) { select option { color:#fff; } }
     .fade     { transition:all .3s ease; opacity:0; transform:translateY(-5px); }
     .fade.show{ opacity:1; transform:translateY(0); }
-    .icon-container {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:1rem;
-      margin-top:1rem;
-    }
-    .icon-box {
-      @apply bg-white dark:bg-gray-700 border rounded-xl p-2 flex flex-col items-center justify-center cursor-pointer transition duration-200;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
     .icon-box.selected {
-      border-color: #22c55e;
-      box-shadow: 0 0 10px rgba(34,197,94,0.4);
-    }
-    .icon-box img {
-      height: 40px;
-      object-fit: contain;
-    }
-    .icon-name {
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-align: center;
-      color: #333;
-    }
-    #message {
-      min-height: 1.25rem;
-      font-weight: bold;
-      transition: all 0.3s ease;
+      border-color: #22c55e !important;
+      box-shadow: 0 0 10px rgba(34,197,94,0.4) !important;
     }
   </style>
 </head>
@@ -49,34 +23,32 @@
   <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-6 sm:p-8 w-full max-w-md">
     <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">Sign in to Mobcash</h2>
 
-    <!-- زر En un clic -->
-    <button id="oneClickTab" class="w-full mb-6 flex items-center justify-center gap-2 rounded-xl py-2 font-semibold text-white bg-green-600 hover:bg-green-700 active:scale-95 transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-      <i data-lucide="zap" class="w-4 h-4"></i>
-      En&nbsp;un&nbsp;clic
-    </button>
-
     <!-- أيقونات المنصات -->
     <input type="hidden" id="platform" />
-    <div id="platformIcons" class="icon-container">
-      <div class="icon-box" data-name="LineBet">
-        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet">
-        <div class="icon-name">LineBet</div>
+    <div id="platformIcons" class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
+      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="LineBet">
+        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet Logo" class="h-10 mx-auto">
+        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">LineBet</div>
       </div>
-      <div class="icon-box" data-name="MegaPari">
-        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari">
-        <div class="icon-name">MegaPari</div>
+
+      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="MegaPari">
+        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari Logo" class="h-10 mx-auto">
+        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">MegaPari</div>
       </div>
-      <div class="icon-box" data-name="Melbet">
-        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet">
-        <div class="icon-name">Melbet</div>
+
+      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="Melbet">
+        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet Logo" class="h-10 mx-auto">
+        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">Melbet</div>
       </div>
-      <div class="icon-box" data-name="Gooobet">
-        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet">
-        <div class="icon-name">Gooobet</div>
+
+      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="Gooobet">
+        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet Logo" class="h-10 mx-auto">
+        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">Gooobet</div>
       </div>
-      <div class="icon-box" data-name="1xBet">
-        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet">
-        <div class="icon-name">1xBet</div>
+
+      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="1xBet">
+        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet Logo" class="h-10 mx-auto">
+        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">1xBet</div>
       </div>
     </div>
 
@@ -133,22 +105,6 @@
       if (!platform) return showMessage("الرجاء اختيار المنصة.");
       document.getElementById("message").className = "fade";
     }
-
-    function resetForm() {
-      const btn = document.getElementById("submitBtn");
-      const loader = document.getElementById("loader");
-      const label = btn.querySelector(".label");
-      btn.disabled = false;
-      loader.classList.add("hidden");
-      label.classList.remove("hidden");
-      platformInput.value = "";
-      document.getElementById("userId").value = "";
-      iconBoxes.forEach(i => i.classList.remove("selected"));
-      document.getElementById("message").textContent = "";
-      document.getElementById("message").className = "fade";
-    }
-
-    document.getElementById("oneClickTab").addEventListener("click", resetForm);
 
     function login() {
       const platform = platformInput.value;
