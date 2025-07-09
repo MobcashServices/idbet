@@ -2,70 +2,249 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign in to - Mobcash</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تسجيل الدخول - Mobcash</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    body { font-family: 'Tajawal', sans-serif; }
-    select option { color:#000; }
-    @media (prefers-color-scheme: dark) { select option { color:#fff; } }
-    .fade     { transition:all .3s ease; opacity:0; transform:translateY(-5px); }
-    .fade.show{ opacity:1; transform:translateY(0); }
+    /* الخط الرئيسي */
+    body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background: #141414; /* خلفية داكنة */
+      color: #e5e5e5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+      direction: rtl;
+    }
+
+    /* صندوق التسجيل */
+    .container {
+      background: #1f1f1f;
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    /* العنوان */
+    h1 {
+      font-weight: 700;
+      font-size: 2.4rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+      color: #e50914; /* لون أحمر مميز */
+      user-select: none;
+    }
+
+    /* أيقونات المنصات - عرض أفقي */
+    #platformIcons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .icon-box {
+      background: #222;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      flex: 0 0 70px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 4px transparent;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .icon-box:hover {
+      box-shadow: 0 0 12px #e50914;
+      transform: scale(1.1);
+    }
     .icon-box.selected {
-      border-color: #22c55e !important;
-      box-shadow: 0 0 10px rgba(34,197,94,0.4) !important;
+      border: 2px solid #e50914;
+      box-shadow: 0 0 16px #e50914;
+      transform: scale(1.1);
+    }
+
+    .icon-box img {
+      max-width: 50px;
+      height: 50px;
+      object-fit: contain;
+      user-select: none;
+    }
+
+    .icon-name {
+      margin-top: 0.4rem;
+      font-size: 0.75rem;
+      color: #ccc;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    /* حقل الإدخال */
+    label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: #bbb;
+      user-select: none;
+    }
+    input#userId {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #333;
+      color: #eee;
+      transition: box-shadow 0.3s ease;
+      user-select: text;
+    }
+    input#userId::placeholder {
+      color: #777;
+    }
+    input#userId:focus {
+      box-shadow: 0 0 8px #e50914;
+      background: #222;
+      color: #fff;
+    }
+
+    /* رسالة الخطأ أو النجاح */
+    #message {
+      height: 1.4rem;
+      margin-top: 0.7rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    /* زر التسجيل */
+    button#submitBtn {
+      margin-top: 1.8rem;
+      width: 100%;
+      padding: 0.75rem 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      background: #e50914;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.7rem;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+    button#submitBtn:hover:not(:disabled) {
+      background: #bf0810;
+    }
+    button#submitBtn:disabled {
+      background: #8c1a1a;
+      cursor: not-allowed;
+    }
+
+    /* أيقونة تسجيل الدخول */
+    i[data-lucide="log-in"] {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* اللودر */
+    #loader {
+      position: absolute;
+      right: 15px;
+      width: 22px;
+      height: 22px;
+      animation: spin 1s linear infinite;
+      stroke: white;
+    }
+    #loader.hidden {
+      display: none;
+    }
+    @keyframes spin {
+      0%   { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      h1 { font-size: 1.8rem; }
+      .icon-box { flex: 0 0 60px; }
+      .icon-box img { height: 45px; }
+      button#submitBtn { font-size: 1.1rem; }
     }
   </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center px-4">
-  <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-6 sm:p-8 w-full max-w-md">
-    <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">Sign in to Mobcash</h2>
+<body>
+  <div class="container" role="main" aria-label="نموذج تسجيل الدخول Mobcash">
+    <h1>تسجيل الدخول</h1>
 
     <!-- أيقونات المنصات -->
-    <input type="hidden" id="platform" />
-    <div id="platformIcons" class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
-      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="LineBet">
-        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet Logo" class="h-10 mx-auto">
-        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">LineBet</div>
+    <input type="hidden" id="platform" aria-hidden="true" />
+    <div id="platformIcons" role="list" aria-label="منصات التسجيل">
+      <div class="icon-box" role="listitem" tabindex="0" data-name="LineBet" aria-label="اختيار منصة LineBet">
+        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" />
+        <div class="icon-name">LineBet</div>
       </div>
-
-      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="MegaPari">
-        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari Logo" class="h-10 mx-auto">
-        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">MegaPari</div>
+      <div class="icon-box" role="listitem" tabindex="0" data-name="MegaPari" aria-label="اختيار منصة MegaPari">
+        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari" />
+        <div class="icon-name">MegaPari</div>
       </div>
-
-      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="Melbet">
-        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet Logo" class="h-10 mx-auto">
-        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">Melbet</div>
+      <div class="icon-box" role="listitem" tabindex="0" data-name="Melbet" aria-label="اختيار منصة Melbet">
+        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet" />
+        <div class="icon-name">Melbet</div>
       </div>
-
-      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="Gooobet">
-        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet Logo" class="h-10 mx-auto">
-        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">Gooobet</div>
+      <div class="icon-box" role="listitem" tabindex="0" data-name="Gooobet" aria-label="اختيار منصة Gooobet">
+        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet" />
+        <div class="icon-name">Gooobet</div>
       </div>
-
-      <div class="icon-box bg-gradient-to-br from-white to-gray-100 dark:from-gray-700 dark:to-gray-800 border border-gray-300 hover:border-green-500 shadow-md hover:shadow-xl transition rounded-xl p-4 cursor-pointer" data-name="1xBet">
-        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet Logo" class="h-10 mx-auto">
-        <div class="text-center mt-2 text-sm font-bold text-gray-800 dark:text-white">1xBet</div>
+      <div class="icon-box" role="listitem" tabindex="0" data-name="1xBet" aria-label="اختيار منصة 1xBet">
+        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet" />
+        <div class="icon-name">1xBet</div>
       </div>
     </div>
 
-    <!-- حقل ID -->
-    <div class="mt-6 mb-4">
-      <label for="userId" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">أدخل الـ ID (10 أرقام)</label>
-      <input type="text" id="userId" maxlength="10" placeholder="مثال: 1234567890" class="w-full px-4 py-2 border rounded-xl text-sm bg-white text-gray-800 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" oninput="validateId()" />
-    </div>
+    <!-- حقل الإدخال -->
+    <label for="userId">أدخل الـ ID (10 أرقام)</label>
+    <input
+      type="text"
+      id="userId"
+      maxlength="10"
+      placeholder="مثال: 1234567890"
+      autocomplete="off"
+      inputmode="numeric"
+      aria-describedby="message"
+      oninput="validateId()"
+    />
 
-    <!-- الرسالة -->
-    <div id="message" class="fade text-center text-sm mb-4 h-5"></div>
+    <!-- رسالة الخطأ أو النجاح -->
+    <div id="message" role="alert" aria-live="polite" class="fade"></div>
 
     <!-- زر التسجيل -->
-    <button id="submitBtn" onclick="login()" class="relative w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl transition duration-300 flex items-center justify-center gap-2">
-      <i data-lucide="log-in" class="w-5 h-5"></i>
-      <span class="label">Sign in</span>
-      <svg id="loader" class="hidden absolute w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <button id="submitBtn" onclick="login()" type="button" aria-label="تسجيل الدخول">
+      <i data-lucide="log-in"></i>
+      <span class="label">تسجيل الدخول</span>
+      <svg
+        id="loader"
+        class="hidden"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" d="M4 12a8 8 0 018-8v8z" fill="currentColor"></path>
       </svg>
@@ -78,12 +257,19 @@
     const iconBoxes = document.querySelectorAll(".icon-box");
     const platformInput = document.getElementById("platform");
 
-    iconBoxes.forEach(icon => {
+    iconBoxes.forEach((icon) => {
       icon.addEventListener("click", () => {
-        iconBoxes.forEach(i => i.classList.remove("selected"));
+        iconBoxes.forEach((i) => i.classList.remove("selected"));
         icon.classList.add("selected");
         platformInput.value = icon.dataset.name;
         validateId();
+      });
+      // دعم الكيبورد للتنقل Enter أو Space لاختيار المنصة
+      icon.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          icon.click();
+        }
       });
     });
 
@@ -91,24 +277,25 @@
 
     function showMessage(text, type = "error") {
       const msg = document.getElementById("message");
-      msg.className = "fade show text-center text-sm mb-4 h-5";
+      msg.className = "fade show";
       msg.textContent = text;
-      msg.style.color = type === "success" ? "green" : "red";
+      msg.style.color = type === "success" ? "#22c55e" : "#ef4444"; // أخضر أو أحمر
     }
 
     function validateId() {
-      const userId = document.getElementById("userId").value;
+      const userId = document.getElementById("userId").value.trim();
       const platform = platformInput.value;
       if (!/^\d*$/.test(userId)) return showMessage("يرجى إدخال أرقام فقط.");
       if (userId.length !== 10) return showMessage("يجب أن يحتوي الـ ID على 10 أرقام.");
       if (isRepeatedDigits(userId)) return showMessage("الرقم المعرف غير صالح.");
       if (!platform) return showMessage("الرجاء اختيار المنصة.");
       document.getElementById("message").className = "fade";
+      document.getElementById("message").textContent = "";
     }
 
     function login() {
       const platform = platformInput.value;
-      const userId = document.getElementById("userId").value;
+      const userId = document.getElementById("userId").value.trim();
       const btn = document.getElementById("submitBtn");
       const loader = document.getElementById("loader");
       const label = btn.querySelector(".label");
@@ -125,26 +312,22 @@
       fetch("https://script.google.com/macros/s/AKfycbx5eBtV9miCzU9nk2oHtZk5hizvzE2U23aph7_g_tkf_8SiEyzxwRgRd5XRiBQ3-a35pQ/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ platform, userId })
+        body: JSON.stringify({ platform, userId }),
       })
-      .then(response => {
-        if (response.ok) {
+        .then(() => {
           showMessage("تم الدخول بنجاح!", "success");
           setTimeout(() => {
             window.location.href = "home.html";
           }, 1000);
-        } else {
-          showMessage("فشل في الإرسال: رمز " + response.status);
-        }
-      })
-      .catch(() => {
-        showMessage("تعذر الاتصال بالخادم. تحقق من الشبكة.");
-      })
-      .finally(() => {
-        btn.disabled = false;
-        loader.classList.add("hidden");
-        label.classList.remove("hidden");
-      });
+        })
+        .catch(() => {
+          showMessage("فشل الاتصال بالخادم", "error");
+        })
+        .finally(() => {
+          btn.disabled = false;
+          loader.classList.add("hidden");
+          label.classList.remove("hidden");
+        });
     }
   </script>
 </body>
