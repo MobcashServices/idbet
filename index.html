@@ -1,342 +1,156 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign in to - Mobcash</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    body {
-      font-family: 'Tajawal', sans-serif;
-      background-color: #f3f4f6; /* كما في bg-gray-100 */
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-    }
-    .container {
-      background-color: #fff; /* bg-white */
-      max-width: 420px;
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-      padding: 3rem 2.5rem;
-      text-align: center;
-      transition: box-shadow 0.3s ease;
-    }
-    .container:hover {
-      box-shadow: 0 12px 45px rgba(0,0,0,0.18);
-    }
-    h2 {
-      font-weight: 700;
-      font-size: 2.4rem;
-      color: #111827; /* gray-900 */
-      margin-bottom: 2rem;
-      letter-spacing: 0.04em;
-      user-select: none;
-    }
-    #oneClickTab {
-      background-color: #22c55e; /* نفس اللون الأخضر */
-      color: white;
-      font-weight: 700;
-      font-size: 1.25rem;
-      padding: 0.85rem 1.2rem;
-      border-radius: 9999px;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      transition: background-color 0.3s ease, transform 0.15s ease;
-      user-select: none;
-    }
-    #oneClickTab:hover {
-      background-color: #16a34a;
-      transform: scale(1.05);
-    }
-    #oneClickTab:active {
-      transform: scale(0.97);
-    }
-    .icon-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-bottom: 2rem;
-      user-select: none;
-    }
-    .icon-box {
-      background-color: #fff; /* اتركه أبيض */
-      border-radius: 14px;
-      padding: 1rem 0.5rem;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: box-shadow 0.3s ease, border-color 0.3s ease;
-      border: 2px solid transparent;
-      user-select: none;
-    }
-    .icon-box.selected {
-      border-color: #22c55e;
-      box-shadow: 0 0 15px rgba(34,197,94,0.5);
-    }
-    .icon-box img {
-      height: 50px;
-      width: auto;
-      object-fit: contain;
-      margin-bottom: 0.5rem;
-      user-select: none;
-    }
-    .icon-name {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #1f2937; /* gray-800 */
-    }
-    label {
-      display: block;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: #374151; /* gray-700 */
-      margin-bottom: 0.6rem;
-      user-select: none;
-      text-align: right;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 0.9rem 1rem;
-      font-size: 1.1rem;
-      border-radius: 10px;
-      border: 1.8px solid #d1d5db; /* gray-300 */
-      background-color: #fff;
-      color: #111827; /* gray-900 */
-      transition: border-color 0.3s ease;
-      outline-offset: 2px;
-      user-select: text;
-    }
-    input[type="text"]:focus {
-      border-color: #3b82f6; /* blue-500 */
-      box-shadow: 0 0 8px rgba(59,130,246,0.5);
-      outline: none;
-    }
-    #message {
-      min-height: 1.4rem;
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-top: 0.4rem;
-      margin-bottom: 1.5rem;
-      transition: all 0.3s ease;
-      user-select: none;
-    }
-    #submitBtn {
-      background-color: #2563eb; /* blue-600 */
-      color: white;
-      font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 14px;
-      border: none;
-      width: 100%;
-      padding: 1rem 0;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.7rem;
-      position: relative;
-      user-select: none;
-      transition: background-color 0.3s ease, transform 0.15s ease;
-    }
-    #submitBtn:hover:not(:disabled) {
-      background-color: #1d4ed8; /* blue-700 */
-      transform: scale(1.05);
-    }
-    #submitBtn:active:not(:disabled) {
-      transform: scale(0.97);
-    }
-    #submitBtn:disabled {
-      cursor: not-allowed;
-      background-color: #93c5fd; /* light blue */
-      transform: none;
-    }
-    #loader {
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-    }
+    select option { color:#000; }
+    @media (prefers-color-scheme: dark) { select option { color:#fff; } }
+    .fade     { transition:all .3s ease; opacity:0; transform:translateY(-5px); }
+    .fade.show{ opacity:1; transform:translateY(0); }
   </style>
 </head>
-<body>
-  <div class="container" role="main" aria-label="نموذج تسجيل الدخول">
-    <h2>Sign in to Mobcash</h2>
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center px-4">
+  <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 w-full max-w-md">
+    <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">Sign in to Mobcash</h2>
 
     <!-- زر En un clic -->
-    <button id="oneClickTab" aria-label="إعادة تعيين النموذج">
-      <i data-lucide="zap" class="w-5 h-5"></i>
+    <button
+      id="oneClickTab"
+      class="w-full mb-6 flex items-center justify-center gap-2 rounded-xl py-2 font-semibold text-white bg-green-600 hover:bg-green-700 active:scale-95 transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500">
+      <i data-lucide="zap" class="w-4 h-4"></i>
       En&nbsp;un&nbsp;clic
     </button>
 
-    <!-- أيقونات المنصات -->
-    <input type="hidden" id="platform" aria-hidden="true" />
-    <div id="platformIcons" class="icon-container" role="list">
-      <div class="icon-box" data-name="LineBet" role="listitem" tabindex="0" aria-label="اختيار منصة LineBet">
-        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" draggable="false" />
-        <div class="icon-name">LineBet</div>
-      </div>
-      <div class="icon-box" data-name="MegaPari" role="listitem" tabindex="0" aria-label="اختيار منصة MegaPari">
-        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari" draggable="false" />
-        <div class="icon-name">MegaPari</div>
-      </div>
-      <div class="icon-box" data-name="Melbet" role="listitem" tabindex="0" aria-label="اختيار منصة Melbet">
-        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet" draggable="false" />
-        <div class="icon-name">Melbet</div>
-      </div>
-      <div class="icon-box" data-name="Gooobet" role="listitem" tabindex="0" aria-label="اختيار منصة Gooobet">
-        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet" draggable="false" />
-        <div class="icon-name">Gooobet</div>
-      </div>
-      <div class="icon-box" data-name="1xBet" role="listitem" tabindex="0" aria-label="اختيار منصة 1xBet">
-        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet" draggable="false" />
-        <div class="icon-name">1xBet</div>
-      </div>
+    <!-- اختيار المنصة -->
+    <div class="mb-4">
+      <label for="platform" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">اختر المنصة</label>
+      <select id="platform" class="w-full px-4 py-2 border rounded-xl text-sm bg-white text-gray-800 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="" disabled selected hidden>اختر المنصة</option>
+        <option value="Mega pari">Mega pari</option>
+        <option value="Linbet">Linbet</option>
+        <option value="Gooobet">Gooobet</option>
+        <option value="1xbet">1xbet</option>
+        <option value="Melbet">Melbet</option>
+      </select>
     </div>
 
-    <!-- حقل ID -->
-    <div class="mb-4 text-right">
-      <label for="userId">أدخل الـ ID (10 أرقام)</label>
-      <input
-        type="text"
-        id="userId"
-        maxlength="10"
-        placeholder="مثال: 1234567890"
-        autocomplete="off"
-        inputmode="numeric"
-        pattern="\d{10}"
-        aria-describedby="message"
-        oninput="validateId()"
-      />
+    <!-- حقل الـ ID -->
+    <div class="mb-4">
+      <label for="userId" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">أدخل الـ ID (10 أرقام)</label>
+      <input type="text" id="userId" maxlength="10" placeholder="مثال: 1234567890" class="w-full px-4 py-2 border rounded-xl text-sm bg-white text-gray-800 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" oninput="validateId()" />
     </div>
 
     <!-- الرسالة -->
-    <div id="message" aria-live="polite" role="alert" class="fade"></div>
+    <div id="message" class="fade text-center text-sm mb-4 h-5"></div>
 
     <!-- زر التسجيل -->
-    <button id="submitBtn" onclick="login()" aria-label="تسجيل الدخول">
-      <i data-lucide="log-in" class="w-6 h-6"></i>
+    <button id="submitBtn" onclick="login()" class="relative w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl transition duration-300 flex items-center justify-center gap-2">
+      <i data-lucide="log-in" class="w-5 h-5"></i>
       <span class="label">Sign in</span>
-      <svg
-        id="loader"
-        class="hidden w-6 h-6 animate-spin"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
+      <svg id="loader" class="hidden absolute w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" d="M4 12a8 8 0 018-8v8z" fill="currentColor"></path>
       </svg>
     </button>
-  </div>
+  </div>  
 
   <script>
+    // تفعيل الأيقونات
     lucide.createIcons();
 
-    const iconBoxes = document.querySelectorAll(".icon-box");
-    const platformInput = document.getElementById("platform");
-
-    iconBoxes.forEach(icon => {
-      icon.addEventListener("click", () => {
-        iconBoxes.forEach(i => i.classList.remove("selected"));
-        icon.classList.add("selected");
-        platformInput.value = icon.dataset.name;
-        validateId();
-      });
-      icon.addEventListener("keydown", e => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          icon.click();
-        }
-      });
-    });
-
+    // التحقق من أرقام متشابهة
     const isRepeatedDigits = (id) => /^(\d)\1{9}$/.test(id);
 
+    // عرض رسالة
     function showMessage(text, type = "error") {
       const msg = document.getElementById("message");
-      msg.className = "fade show";
+      msg.className = "fade show text-center text-sm mb-4 h-5";
       msg.textContent = text;
-      msg.style.color = type === "success" ? "#22c55e" : "#dc2626"; // أخضر أو أحمر
+      msg.style.color = type === "success" ? "green" : "red";
     }
 
+    // التحقق من الـ ID أثناء الكتابة
     function validateId() {
-      const userId = document.getElementById("userId").value.trim();
-      const platform = platformInput.value;
-      if (!/^\d*$/.test(userId)) return showMessage("يرجى إدخال أرقام فقط.");
-      if (userId.length !== 10) return showMessage("يجب أن يحتوي الـ ID على 10 أرقام.");
-      if (isRepeatedDigits(userId)) return showMessage("الرقم المعرف غير صالح.");
-      if (!platform) return showMessage("الرجاء اختيار المنصة.");
+      const userId = document.getElementById("userId").value;
+      if (!/^\d*$/.test(userId))         { showMessage("يرجى إدخال أرقام فقط."); return; }
+      if (userId.length !== 10)          { showMessage("يجب أن يحتوي الـ ID على 10 أرقام تماما لإتمام التسجيل."); return; }
+      if (isRepeatedDigits(userId))      { showMessage("الرقم المعرف الid غير صالح."); return; }
       document.getElementById("message").className = "fade";
-      document.getElementById("message").textContent = "";
     }
 
+    // إعادة تهيئة النموذج
     function resetForm() {
       const btn = document.getElementById("submitBtn");
       const loader = document.getElementById("loader");
       const label = btn.querySelector(".label");
       btn.disabled = false;
+      btn.classList.remove("opacity-50", "cursor-not-allowed");
       loader.classList.add("hidden");
       label.classList.remove("hidden");
-      platformInput.value = "";
-      document.getElementById("userId").value = "";
-      iconBoxes.forEach(i => i.classList.remove("selected"));
-      document.getElementById("message").textContent = "";
-      document.getElementById("message").className = "fade";
+      document.getElementById("platform").disabled = false;
+      document.getElementById("userId").disabled = false;
     }
 
-    document.getElementById("oneClickTab").addEventListener("click", resetForm);
+    // تعبئة القيم المخزنة
+    document.addEventListener("DOMContentLoaded", () => {
+      const storedPlatform = localStorage.getItem("platform");
+      const storedId = localStorage.getItem("userId");
+      if (storedPlatform) document.getElementById("platform").value = storedPlatform;
+      if (storedId) document.getElementById("userId").value = storedId;
+      resetForm();
+    });
 
+    // عند الرجوع من home.html
+    window.addEventListener("pageshow", (e) => { if (e.persisted) resetForm(); });
+
+    // زر التسجيل مع إرسال البيانات إلى Google Sheets
     function login() {
-      const platform = platformInput.value;
-      const userId = document.getElementById("userId").value.trim();
+      const platform = document.getElementById("platform").value;
+      const userId = document.getElementById("userId").value;
       const btn = document.getElementById("submitBtn");
       const loader = document.getElementById("loader");
       const label = btn.querySelector(".label");
 
-      if (!platform || userId.length !== 10 || isRepeatedDigits(userId)) {
-        validateId();
-        return;
-      }
+      if (!platform) { showMessage("يرجى اختيار المنصة."); return; }
+      if (userId.length !== 10 || !/^\d+$/.test(userId)) { showMessage("الرجاء إدخال ID مكوّن من 10 أرقام."); return; }
+      if (isRepeatedDigits(userId)) { showMessage("غير مسموح بـ 10 أرقام متشابهة."); return; }
 
       btn.disabled = true;
+      btn.classList.add("opacity-50", "cursor-not-allowed");
       loader.classList.remove("hidden");
       label.classList.add("hidden");
+      document.getElementById("platform").disabled = true;
+      document.getElementById("userId").disabled = true;
 
+      localStorage.setItem("platform", platform);
+      localStorage.setItem("userId", userId);
+
+      // ✅ رابط Web App الصحيح:
       fetch("https://script.google.com/macros/s/AKfycbx5eBtV9miCzU9nk2oHtZk5hizvzE2U23aph7_g_tkf_8SiEyzxwRgRd5XRiBQ3-a35pQ/exec", {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ platform, userId })
-      })
-      .then(() => {
-        showMessage("تم الدخول بنجاح!", "success");
+      }).finally(() => {
         setTimeout(() => {
           window.location.href = "home.html";
-        }, 1000);
-      })
-      .catch(() => {
-        showMessage("فشل الاتصال بالخادم", "error");
-      })
-      .finally(() => {
-        btn.disabled = false;
-        loader.classList.add("hidden");
-        label.classList.remove("hidden");
+        }, 800);
       });
     }
+
+    // عند الضغط على "En un clic"
+    document.getElementById("oneClickTab").addEventListener("click", () => {
+      document.getElementById("platform").value = "";
+      document.getElementById("userId").value = "";
+      document.getElementById("message").className = "fade";
+      document.getElementById("message").textContent = "";
+      document.getElementById("platform").disabled = false;
+      document.getElementById("userId").disabled = false;
+      resetForm();
+    });
   </script>
 </body>
 </html>
