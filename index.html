@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign in to - Mobcash</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -10,68 +10,74 @@
     body {
       background: #f9fafb;
     }
+    .container-fixed {
+      width: 400px;
+      height: 500px;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
     .card-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      max-width: 600px; /* ليظهر 3 بطاقات في صف */
-      margin: 0 auto 1.5rem auto;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      max-height: 180px;
+      overflow-y: auto;
     }
     .platform-card {
-      background: transparent;
-      width: 180px;
-      height: 110px;
+      background: white;
+      width: 120px;
+      height: 90px;
       border-radius: 0.75rem;
-      border: 2px solid #cbd5e1; /* رمادي فاتح */
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.12);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 0.5rem 0.7rem;
+      padding: 0.5rem;
       cursor: pointer;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      border: 3px solid transparent;
       user-select: none;
       text-align: center;
-      box-shadow: none;
-      position: relative;
+      font-size: 0.85rem;
     }
     .platform-card:hover {
-      border-color: #2563eb; /* أزرق */
-      box-shadow: 0 4px 12px rgb(37 99 235 / 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgb(0 0 0 / 0.2);
     }
     .platform-card.selected {
-      border-color: #2563eb; /* أزرق */
-      box-shadow: 0 6px 20px rgb(37 99 235 / 0.5);
-      background: #e0e7ff; /* أزرق فاتح */
+      border-color: #2563eb; /* blue-600 */
+      box-shadow: 0 12px 28px rgb(37 99 235 / 0.4);
+      transform: translateY(-5px);
+      background: #e0e7ff; /* blue-100 */
     }
-    .platform-img {
-      width: 100px;
+    .platform-card .platform-img {
+      width: 80px;
       height: 50px;
-      background-color: #f0f4f8; /* رمادي فاتح جداً */
-      border-radius: 0.4rem;
-      margin-bottom: 0.4rem;
+      background-color: #cbd5e1; /* رمادي فاتح */
       display: flex;
       align-items: center;
       justify-content: center;
-      user-select: none;
       font-weight: 700;
-      color: #64748b; /* رمادي متوسط */
-      font-size: 0.9rem;
-      box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
-    }
-    .platform-label {
-      background-color: #cbd5e1; /* رمادي فاتح */
       color: #334155; /* slate-700 */
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 2px 8px;
-      border-radius: 0.4rem;
+      border-radius: 0.5rem;
+      margin-bottom: 0.5rem;
       user-select: none;
-      width: fit-content;
-      margin: 0 auto;
-      box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+      font-size: 0.8rem;
+      padding: 0 0.2rem;
     }
+    .platform-card .platform-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #1e293b; /* slate-800 */
+      user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* للرسالة */
     .fade {
       transition: all 0.3s ease;
       opacity: 0;
@@ -81,57 +87,56 @@
       opacity: 1;
       transform: translateY(0);
     }
-    #submitBtn {
-      position: relative;
-    }
-    #loader {
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-    }
   </style>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center px-4 py-10">
-  <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-6 w-full max-w-md">
+  <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl container-fixed">
     <h2 class="text-2xl font-extrabold text-center text-gray-800 dark:text-white mb-6 select-none">Sign in to Mobcash</h2>
 
-    <label class="block mb-3 text-center text-lg font-semibold text-gray-700 dark:text-gray-300 select-none">اختر المنصة</label>
+    <!-- اختيار المنصة كبطاقات دفع عالمية -->
+    <label class="block mb-3 text-center text-base font-semibold text-gray-700 dark:text-gray-300 select-none">اختر المنصة</label>
     <div id="platformCards" class="card-container" role="listbox" aria-label="اختيار المنصة">
+      <!-- بطاقة 1 -->
       <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="Mega pari" title="Mega pari">
-        <div class="platform-img">صورة Mega pari</div>
-        <div class="platform-label">منصة</div>
+        <div class="platform-img">Mega pari</div>
+        <div class="platform-name">Mega pari</div>
       </div>
+      <!-- بطاقة 2 -->
       <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="Linbet" title="Linbet">
-        <div class="platform-img">صورة Linbet</div>
-        <div class="platform-label">منصة</div>
+        <div class="platform-img">Linbet</div>
+        <div class="platform-name">Linbet</div>
       </div>
+      <!-- بطاقة 3 -->
       <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="Gooobet" title="Gooobet">
-        <div class="platform-img">صورة Gooobet</div>
-        <div class="platform-label">منصة</div>
+        <div class="platform-img">Gooobet</div>
+        <div class="platform-name">Gooobet</div>
       </div>
+      <!-- بطاقة 4 -->
       <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="1xbet" title="1xbet">
-        <div class="platform-img">صورة 1xbet</div>
-        <div class="platform-label">منصة</div>
+        <div class="platform-img">1xbet</div>
+        <div class="platform-name">1xbet</div>
       </div>
+      <!-- بطاقة 5 -->
       <div tabindex="0" role="option" aria-selected="false" class="platform-card" data-value="Melbet" title="Melbet">
-        <div class="platform-img">صورة Melbet</div>
-        <div class="platform-label">منصة</div>
+        <div class="platform-img">Melbet</div>
+        <div class="platform-name">Melbet</div>
       </div>
     </div>
 
-    <div class="mb-6">
-      <label for="userId" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300 select-none">أدخل الـ ID (10 أرقام)</label>
-      <input type="text" id="userId" maxlength="10" placeholder="مثال: 1234567890" class="w-full px-4 py-2 border rounded-lg text-base bg-white text-gray-800 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" oninput="validateId()" />
+    <!-- حقل الـ ID -->
+    <div class="mb-4">
+      <label for="userId" class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300 select-none">أدخل الـ ID (10 أرقام)</label>
+      <input type="text" id="userId" maxlength="10" placeholder="مثال: 1234567890" class="w-full px-3 py-2 border rounded-xl text-base bg-white text-gray-800 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500" oninput="validateId()" />
     </div>
 
-    <div id="message" class="fade text-center text-sm mb-6 h-6 font-semibold"></div>
+    <!-- الرسالة -->
+    <div id="message" class="fade text-center text-sm mb-4 h-6 font-semibold"></div>
 
-    <button id="submitBtn" onclick="login()" class="relative w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition duration-300 flex items-center justify-center gap-2 text-lg select-none">
+    <!-- زر التسجيل -->
+    <button id="submitBtn" onclick="login()" class="relative w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl transition duration-300 flex items-center justify-center gap-2 text-base select-none">
       <i data-lucide="log-in" class="w-5 h-5"></i>
       <span class="label">Sign in</span>
-      <svg id="loader" class="hidden w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="تحميل">
+      <svg id="loader" class="hidden absolute w-5 h-5 animate-spin" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
         <path class="opacity-75" d="M4 12a8 8 0 018-8v8z" fill="currentColor"></path>
       </svg>
@@ -145,6 +150,7 @@
 
     const platformCards = document.querySelectorAll(".platform-card");
 
+    // تفعيل اختيار البطاقة
     platformCards.forEach(card => {
       card.addEventListener("click", () => {
         selectPlatform(card);
@@ -172,7 +178,7 @@
 
     function showMessage(text, type = "error") {
       const msg = document.getElementById("message");
-      msg.className = "fade show text-center text-sm mb-6 h-6 font-semibold";
+      msg.className = "fade show text-center text-sm mb-4 h-6 font-semibold";
       msg.textContent = text;
       msg.style.color = type === "success" ? "green" : "red";
     }
@@ -214,6 +220,7 @@
       platformCards.forEach(c => c.classList.remove("selected"));
       selectedPlatform = "";
 
+      // تحميل القيم المخزنة
       const storedPlatform = localStorage.getItem("platform");
       const storedId = localStorage.getItem("userId");
 
@@ -241,4 +248,37 @@
 
       if (!selectedPlatform) {
         showMessage("يرجى اختيار المنصة.");
-        return
+        return;
+      }
+      if (userId.length !== 10 || !/^\d+$/.test(userId)) {
+        showMessage("الرجاء إدخال ID مكوّن من 10 أرقام.");
+        return;
+      }
+      if (isRepeatedDigits(userId)) {
+        showMessage("غير مسموح بـ 10 أرقام متشابهة.");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.classList.add("opacity-50", "cursor-not-allowed");
+      loader.classList.remove("hidden");
+      label.classList.add("hidden");
+      document.getElementById("userId").disabled = true;
+
+      localStorage.setItem("platform", selectedPlatform);
+      localStorage.setItem("userId", userId);
+
+      fetch("https://script.google.com/macros/s/AKfycbx5eBtV9miCzU9nk2oHtZk5hizvzE2U23aph7_g_tkf_8SiEyzxwRgRd5XRiBQ3-a35pQ/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ platform: selectedPlatform, userId })
+      }).finally(() => {
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 800);
+      });
+    }
+  </script>
+</body>
+</html>
