@@ -16,14 +16,6 @@
   <div class="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl p-8 w-full max-w-md">
     <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">Sign in to Mobcash</h2>
 
-    <!-- زر En un clic -->
-    <button
-      id="oneClickTab"
-      class="w-full mb-6 flex items-center justify-center gap-2 rounded-xl py-2 font-semibold text-white bg-green-600 hover:bg-green-700 active:scale-95 transition duration-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-      <i data-lucide="zap" class="w-4 h-4"></i>
-      En&nbsp;un&nbsp;clic
-    </button>
-
     <!-- اختيار المنصة -->
     <div class="mb-4">
       <label for="platform" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">اختر المنصة</label>
@@ -140,17 +132,6 @@
         }, 800);
       });
     }
-
-    // عند الضغط على "En un clic"
-    document.getElementById("oneClickTab").addEventListener("click", () => {
-      document.getElementById("platform").value = "";
-      document.getElementById("userId").value = "";
-      document.getElementById("message").className = "fade";
-      document.getElementById("message").textContent = "";
-      document.getElementById("platform").disabled = false;
-      document.getElementById("userId").disabled = false;
-      resetForm();
-    });
   </script>
 </body>
 </html>
