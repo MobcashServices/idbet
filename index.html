@@ -127,14 +127,18 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ platform, userId })
       })
-      .then(() => {
-        showMessage("تم الدخول بنجاح!", "success");
-        setTimeout(() => {
-          window.location.href = "home.html";
-        }, 1000);
+      .then(response => {
+        if (response.ok) {
+          showMessage("تم الدخول بنجاح!", "success");
+          setTimeout(() => {
+            window.location.href = "home.html";
+          }, 1000);
+        } else {
+          showMessage("فشل في الإرسال: رمز " + response.status);
+        }
       })
       .catch(() => {
-        showMessage("فشل الاتصال بالخادم", "error");
+        showMessage("تعذر الاتصال بالخادم. تحقق من الشبكة.");
       })
       .finally(() => {
         btn.disabled = false;
