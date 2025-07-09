@@ -3,243 +3,236 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>تسجيل الدخول - Mobcash</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Sign in to - Mobcash</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    /* الخط الرئيسي */
     body {
-      margin: 0;
       font-family: 'Tajawal', sans-serif;
-      background: #141414; /* خلفية داكنة */
-      color: #e5e5e5;
+      background-color: #f3f4f6; /* كما في bg-gray-100 */
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
       padding: 1rem;
-      direction: rtl;
     }
-
-    /* صندوق التسجيل */
     .container {
-      background: #1f1f1f;
-      border-radius: 12px;
-      padding: 2.5rem 2rem;
-      width: 100%;
+      background-color: #fff; /* bg-white */
       max-width: 420px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      padding: 3rem 2.5rem;
       text-align: center;
+      transition: box-shadow 0.3s ease;
     }
-
-    /* العنوان */
-    h1 {
+    .container:hover {
+      box-shadow: 0 12px 45px rgba(0,0,0,0.18);
+    }
+    h2 {
       font-weight: 700;
       font-size: 2.4rem;
-      margin-bottom: 1.5rem;
-      letter-spacing: 2px;
-      color: #e50914; /* لون أحمر مميز */
-      user-select: none;
-    }
-
-    /* أيقونات المنصات - عرض أفقي */
-    #platformIcons {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
+      color: #111827; /* gray-900 */
       margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .icon-box {
-      background: #222;
-      border-radius: 12px;
-      padding: 1rem 1.2rem;
-      cursor: pointer;
-      flex: 0 0 70px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 4px transparent;
+      letter-spacing: 0.04em;
       user-select: none;
+    }
+    #oneClickTab {
+      background-color: #22c55e; /* نفس اللون الأخضر */
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      transition: background-color 0.3s ease, transform 0.15s ease;
+      user-select: none;
+    }
+    #oneClickTab:hover {
+      background-color: #16a34a;
+      transform: scale(1.05);
+    }
+    #oneClickTab:active {
+      transform: scale(0.97);
+    }
+    .icon-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      user-select: none;
+    }
+    .icon-box {
+      background-color: #fff; /* اتركه أبيض */
+      border-radius: 14px;
+      padding: 1rem 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-    .icon-box:hover {
-      box-shadow: 0 0 12px #e50914;
-      transform: scale(1.1);
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      border: 2px solid transparent;
+      user-select: none;
     }
     .icon-box.selected {
-      border: 2px solid #e50914;
-      box-shadow: 0 0 16px #e50914;
-      transform: scale(1.1);
+      border-color: #22c55e;
+      box-shadow: 0 0 15px rgba(34,197,94,0.5);
     }
-
     .icon-box img {
-      max-width: 50px;
       height: 50px;
+      width: auto;
       object-fit: contain;
+      margin-bottom: 0.5rem;
       user-select: none;
     }
-
     .icon-name {
-      margin-top: 0.4rem;
-      font-size: 0.75rem;
-      color: #ccc;
       font-weight: 600;
-      user-select: none;
+      font-size: 0.9rem;
+      color: #1f2937; /* gray-800 */
     }
-
-    /* حقل الإدخال */
     label {
       display: block;
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
-      color: #bbb;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #374151; /* gray-700 */
+      margin-bottom: 0.6rem;
       user-select: none;
+      text-align: right;
     }
-    input#userId {
+    input[type="text"] {
       width: 100%;
-      padding: 0.65rem 1rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: none;
-      outline: none;
-      background: #333;
-      color: #eee;
-      transition: box-shadow 0.3s ease;
+      padding: 0.9rem 1rem;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      border: 1.8px solid #d1d5db; /* gray-300 */
+      background-color: #fff;
+      color: #111827; /* gray-900 */
+      transition: border-color 0.3s ease;
+      outline-offset: 2px;
       user-select: text;
     }
-    input#userId::placeholder {
-      color: #777;
+    input[type="text"]:focus {
+      border-color: #3b82f6; /* blue-500 */
+      box-shadow: 0 0 8px rgba(59,130,246,0.5);
+      outline: none;
     }
-    input#userId:focus {
-      box-shadow: 0 0 8px #e50914;
-      background: #222;
-      color: #fff;
-    }
-
-    /* رسالة الخطأ أو النجاح */
     #message {
-      height: 1.4rem;
-      margin-top: 0.7rem;
+      min-height: 1.4rem;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+      margin-bottom: 1.5rem;
       transition: all 0.3s ease;
       user-select: none;
     }
-
-    /* زر التسجيل */
-    button#submitBtn {
-      margin-top: 1.8rem;
-      width: 100%;
-      padding: 0.75rem 0;
-      font-size: 1.2rem;
+    #submitBtn {
+      background-color: #2563eb; /* blue-600 */
+      color: white;
       font-weight: 700;
-      color: #fff;
-      background: #e50914;
+      font-size: 1.2rem;
+      border-radius: 14px;
       border: none;
-      border-radius: 10px;
+      width: 100%;
+      padding: 1rem 0;
       cursor: pointer;
-      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 0.7rem;
-      transition: background 0.3s ease;
+      position: relative;
       user-select: none;
+      transition: background-color 0.3s ease, transform 0.15s ease;
     }
-    button#submitBtn:hover:not(:disabled) {
-      background: #bf0810;
+    #submitBtn:hover:not(:disabled) {
+      background-color: #1d4ed8; /* blue-700 */
+      transform: scale(1.05);
     }
-    button#submitBtn:disabled {
-      background: #8c1a1a;
+    #submitBtn:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+    #submitBtn:disabled {
       cursor: not-allowed;
+      background-color: #93c5fd; /* light blue */
+      transform: none;
     }
-
-    /* أيقونة تسجيل الدخول */
-    i[data-lucide="log-in"] {
-      width: 22px;
-      height: 22px;
-    }
-
-    /* اللودر */
     #loader {
       position: absolute;
-      right: 15px;
-      width: 22px;
-      height: 22px;
-      animation: spin 1s linear infinite;
-      stroke: white;
-    }
-    #loader.hidden {
-      display: none;
-    }
-    @keyframes spin {
-      0%   { transform: rotate(0deg);}
-      100% { transform: rotate(360deg);}
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      h1 { font-size: 1.8rem; }
-      .icon-box { flex: 0 0 60px; }
-      .icon-box img { height: 45px; }
-      button#submitBtn { font-size: 1.1rem; }
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
     }
   </style>
 </head>
 <body>
-  <div class="container" role="main" aria-label="نموذج تسجيل الدخول Mobcash">
-    <h1>تسجيل الدخول</h1>
+  <div class="container" role="main" aria-label="نموذج تسجيل الدخول">
+    <h2>Sign in to Mobcash</h2>
+
+    <!-- زر En un clic -->
+    <button id="oneClickTab" aria-label="إعادة تعيين النموذج">
+      <i data-lucide="zap" class="w-5 h-5"></i>
+      En&nbsp;un&nbsp;clic
+    </button>
 
     <!-- أيقونات المنصات -->
     <input type="hidden" id="platform" aria-hidden="true" />
-    <div id="platformIcons" role="list" aria-label="منصات التسجيل">
-      <div class="icon-box" role="listitem" tabindex="0" data-name="LineBet" aria-label="اختيار منصة LineBet">
-        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" />
+    <div id="platformIcons" class="icon-container" role="list">
+      <div class="icon-box" data-name="LineBet" role="listitem" tabindex="0" aria-label="اختيار منصة LineBet">
+        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" draggable="false" />
         <div class="icon-name">LineBet</div>
       </div>
-      <div class="icon-box" role="listitem" tabindex="0" data-name="MegaPari" aria-label="اختيار منصة MegaPari">
-        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari" />
+      <div class="icon-box" data-name="MegaPari" role="listitem" tabindex="0" aria-label="اختيار منصة MegaPari">
+        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari" draggable="false" />
         <div class="icon-name">MegaPari</div>
       </div>
-      <div class="icon-box" role="listitem" tabindex="0" data-name="Melbet" aria-label="اختيار منصة Melbet">
-        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet" />
+      <div class="icon-box" data-name="Melbet" role="listitem" tabindex="0" aria-label="اختيار منصة Melbet">
+        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet" draggable="false" />
         <div class="icon-name">Melbet</div>
       </div>
-      <div class="icon-box" role="listitem" tabindex="0" data-name="Gooobet" aria-label="اختيار منصة Gooobet">
-        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet" />
+      <div class="icon-box" data-name="Gooobet" role="listitem" tabindex="0" aria-label="اختيار منصة Gooobet">
+        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet" draggable="false" />
         <div class="icon-name">Gooobet</div>
       </div>
-      <div class="icon-box" role="listitem" tabindex="0" data-name="1xBet" aria-label="اختيار منصة 1xBet">
-        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet" />
+      <div class="icon-box" data-name="1xBet" role="listitem" tabindex="0" aria-label="اختيار منصة 1xBet">
+        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet" draggable="false" />
         <div class="icon-name">1xBet</div>
       </div>
     </div>
 
-    <!-- حقل الإدخال -->
-    <label for="userId">أدخل الـ ID (10 أرقام)</label>
-    <input
-      type="text"
-      id="userId"
-      maxlength="10"
-      placeholder="مثال: 1234567890"
-      autocomplete="off"
-      inputmode="numeric"
-      aria-describedby="message"
-      oninput="validateId()"
-    />
+    <!-- حقل ID -->
+    <div class="mb-4 text-right">
+      <label for="userId">أدخل الـ ID (10 أرقام)</label>
+      <input
+        type="text"
+        id="userId"
+        maxlength="10"
+        placeholder="مثال: 1234567890"
+        autocomplete="off"
+        inputmode="numeric"
+        pattern="\d{10}"
+        aria-describedby="message"
+        oninput="validateId()"
+      />
+    </div>
 
-    <!-- رسالة الخطأ أو النجاح -->
-    <div id="message" role="alert" aria-live="polite" class="fade"></div>
+    <!-- الرسالة -->
+    <div id="message" aria-live="polite" role="alert" class="fade"></div>
 
     <!-- زر التسجيل -->
-    <button id="submitBtn" onclick="login()" type="button" aria-label="تسجيل الدخول">
-      <i data-lucide="log-in"></i>
-      <span class="label">تسجيل الدخول</span>
+    <button id="submitBtn" onclick="login()" aria-label="تسجيل الدخول">
+      <i data-lucide="log-in" class="w-6 h-6"></i>
+      <span class="label">Sign in</span>
       <svg
         id="loader"
-        class="hidden"
+        class="hidden w-6 h-6 animate-spin"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -257,15 +250,14 @@
     const iconBoxes = document.querySelectorAll(".icon-box");
     const platformInput = document.getElementById("platform");
 
-    iconBoxes.forEach((icon) => {
+    iconBoxes.forEach(icon => {
       icon.addEventListener("click", () => {
-        iconBoxes.forEach((i) => i.classList.remove("selected"));
+        iconBoxes.forEach(i => i.classList.remove("selected"));
         icon.classList.add("selected");
         platformInput.value = icon.dataset.name;
         validateId();
       });
-      // دعم الكيبورد للتنقل Enter أو Space لاختيار المنصة
-      icon.addEventListener("keydown", (e) => {
+      icon.addEventListener("keydown", e => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           icon.click();
@@ -279,7 +271,7 @@
       const msg = document.getElementById("message");
       msg.className = "fade show";
       msg.textContent = text;
-      msg.style.color = type === "success" ? "#22c55e" : "#ef4444"; // أخضر أو أحمر
+      msg.style.color = type === "success" ? "#22c55e" : "#dc2626"; // أخضر أو أحمر
     }
 
     function validateId() {
@@ -292,6 +284,22 @@
       document.getElementById("message").className = "fade";
       document.getElementById("message").textContent = "";
     }
+
+    function resetForm() {
+      const btn = document.getElementById("submitBtn");
+      const loader = document.getElementById("loader");
+      const label = btn.querySelector(".label");
+      btn.disabled = false;
+      loader.classList.add("hidden");
+      label.classList.remove("hidden");
+      platformInput.value = "";
+      document.getElementById("userId").value = "";
+      iconBoxes.forEach(i => i.classList.remove("selected"));
+      document.getElementById("message").textContent = "";
+      document.getElementById("message").className = "fade";
+    }
+
+    document.getElementById("oneClickTab").addEventListener("click", resetForm);
 
     function login() {
       const platform = platformInput.value;
@@ -312,22 +320,22 @@
       fetch("https://script.google.com/macros/s/AKfycbx5eBtV9miCzU9nk2oHtZk5hizvzE2U23aph7_g_tkf_8SiEyzxwRgRd5XRiBQ3-a35pQ/exec", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ platform, userId }),
+        body: JSON.stringify({ platform, userId })
       })
-        .then(() => {
-          showMessage("تم الدخول بنجاح!", "success");
-          setTimeout(() => {
-            window.location.href = "home.html";
-          }, 1000);
-        })
-        .catch(() => {
-          showMessage("فشل الاتصال بالخادم", "error");
-        })
-        .finally(() => {
-          btn.disabled = false;
-          loader.classList.add("hidden");
-          label.classList.remove("hidden");
-        });
+      .then(() => {
+        showMessage("تم الدخول بنجاح!", "success");
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 1000);
+      })
+      .catch(() => {
+        showMessage("فشل الاتصال بالخادم", "error");
+      })
+      .finally(() => {
+        btn.disabled = false;
+        loader.classList.add("hidden");
+        label.classList.remove("hidden");
+      });
     }
   </script>
 </body>
