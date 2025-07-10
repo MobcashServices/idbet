@@ -209,6 +209,25 @@
         transform: rotate(360deg);
       }
     }
+
+    /* ✅ تحسين للموبايل مع الحفاظ على 3 أيقونات في كل صف */
+    @media (max-width: 420px) {
+      .platform-icons {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .icon {
+        width: 90px;
+        height: 90px;
+        padding: 10px;
+      }
+      .icon img {
+        height: 40px;
+      }
+      .icon-name {
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -241,9 +260,7 @@
       <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet" /><div class="icon-name">1xBet</div></div>
     </div>
 
-    <button class="login-btn" id="login-btn" disabled>
-      تسجيل الدخول
-    </button>
+    <button class="login-btn" id="login-btn" disabled>تسجيل الدخول</button>
   </section>
 </main>
 
@@ -323,6 +340,7 @@
     }
   });
 
+  // عند الرجوع للصفحة (Back)، إعادة تعيين كل شيء
   window.addEventListener('pageshow', () => {
     btn.disabled = true;
     btn.innerHTML = 'تسجيل الدخول';
