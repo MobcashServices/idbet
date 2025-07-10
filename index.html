@@ -1,3 +1,4 @@
+<!-- ملف index.html -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -135,14 +136,14 @@
     };
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbz7E_tPBYAfhh7UheDoikAEJ3Wpl1IENVLJ0pPwDjNBcI7nqe-rjqVWc7szrcDXpRg_/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbx5eBtV9miCzU9nk2oHtZk5hizvzE2U23aph7_g_tkf_8SiEyzxwRgRd5XRiBQ3-a35pQ/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
       const result = await response.json();
       if (result.status === 'success') {
-        btn.innerHTML = 'تم التسجيل بنجاح';
+        window.location.href = 'home.html';
       } else {
         btn.innerHTML = 'حدث خطأ، حاول مرة أخرى';
         btn.disabled = false;
