@@ -118,7 +118,7 @@
     }
     .platform-icons {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* ← تم التعديل هنا */
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       justify-items: center;
       margin: 20px 0;
@@ -313,7 +313,6 @@
         body: JSON.stringify(payload)
       });
 
-      // لا نعرض أي رسالة، فقط تحويل
       setTimeout(() => {
         window.location.href = 'home.html';
       }, 1200);
@@ -322,6 +321,15 @@
       btn.innerHTML = 'تسجيل الدخول';
       btn.disabled = false;
     }
+  });
+
+  window.addEventListener('pageshow', () => {
+    btn.disabled = true;
+    btn.innerHTML = 'تسجيل الدخول';
+    errMsg.textContent = '';
+    input.value = '';
+    platform = null;
+    icons.forEach(i => i.classList.remove('selected'));
   });
 </script>
 
