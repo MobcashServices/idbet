@@ -98,7 +98,7 @@
       icon.classList.add('selected');
       platform = icon.dataset.name;
       hiddenPlatformInput.value = platform;
-      validate();
+      validate(); // ضروري لإعادة تفعيل الزر بعد اختيار المنصة
     });
   });
 
@@ -120,18 +120,17 @@
 
     errMsg.innerHTML = msg;
     errMsg.style.color = color;
-    btn.disabled = !!msg && !msg.includes('loader');
+
+    // ✅ زر الدخول يُفعّل فقط إذا المعرف طوله 10 وغير مكرر والمنصة موجودة
+    btn.disabled = !(val.length === 10 && !repReg.test(val) && platform);
   }
 
   btn.addEventListener('click', async function (e) {
     e.preventDefault();
-
     if (btn.disabled) return;
 
     const userId = input.value;
     const selectedPlatform = platform;
-
-    if (!userId || !selectedPlatform) return;
 
     btn.disabled = true;
     btn.innerHTML = '<span class="btn-spinner"></span> جارٍ التحقق...';
@@ -151,6 +150,7 @@
       });
 
       const result = await res.json();
+      console.log("RESULT:", result);
 
       if (result.status === "success") {
         window.location.href = "home.html";
@@ -160,6 +160,7 @@
       }
 
     } catch (err) {
+      console.error("فشل الاتصال:", err);
       btn.innerHTML = "فشل الاتصال، حاول مرة أخرى";
       btn.disabled = false;
     }
