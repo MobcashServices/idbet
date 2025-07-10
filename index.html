@@ -103,19 +103,19 @@
   });
 
   function validate() {
-    const val = input.value.replace(/\D/g,'');
+    const val = input.value.replace(/\D/g, '');
     input.value = val;
-    let msg='', color='var(--brand)';
+    let msg = '', color = 'var(--brand)';
 
     if (!val) {
-      msg='يُرجى إدخال المعرّف للمتابعة.';
+      msg = 'يُرجى إدخال المعرّف للمتابعة.';
     } else if (val.length < 10) {
-      msg='<span class="loader"></span> جارٍ فحص المعرّف...';
+      msg = '<span class="loader"></span> جارٍ فحص المعرّف...';
     } else if (repReg.test(val)) {
-      msg='تعذر التحقق: المعرّف لا يطابق معايير النظام.';
+      msg = 'تعذر التحقق: المعرّف لا يطابق معايير النظام.';
     } else if (!platform) {
-      msg='المعرّف صحيح، الرجاء اختيار المنصة لإتمام تسجيل الدخول.';
-      color='green';
+      msg = 'المعرّف صحيح، الرجاء اختيار المنصة لإتمام تسجيل الدخول.';
+      color = 'green';
     }
 
     errMsg.innerHTML = msg;
@@ -123,33 +123,44 @@
     btn.disabled = !!msg && !msg.includes('loader');
   }
 
-  btn.addEventListener('click', async e => {
+  btn.addEventListener('click', async function (e) {
     e.preventDefault();
+
     if (btn.disabled) return;
-    btn.innerHTML = '<span class="btn-spinner"></span> جارٍ التحقق...';
+
+    const userId = input.value;
+    const selectedPlatform = platform;
+
+    if (!userId || !selectedPlatform) return;
+
     btn.disabled = true;
+    btn.innerHTML = '<span class="btn-spinner"></span> جارٍ التحقق...';
 
     const payload = {
-      userId: input.value,      // ✅ هذا الاسم هو الذي يستخدمه كود Apps Script عندك
-      platform: platform
+      userId: userId,
+      platform: selectedPlatform
     };
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbx5eBtV9miCzU9nk2oHtZk5hizvzE2U23aph7_g_tkf_8SiEyzxwRgRd5XRiBQ3-a35pQ/exec', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("https://script.google.com/macros/s/AKfycbx5eBtV9miCzU9nk2oHtZk5hizvzE2U23aph7_g_tkf_8SiEyzxwRgRd5XRiBQ3-a35pQ/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(payload)
       });
 
-      const result = await response.json();
-      if (result.status === 'success') {
-        window.location.href = 'home.html'; // ✅ تحويل تلقائي عند نجاح التسجيل
+      const result = await res.json();
+
+      if (result.status === "success") {
+        window.location.href = "home.html";
       } else {
-        btn.innerHTML = 'حدث خطأ، حاول مرة أخرى';
+        btn.innerHTML = "حدث خطأ، حاول مرة أخرى";
         btn.disabled = false;
       }
-    } catch (error) {
-      btn.innerHTML = 'فشل الاتصال، حاول مرة أخرى';
+
+    } catch (err) {
+      btn.innerHTML = "فشل الاتصال، حاول مرة أخرى";
       btn.disabled = false;
     }
   });
