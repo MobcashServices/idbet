@@ -6,70 +6,67 @@
   <title>سحب من الحساب</title>  
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />  
   <style>
-    :root { --idbet-color:#e50914; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --idbet-color: #e50914;
+      --gray-btn-color: #a09c92;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Tajawal', sans-serif;
       background: #f5f5f5;
       color: #333;
-      direction: rtl;
     }
-
     header {
       background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       padding: 20px 24px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
       border-bottom: 1px solid #eee;
-    }
-
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 20px;
     }
-
+    /* جهة اليمين */
     .brand-info {
       display: flex;
       align-items: center;
       gap: 8px;
+      direction: rtl;
     }
-
     .brand-info .idbet {
       color: var(--idbet-color);
       font-weight: bold;
       font-size: 1.2rem;
     }
-
     .brand-info .separator {
       color: #ccc;
     }
-
     .brand-info .slogan {
       color: #555;
       font-size: .95rem;
     }
 
-    .account-info {
-      direction: ltr;
+    /* جهة اليسار */
+    .account-section {
       text-align: left;
+      direction: ltr;
     }
-
-    .account-info .title {
+    .account-section .title {
       font-size: 1.2rem;
       font-weight: bold;
       margin-bottom: 4px;
     }
-
-    .account-info .user-id {
+    .account-section .user-id {
       font-size: 1.1rem;
       font-weight: bold;
       margin-bottom: 12px;
     }
-
     .btn-gray {
-      background-color: #a09c92;
+      background-color: var(--gray-btn-color);
       color: white;
       padding: 10px 16px;
       font-size: 0.95rem;
@@ -77,8 +74,8 @@
       border-radius: 4px;
       cursor: pointer;
       margin-bottom: 10px;
+      display: inline-block;
     }
-
     .btn-red {
       background-color: var(--idbet-color);
       color: white;
@@ -87,23 +84,20 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 6px;
     }
-
     .btn-red::after {
       content: "⌄";
       font-size: 0.9rem;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
       header {
-        padding: 16px 12px;
-      }
-
-      .account-info {
-        margin-top: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
       }
     }
   </style>
@@ -111,21 +105,19 @@
 <body>
 
 <header>
-  <div class="header-top">
-    <!-- الجهة اليمنى -->
-    <div class="brand-info">
-      <span class="slogan">وكيل الشحن الرسمي</span>
-      <span class="separator">|</span>
-      <span class="idbet">Idbet</span>
-    </div>
+  <!-- جهة اليمين -->
+  <div class="brand-info">
+    <span class="slogan">وكيل الشحن الرسمي</span>
+    <span class="separator">|</span>
+    <span class="idbet">Idbet</span>
+  </div>
 
-    <!-- الجهة اليسرى -->
-    <div class="account-info">
-      <div class="title">RETRAIT DU COMPTE</div>
-      <div class="user-id" id="account-id">......</div>
-      <button class="btn-gray">Types de systèmes de paiement</button><br>
-      <button class="btn-red">Demandes de retrait</button>
-    </div>
+  <!-- جهة اليسار -->
+  <div class="account-section">
+    <div class="title">RETRAIT DU COMPTE</div>
+    <div class="user-id" id="account-id">......</div>
+    <button class="btn-gray">Types de systèmes de paiement</button><br>
+    <button class="btn-red">Demandes de retrait</button>
   </div>
 </header>
 
