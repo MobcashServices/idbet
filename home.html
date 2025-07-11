@@ -1,119 +1,109 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>سحب من الحساب</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+<!DOCTYPE html>  
+<html lang="ar" dir="rtl">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <title>سحب من الحساب</title>  
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />  
   <style>
-    :root {
-      --main-red: #e50914;
-      --gray-btn: #a09c92;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    :root { --idbet-color:#e50914; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Tajawal', sans-serif;
-      background-color: #fff;
+      background: #f5f5f5;
       color: #333;
+      direction: rtl;
     }
 
     header {
-      width: 100%;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 20px;
+      background: #fff;
+      padding: 20px 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+      border-bottom: 1px solid #eee;
     }
 
-    .brand {
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .brand-info {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 1rem;
-      font-weight: 500;
-      color: #444;
     }
 
-    .brand .idbet {
-      color: var(--main-red);
+    .brand-info .idbet {
+      color: var(--idbet-color);
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
-    .separator {
+    .brand-info .separator {
       color: #ccc;
     }
 
-    .content {
-      width: 100%;
+    .brand-info .slogan {
+      color: #555;
+      font-size: .95rem;
+    }
+
+    .account-info {
       direction: ltr;
       text-align: left;
     }
 
-    .content .title {
-      font-weight: bold;
-      font-size: 1.1rem;
-      margin-bottom: 6px;
-    }
-
-    .content .user-id {
-      font-weight: bold;
+    .account-info .title {
       font-size: 1.2rem;
-      margin-bottom: 16px;
+      font-weight: bold;
+      margin-bottom: 4px;
     }
 
-    .buttons {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    .account-info .user-id {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 12px;
     }
 
-    .btn {
+    .btn-gray {
+      background-color: #a09c92;
+      color: white;
       padding: 10px 16px;
       font-size: 0.95rem;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      white-space: nowrap;
+      margin-bottom: 10px;
     }
 
-    .btn.gray {
-      background-color: var(--gray-btn);
-      color: #fff;
-    }
-
-    .btn.red {
-      background-color: var(--main-red);
-      color: #fff;
+    .btn-red {
+      background-color: var(--idbet-color);
+      color: white;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
-    .btn.red::after {
+    .btn-red::after {
       content: "⌄";
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 480px) {
       header {
         padding: 16px 12px;
-        gap: 16px;
       }
-      .buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .btn {
-        width: 100%;
-        text-align: center;
+
+      .account-info {
+        margin-top: 10px;
       }
     }
   </style>
@@ -121,25 +111,26 @@
 <body>
 
 <header>
-  <div class="brand">
-    <span class="slogan">وكيل الشحن الرسمي</span>
-    <span class="separator">|</span>
-    <span class="idbet">Idbet</span>
-  </div>
+  <div class="header-top">
+    <!-- الجهة اليمنى -->
+    <div class="brand-info">
+      <span class="slogan">وكيل الشحن الرسمي</span>
+      <span class="separator">|</span>
+      <span class="idbet">Idbet</span>
+    </div>
 
-  <div class="content">
-    <div class="title">RETRAIT DU COMPTE</div>
-    <div class="user-id" id="account-id">......</div>
-
-    <div class="buttons">
-      <button class="btn gray">Types de systèmes de paiement</button>
-      <button class="btn red">Demandes de retrait</button>
+    <!-- الجهة اليسرى -->
+    <div class="account-info">
+      <div class="title">RETRAIT DU COMPTE</div>
+      <div class="user-id" id="account-id">......</div>
+      <button class="btn-gray">Types de systèmes de paiement</button><br>
+      <button class="btn-red">Demandes de retrait</button>
     </div>
   </div>
 </header>
 
 <script>
-  const userId = localStorage.getItem('userId') || '1314813499'; // قيمة تجريبية افتراضية
+  const userId = localStorage.getItem('userId') || 'غير معروف';
   document.getElementById('account-id').textContent = userId;
 </script>
 
