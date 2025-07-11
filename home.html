@@ -30,7 +30,7 @@
   
     .header-top {  
       display: flex;  
-      justify-content: flex-start; /* ← اجعل المحتوى في اليمين */
+      justify-content: flex-start;  
       align-items: center;  
       direction: rtl;  
       margin-bottom: 30px;  
@@ -116,20 +116,21 @@
 <body>  
   
 <header>  
-  <!-- ✅ السطر الأول كما طلبت: Idbet | وكيل الشحن الرسمي -->
+  <!-- ✅ IdBet | وكيل الشحن الرسمي في نفس الجهة -->  
   <div class="header-top">
     <span class="idbet">Idbet</span>
     <span class="separator">|</span>
     <span class="slogan">وكيل الشحن الرسمي</span>
   </div>  
   
-  <!-- ✅ باقي العناصر تحت السطر الأول -->  
+  <!-- ✅ باقي العناصر -->  
   <div class="account-section">  
     <div class="title">RETRAIT DU COMPTE</div>  
     <div class="user-id" id="account-id">......</div>  
     <div class="buttons-row">  
-      <button class="btn btn-red">Demandes de retrait</button>  
+      <!-- ✅ الزر الرمادي أولًا في اليمين -->
       <button class="btn btn-gray">Types de systèmes de paiement</button>  
+      <button class="btn btn-red">Demandes de retrait</button>  
     </div>  
   </div>  
 </header>  
