@@ -3,141 +3,95 @@
 <head>  
   <meta charset="UTF-8" />  
   <meta name="viewport" content="width=device-width, initial-scale=1" />  
-  <title>تأكيد المعرّف</title>  
+  <title>سحب من الحساب</title>  
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />  
   <style>
-    :root { --header-height:70px; --idbet-color:#e50914; }
+    :root { --idbet-color:#e50914; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Tajawal', sans-serif;
       background: #f5f5f5;
-      direction: rtl;
       color: #333;
+      direction: rtl;
     }
     header {
-      height: var(--header-height);
       background: #fff;
       display: flex;
-      align-items: center;
-      padding: 0 24px;
+      flex-direction: column;
+      padding: 16px 24px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
       border-bottom: 1px solid #eee;
     }
-    .header-brand {
+    .top-bar {
       display: flex;
+      justify-content: flex-end;
       align-items: center;
-      gap: 12px;
-      font-weight: 500;
+      gap: 8px;
+      margin-bottom: 20px;
     }
-    .header-brand .idbet {
+    .top-bar .idbet {
       color: var(--idbet-color);
-      font-size: 1.2rem;
       font-weight: bold;
+      font-size: 1.2rem;
     }
-    .header-brand .separator {
+    .top-bar .separator {
       color: #ccc;
     }
-    .header-brand .slogan {
+    .top-bar .slogan {
       color: #555;
       font-size: .95rem;
     }
-    main {
-      display: flex;
-      justify-content: center;
-      padding: 30px 16px;
+
+    .account-info {
+      text-align: left;
+      direction: ltr;
     }
-    .login-box {
-      background: #fff;
-      padding: 32px 24px;
-      max-width: 420px;
-      width: 100%;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
-    }
-    .title-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.35rem;
+    .account-info .title {
+      font-size: 1.2rem;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 4px;
     }
-    .step-box {
-      width: 36px;
-      height: 36px;
-      background: var(--idbet-color);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-    .depot-display {
+    .account-info .user-id {
       font-size: 1.1rem;
       font-weight: bold;
       margin-bottom: 16px;
     }
-    .payment-button {
-      background: #a09c92;
-      color: white;
+
+    .buttons-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
       padding: 10px 16px;
+      font-size: 0.95rem;
       border: none;
       border-radius: 4px;
-      font-size: 0.95rem;
       cursor: pointer;
     }
-    .platform-icons {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      justify-items: center;
-      margin: 20px 0;
-      align-items: center;
+    .btn-gray {
+      background-color: #a09c92;
+      color: white;
     }
-    .icon {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      border-radius: 14px;
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+    .btn-red {
+      background-color: #e50914;
+      color: white;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 12px;
-      transition: .3s;
-      border: 1px solid #eee;
-      cursor: default;
+      gap: 6px;
     }
-    .icon img {
-      height: 50px;
-      max-width: 90%;
-      object-fit: contain;
-    }
-    .icon-name {
-      margin-top: 8px;
-      font-weight: 600;
-      font-size: .85rem;
-      color: #333;
-      text-align: center;
+    .btn-red::after {
+      content: "⌄";
+      font-size: 0.9rem;
     }
 
-    @media (max-width: 420px) {
-      .platform-icons {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
+    @media (max-width: 480px) {
+      header {
+        padding: 16px 12px;
       }
-      .icon {
-        width: 90px;
-        height: 90px;
-        padding: 10px;
-      }
-      .icon img {
-        height: 40px;
-      }
-      .icon-name {
-        font-size: 0.8rem;
+      .btn {
+        flex: 1;
+        text-align: center;
       }
     }
   </style>
@@ -145,29 +99,26 @@
 <body>
 
 <header>
-  <div class="header-brand">
-    <span class="idbet">Idbet</span><span class="separator">|</span><span class="slogan">وكيل الشحن الرسمي</span>
+  <div class="top-bar">
+    <span class="slogan">وكيل الشحن الرسمي</span>
+    <span class="separator">|</span>
+    <span class="idbet">Idbet</span>
+  </div>
+
+  <div class="account-info">
+    <div class="title">RETRAIT DU COMPTE</div>
+    <div class="user-id" id="account-id">......</div>
+
+    <div class="buttons-row">
+      <button class="btn btn-gray">Types de systèmes de paiement</button>
+      <button class="btn btn-red">Demandes de retrait</button>
+    </div>
   </div>
 </header>
 
-<main>
-  <section class="login-box">
-    <div class="title-wrapper"><div class="step-box">2</div><h2>تأكيد المعرّف</h2></div>
-
-    <div class="depot-display" id="depot-display">DÉPÔT ...</div>
-    <button class="payment-button">Types de systèmes de paiement</button>
-
-    <div class="platform-icons">
-      <div class="icon"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" /><div class="icon-name">LineBet</div></div>
-      <div class="icon"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari" /><div class="icon-name">MegaPari</div></div>
-      <div class="icon"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet" /><div class="icon-name">Melbet</div></div>
-    </div>
-  </section>
-</main>
-
 <script>
   const userId = localStorage.getItem('userId') || 'غير معروف';
-  document.getElementById('depot-display').textContent = 'DÉPÔT ' + userId;
+  document.getElementById('account-id').textContent = userId;
 </script>
 
 </body>
