@@ -109,21 +109,21 @@
     .platform-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 16px;
+      width: 100%;
     }
 
     .icon {
       position: relative;
-      width: 85px;
-      height: 85px;
+      width: 100%;
+      height: 70px;
       border-radius: 12px;
       background: #fff;
       box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 8px;
+      gap: 12px;
+      padding: 0 16px;
       border: 1px solid #eee;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -142,8 +142,8 @@
     .icon.selected::after {
       content: "✓";
       position: absolute;
-      top: 5px;
-      left: 5px;
+      top: 8px;
+      left: 8px;
       width: 18px;
       height: 18px;
       background: var(--idbet-color);
@@ -157,15 +157,15 @@
 
     .icon img {
       height: 40px;
-      max-width: 80%;
+      width: auto;
+      max-width: 100px;
       object-fit: contain;
     }
 
     .icon-name {
-      margin-top: 6px;
-      font-size: 0.8rem;
+      font-size: 1rem;
       color: #222;
-      text-align: center;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -194,23 +194,23 @@
     <!-- المنصات -->
     <div class="platform-icons" id="platforms">
       <div class="icon" data-name="LineBet">
-        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" />
+        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet Logo" />
         <div class="icon-name">LineBet</div>
       </div>
       <div class="icon" data-name="MegaPari">
-        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" />
+        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari Logo" />
         <div class="icon-name">MegaPari</div>
       </div>
       <div class="icon" data-name="Melbet">
-        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" />
+        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet Logo" />
         <div class="icon-name">Melbet</div>
       </div>
       <div class="icon" data-name="Gooobet">
-        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" />
+        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet Logo" />
         <div class="icon-name">Gooobet</div>
       </div>
       <div class="icon" data-name="1xBet">
-        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" />
+        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet Logo" />
         <div class="icon-name">1xBet</div>
       </div>
     </div>
