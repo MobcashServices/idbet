@@ -376,14 +376,14 @@
       }, 1200);
     } catch (err) {
       errMsg.textContent = 'حدث خطأ أثناء التحقق، حاول مجددًا.';
-      btn.innerHTML = 'تسجيل الدخول';
+      btn.innerHTML = 'تأكيد';
       btn.disabled = false;
     }
   });
 
   window.addEventListener('pageshow', () => {
     btn.disabled = true;
-    btn.innerHTML = 'تسجيل الدخول';
+    btn.innerHTML = 'تأكيد';
     errMsg.textContent = '';
     input.value = '';
     platform = null;
