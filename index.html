@@ -281,11 +281,11 @@
     errMsg.textContent = '';
     btn.disabled = true;
     if (val.length !== 10) {
-      errMsg.textContent = 'يجب أن يحتوي المعرّف على 10 أرقام.';
+      errMsg.textContent = 'إدخال المعرف صحيح الid';
       return;
     }
     if (repReg.test(val)) {
-      errMsg.textContent = 'المعرّف غير صالح (أرقام مكررة).';
+      errMsg.textContent = 'المعرّف غير صالح';
       return;
     }
     if (!platform) {
@@ -296,7 +296,7 @@
   }
 
   btn.addEventListener('click', async () => {
-    btn.innerHTML = '<span class="btn-spinner"></span> جارٍ الإرسال...';
+    btn.innerHTML = '<span class="btn-spinner"></span> جارٍ التحقق...';
     btn.disabled = true;
     const payload = { userId: input.value, platform: platform };
     try {
@@ -311,7 +311,7 @@
         window.location.href = 'home.html';
       }, 1200);
     } catch (err) {
-      errMsg.textContent = 'حدث خطأ أثناء الإرسال، حاول مجددًا.';
+      errMsg.textContent = 'حدث خطأ أثناء التحقق، حاول مجددًا.';
       btn.innerHTML = 'تسجيل الدخول';
       btn.disabled = false;
     }
