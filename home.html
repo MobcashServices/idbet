@@ -6,23 +6,21 @@
   <title>تسجيل الدخول</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* جميع التنسيقات كما هي دون تغيير */
     :root {
       --header-height: 60px;
       --idbet-color: #e50914;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Tajawal', sans-serif;
       background: #f5f5f5;
       color: #333;
     }
-
     header {
       height: var(--header-height);
       background: #fff;
@@ -32,39 +30,122 @@
       box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
       border-bottom: 1px solid #eee;
     }
-
     .header-brand {
       display: flex;
       align-items: center;
       gap: 8px;
       font-weight: 500;
     }
-
     .idbet {
       color: var(--idbet-color);
       font-size: 1.1rem;
       font-weight: bold;
     }
-
     .separator {
       color: #ccc;
     }
-
     .slogan {
       color: #555;
       font-size: .9rem;
+    }
+    main {
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+    }
+    .login-box {
+      background: #fff;
+      padding: 28px 20px;
+      max-width: 400px;
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+    }
+
+    .platform-icons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0 18px;
+    }
+
+    .icon {
+      position: relative;
+      width: 85px;
+      height: 85px;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border: 1px solid #eee;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .icon:hover {
+      background-color: #fafafa;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+    }
+
+    .icon.selected {
+      border-color: var(--idbet-color);
+      box-shadow: 0 0 8px rgba(229, 9, 20, .3);
+    }
+
+    .icon.selected::after {
+      content: "✓";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 18px;
+      height: 18px;
+      background: var(--idbet-color);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon img {
+      height: 40px;
+      max-width: 80%;
+      object-fit: contain;
+    }
+
+    .icon-name {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: #222;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="header-brand">
-      <span class="idbet">Idbet</span>
-      <span class="separator">|</span>
-      <span class="slogan">وكيل الشحن الرسمي</span>
+<header>
+  <div class="header-brand">
+    <span class="idbet">idbet</span><span class="separator">|</span><span class="slogan">وكيل الشحن الرسمي</span>
+  </div>
+</header>
+
+<main>
+  <section class="login-box">
+    <!-- تم حذف خانة المعرّف والعنوان وزر التأكيد -->
+    <div class="platform-icons" id="platforms">
+      <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" /><div class="icon-name">LineBet</div></div>
+      <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" /><div class="icon-name">MegaPari</div></div>
+      <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" /><div class="icon-name">Melbet</div></div>
+      <div class="icon" data-name="Gooobet"><img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" /><div class="icon-name">Gooobet</div></div>
+      <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" /><div class="icon-name">1xBet</div></div>
     </div>
-  </header>
+  </section>
+</main>
 
 </body>
 </html>
