@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>تسجيل الدخول</title>
+  <title>إعادة تعبئة الحساب</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -136,6 +136,19 @@
       color: #222;
       text-align: center;
     }
+    .account-number {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      user-select: all;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 18px;
+    }
   </style>
 </head>
 <body>
@@ -148,19 +161,40 @@
 
 <main>
   <section class="login-box">
-    <!-- عنوان تسجيل الدخول + رقم الخطوة -->
+    <!-- العنوان والخطوة -->
     <div class="title-wrapper">
       <div class="step-box">2</div>
-      <h2>تسجيل الدخول</h2>
+      <h2>إعادة تعبئة الحساب</h2>
     </div>
 
-    <!-- فقط منصات الاختيار -->
+    <!-- رقم الحساب -->
+    <div class="account-number" id="account-number">1318192563</div>
+
+    <!-- النص التوضيحي -->
+    <div class="subtitle">حدد نظام الدفع الذي تُريد شحن حسابك من خلاله.</div>
+
+    <!-- المنصات -->
     <div class="platform-icons" id="platforms">
-      <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" /><div class="icon-name">LineBet</div></div>
-      <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" /><div class="icon-name">MegaPari</div></div>
-      <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" /><div class="icon-name">Melbet</div></div>
-      <div class="icon" data-name="Gooobet"><img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" /><div class="icon-name">Gooobet</div></div>
-      <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" /><div class="icon-name">1xBet</div></div>
+      <div class="icon" data-name="LineBet">
+        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" />
+        <div class="icon-name">LineBet</div>
+      </div>
+      <div class="icon" data-name="MegaPari">
+        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" />
+        <div class="icon-name">MegaPari</div>
+      </div>
+      <div class="icon" data-name="Melbet">
+        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" />
+        <div class="icon-name">Melbet</div>
+      </div>
+      <div class="icon" data-name="Gooobet">
+        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" />
+        <div class="icon-name">Gooobet</div>
+      </div>
+      <div class="icon" data-name="1xBet">
+        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" />
+        <div class="icon-name">1xBet</div>
+      </div>
     </div>
   </section>
 </main>
