@@ -108,14 +108,46 @@
     .input-group {
       margin-bottom: 12px;
     }
-    .input-group input {
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper input {
       width: 100%;
       padding: 8px;
       font-size: 0.95rem;
       border: 1px solid #bbb;
       border-radius: 6px;
       outline: none;
+      padding-left: 40px;
     }
+
+    .status-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .status-spinner {
+      border: 2px solid #ccc;
+      border-top: 2px solid var(--idbet-color);
+      animation: spin 0.8s linear infinite;
+    }
+
+    .status-check {
+      background: var(--idbet-color);
+      color: white;
+      font-size: 12px;
+    }
+
     .error-message {
       font-size: 0.8rem;
       margin-top: 4px;
@@ -123,12 +155,14 @@
       text-align: center;
       color: #d32f2f;
     }
+
     .platform-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin: 16px 0 18px;
     }
+
     .icon {
       position: relative;
       width: 85px;
@@ -145,14 +179,17 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
+
     .icon:hover {
       background-color: #fafafa;
       box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
     }
+
     .icon.selected {
       border-color: var(--idbet-color);
       box-shadow: 0 0 8px rgba(229, 9, 20, .3);
     }
+
     .icon.selected::after {
       content: "✓";
       position: absolute;
@@ -168,17 +205,20 @@
       align-items: center;
       justify-content: center;
     }
+
     .icon img {
       height: 40px;
       max-width: 80%;
       object-fit: contain;
     }
+
     .icon-name {
       margin-top: 6px;
       font-size: 0.8rem;
       color: #222;
       text-align: center;
     }
+
     .login-btn {
       background: var(--idbet-color);
       color: #fff;
@@ -191,16 +231,20 @@
       transition: all 0.3s ease;
       font-size: 1rem;
     }
+
     .login-btn:disabled {
       background: #ccc;
       cursor: not-allowed;
     }
+
     .login-btn:hover:not(:disabled) {
       background: #b20710;
     }
+
     .login-btn:active:not(:disabled) {
       transform: scale(0.98);
     }
+
     .btn-spinner {
       width: 16px;
       height: 16px;
@@ -212,6 +256,7 @@
       margin-right: 5px;
       vertical-align: middle;
     }
+
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
@@ -235,7 +280,10 @@
     </div>
 
     <div class="input-group">
-      <input id="player-id-1" type="text" placeholder="أدخل المعرّف" maxlength="10" />
+      <div class="input-wrapper">
+        <input id="player-id-1" type="text" placeholder="أدخل المعرّف" maxlength="10" />
+        <div class="status-icon" id="status-icon"></div>
+      </div>
       <div class="error-message" id="error-message"></div>
     </div>
 
@@ -256,6 +304,7 @@
   const errMsg = document.getElementById('error-message');
   const btn = document.getElementById('login-btn');
   const icons = document.querySelectorAll('.icon');
+  const statusIcon = document.getElementById('status-icon');
   let platform = null;
   const repReg = /^(\d)\1{9}$/;
 
@@ -280,19 +329,32 @@
     input.value = val;
     errMsg.textContent = '';
     btn.disabled = true;
-    if (val.length !== 10) {
-      errMsg.textContent = 'يجب إدخال المعرف ال ID';
-      return;
-    }
-    if (repReg.test(val)) {
-      errMsg.textContent = 'المعرّف غير صالح';
-      return;
-    }
-    if (!platform) {
-      errMsg.textContent = 'يرجى اختيار المنصة.';
-      return;
-    }
-    btn.disabled = false;
+
+    statusIcon.style.display = 'flex';
+    statusIcon.className = 'status-icon status-spinner';
+    statusIcon.innerHTML = '';
+
+    setTimeout(() => {
+      if (val.length !== 10) {
+        errMsg.textContent = 'يجب إدخال المعرف ال ID';
+        statusIcon.style.display = 'none';
+        return;
+      }
+      if (repReg.test(val)) {
+        errMsg.textContent = 'المعرّف غير صالح';
+        statusIcon.style.display = 'none';
+        return;
+      }
+      if (!platform) {
+        errMsg.textContent = 'يرجى اختيار المنصة.';
+        statusIcon.style.display = 'none';
+        return;
+      }
+
+      btn.disabled = false;
+      statusIcon.className = 'status-icon status-check';
+      statusIcon.innerHTML = '✓';
+    }, 400);
   }
 
   btn.addEventListener('click', async () => {
@@ -323,6 +385,9 @@
     errMsg.textContent = '';
     input.value = '';
     platform = null;
+    statusIcon.style.display = 'none';
+    statusIcon.className = 'status-icon';
+    statusIcon.innerHTML = '';
     icons.forEach(i => i.classList.remove('selected'));
   });
 </script>
