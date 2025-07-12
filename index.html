@@ -1,17 +1,23 @@
-<!DOCTYPE html>  
-<html lang="ar" dir="rtl">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1" />  
-  <title>تسجيل الدخول</title>  
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />  
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تسجيل الدخول</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --header-height:70px; --idbet-color:#e50914; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --header-height: 60px;
+      --idbet-color: #e50914;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Tajawal', sans-serif;
       background: #f5f5f5;
-      direction: rtl;
       color: #333;
     }
     header {
@@ -19,165 +25,157 @@
       background: #fff;
       display: flex;
       align-items: center;
-      padding: 0 24px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+      padding: 0 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
       border-bottom: 1px solid #eee;
     }
     .header-brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       font-weight: 500;
     }
-    .header-brand .idbet {
+    .idbet {
       color: var(--idbet-color);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
     }
-    .header-brand .separator {
+    .separator {
       color: #ccc;
     }
-    .header-brand .slogan {
+    .slogan {
       color: #555;
-      font-size: .95rem;
+      font-size: .9rem;
     }
     main {
       display: flex;
       justify-content: center;
-      padding: 30px 16px;
+      padding: 24px 12px;
     }
     .login-box {
       background: #fff;
-      padding: 40px 28px;
-      max-width: 420px;
+      padding: 28px 20px;
+      max-width: 400px;
       width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
     }
     .title-wrapper {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1.5rem;
+      gap: 8px;
+      font-size: 1.3rem;
       font-weight: bold;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       color: #222;
     }
     .step-box {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       background: var(--idbet-color);
       color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
     }
     .input-label {
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
     .info-icon {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       border: 2px solid #666;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       cursor: help;
       color: #666;
-      transition: all .3s ease-in-out;
+      transition: all 0.3s ease;
     }
     .info-icon:hover {
       border-color: var(--idbet-color);
-      background: rgba(229, 9, 20, .1);
+      background: rgba(229, 9, 20, 0.08);
       color: var(--idbet-color);
     }
     .input-group {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .input-group input {
       width: 100%;
-      padding: 10px;
-      font-size: .95rem;
+      padding: 8px;
+      font-size: 0.95rem;
       border: 1px solid #bbb;
-      border-radius: 8px;
+      border-radius: 6px;
       outline: none;
     }
     .error-message {
-      font-size: .85rem;
-      margin-top: 6px;
-      min-height: 22px;
-      transition: color .3s ease;
+      font-size: 0.8rem;
+      margin-top: 4px;
+      min-height: 18px;
       text-align: center;
       color: #d32f2f;
     }
     .platform-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      justify-items: center;
-      margin: 30px 0;
-      align-items: center;
+      gap: 12px;
+      margin: 16px 0 18px;
     }
     .icon {
       position: relative;
-      width: 100px;
-      height: 100px;
-      border-radius: 16px;
+      width: 85px;
+      height: 85px;
+      border-radius: 12px;
       background: #fff;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px;
+      padding: 8px;
       border: 1px solid #eee;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease;
     }
     .icon:hover {
-      transform: translateY(-4px);
       background-color: #fafafa;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, .1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
     }
     .icon.selected {
       border-color: var(--idbet-color);
-      box-shadow: 0 0 10px rgba(229, 9, 20, .3);
+      box-shadow: 0 0 8px rgba(229, 9, 20, .3);
     }
     .icon.selected::after {
       content: "✓";
       position: absolute;
-      top: 6px;
-      left: 6px;
-      width: 20px;
-      height: 20px;
+      top: 5px;
+      left: 5px;
+      width: 18px;
+      height: 18px;
       background: var(--idbet-color);
       color: #fff;
       border-radius: 50%;
-      font-size: 12px;
+      font-size: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .icon img {
-      height: 50px;
-      max-width: 90%;
+      height: 40px;
+      max-width: 80%;
       object-fit: contain;
-      display: block;
     }
     .icon-name {
-      margin-top: 8px;
-      font-weight: 600;
-      font-size: .85rem;
+      margin-top: 6px;
+      font-size: 0.8rem;
       color: #222;
       text-align: center;
     }
@@ -186,11 +184,16 @@
       color: #fff;
       font-weight: bold;
       border: none;
-      padding: 12px 16px;
+      padding: 10px 12px;
       width: 100%;
-      border-radius: 8px;
+      border-radius: 6px;
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+    .login-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
     }
     .login-btn:hover:not(:disabled) {
       background: #b20710;
@@ -198,41 +201,19 @@
     .login-btn:active:not(:disabled) {
       transform: scale(0.98);
     }
-    .login-btn:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
     .btn-spinner {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       border: 2px solid rgba(255, 255, 255, .6);
       border-top: 2px solid #fff;
       border-radius: 50%;
       display: inline-block;
-      animation: spin .8s linear infinite;
-      margin-right: 6px;
+      animation: spin 0.8s linear infinite;
+      margin-right: 5px;
       vertical-align: middle;
     }
     @keyframes spin {
       to { transform: rotate(360deg); }
-    }
-
-    @media (max-width: 420px) {
-      .platform-icons {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-      }
-      .icon {
-        width: 90px;
-        height: 90px;
-        padding: 10px;
-      }
-      .icon img {
-        height: 40px;
-      }
-      .icon-name {
-        font-size: 0.8rem;
-      }
     }
   </style>
 </head>
@@ -246,10 +227,7 @@
 
 <main>
   <section class="login-box">
-    <div class="title-wrapper">
-      <div class="step-box">🔐</div>
-      <h2>تسجيل الدخول</h2>
-    </div>
+    <div class="title-wrapper"><div class="step-box">1</div><h2>تسجيل الدخول</h2></div>
 
     <div class="input-label">
       <label for="player-id-1">معرّف اللاعب</label>
@@ -262,11 +240,11 @@
     </div>
 
     <div class="platform-icons" id="platforms">
-      <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" /><div class="icon-name">LineBet</div></div>
-      <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari" /><div class="icon-name">MegaPari</div></div>
-      <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet" /><div class="icon-name">Melbet</div></div>
-      <div class="icon" data-name="Gooobet"><img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet" /><div class="icon-name">Gooobet</div></div>
-      <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet" /><div class="icon-name">1xBet</div></div>
+      <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" /><div class="icon-name">LineBet</div></div>
+      <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" /><div class="icon-name">MegaPari</div></div>
+      <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" /><div class="icon-name">Melbet</div></div>
+      <div class="icon" data-name="Gooobet"><img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" /><div class="icon-name">Gooobet</div></div>
+      <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" /><div class="icon-name">1xBet</div></div>
     </div>
 
     <button class="login-btn" id="login-btn" disabled>تسجيل الدخول</button>
@@ -279,7 +257,6 @@
   const btn = document.getElementById('login-btn');
   const icons = document.querySelectorAll('.icon');
   let platform = null;
-
   const repReg = /^(\d)\1{9}$/;
 
   input.addEventListener('keydown', e => {
@@ -303,34 +280,25 @@
     input.value = val;
     errMsg.textContent = '';
     btn.disabled = true;
-
     if (val.length !== 10) {
       errMsg.textContent = 'يجب أن يحتوي المعرّف على 10 أرقام.';
       return;
     }
-
     if (repReg.test(val)) {
       errMsg.textContent = 'المعرّف غير صالح (أرقام مكررة).';
       return;
     }
-
     if (!platform) {
       errMsg.textContent = 'يرجى اختيار المنصة.';
       return;
     }
-
     btn.disabled = false;
   }
 
   btn.addEventListener('click', async () => {
     btn.innerHTML = '<span class="btn-spinner"></span> جارٍ الإرسال...';
     btn.disabled = true;
-
-    const payload = {
-      userId: input.value,
-      platform: platform
-    };
-
+    const payload = { userId: input.value, platform: platform };
     try {
       await fetch('https://script.google.com/macros/s/AKfycbzQXqfYK3rzSSR-ZKYDxsa1iqTQUpfflHnDZQVnU3hKxNoLG0j3gPO0KIijH5YZelQg3A/exec', {
         method: 'POST',
@@ -338,7 +306,6 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-
       setTimeout(() => {
         localStorage.setItem('userId', input.value);
         window.location.href = 'home.html';
