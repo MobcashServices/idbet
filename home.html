@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>سحب من الحساب</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root {
       --idbet-color: #e50914;
@@ -31,17 +30,11 @@
 
     .header-top {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       direction: rtl;
-      margin-bottom: 20px;
-      gap: 8px;
-    }
-
-    .header-top .idbet {
-      color: var(--idbet-color);
-      font-weight: bold;
-      font-size: 1.3rem;
+      margin-bottom: 30px;
+      gap: 6px;
     }
 
     .header-top .slogan {
@@ -49,62 +42,54 @@
       font-size: .95rem;
     }
 
+    .header-top .separator {
+      color: #ccc;
+      margin: 0 6px;
+    }
+
+    .header-top .idbet {
+      color: var(--idbet-color);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
     .account-section {
-      text-align: center;
+      text-align: left;
+      direction: ltr;
     }
 
     .account-info {
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
 
     .account-info .title {
       font-size: 1.2rem;
       font-weight: bold;
+      margin-bottom: 0;
+      line-height: 1.2;
     }
 
-    .user-id {
-      position: relative;
-      display: inline-block;
-      margin-top: 4px;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .user-id .info-icon {
-      position: absolute;
-      top: -18px;
-      right: -12px;
-      font-size: 1rem;
-      color: var(--idbet-color);
-    }
-
-    .refresh-circle {
-      width: 36px;
-      height: 36px;
-      background-color: var(--idbet-color);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 10px auto 6px auto;
+    .account-info .user-id {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-top: 0;
+      line-height: 1.2;
     }
 
     .buttons-row {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      gap: 10px;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
     }
 
     .btn {
-      padding: 10px 12px;
-      font-size: 0.9rem;
+      padding: 10px 16px;
+      font-size: 0.95rem;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      min-width: 160px;
+      min-width: 180px;
     }
 
     .btn-gray {
@@ -117,19 +102,19 @@
       color: white;
       display: flex;
       align-items: center;
+      gap: 6px;
       justify-content: center;
-      gap: 4px;
     }
 
     .btn-red::after {
       content: "⌄";
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 480px) {
       .buttons-row {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
       }
     }
   </style>
@@ -137,27 +122,19 @@
 <body>
 
 <header>
-  <!-- ✅ العنوان في الوسط -->
+  <!-- ✅ السطر الأول -->
   <div class="header-top">
     <span class="idbet">Idbet</span>
-    <span class="slogan">تشجيل</span>
+    <span class="separator">|</span>
+    <span class="slogan">وكيل الشحن الرسمي</span>
   </div>
 
-  <!-- ✅ أيقونة التحديث (مكان الرقم 1 سابقًا) -->
-  <div class="refresh-circle">
-    <i data-lucide="refresh-ccw" style="width: 20px; height: 20px;"></i>
-  </div>
-
-  <!-- ✅ معرف اللاعب مع أيقونة الاستفهام -->
+  <!-- ✅ RETRAIT فوق، ID تحته مباشرة بدون فراغ -->
   <div class="account-section">
     <div class="account-info">
       <div class="title">RETRAIT DU COMPTE</div>
-      <div class="user-id" id="account-id">
-        ......<span class="info-icon"><i data-lucide="help-circle"></i></span>
-      </div>
+      <div class="user-id" id="account-id">......</div>
     </div>
-
-    <!-- ✅ الأزرار المكتفة -->
     <div class="buttons-row">
       <button class="btn btn-gray">Types de systèmes de paiement</button>
       <button class="btn btn-red">Demandes de retrait</button>
@@ -167,9 +144,7 @@
 
 <script>
   const userId = localStorage.getItem('userId') || 'غير معروف';
-  document.getElementById('account-id').childNodes[0].textContent = userId;
-
-  lucide.createIcons(); // تحميل أيقونات lucide
+  document.getElementById('account-id').textContent = userId;
 </script>
 
 </body>
