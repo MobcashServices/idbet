@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>سحب من الحساب</title>
+  <title>تسجيل الدخول</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
+      --header-height: 60px;
       --idbet-color: #e50914;
-      --gray-btn-color: #a09c92;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Tajawal', sans-serif;
       background: #f5f5f5;
@@ -22,130 +24,116 @@
     }
 
     header {
+      height: var(--header-height);
       background: #fff;
-      padding: 20px 24px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
       border-bottom: 1px solid #eee;
     }
 
-    .header-top {
+    .header-brand {
       display: flex;
-      justify-content: flex-start;
       align-items: center;
-      direction: rtl;
-      margin-bottom: 30px;
-      gap: 6px;
+      gap: 8px;
+      font-weight: 500;
     }
 
-    .header-top .slogan {
-      color: #555;
-      font-size: .95rem;
-    }
-
-    .header-top .separator {
-      color: #ccc;
-      margin: 0 6px;
-    }
-
-    .header-top .idbet {
+    .idbet {
       color: var(--idbet-color);
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    .account-section {
-      text-align: left;
-      direction: ltr;
-    }
-
-    .account-info {
-      margin-bottom: 16px;
-    }
-
-    .account-info .title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 0;
-      line-height: 1.2;
-    }
-
-    .account-info .user-id {
       font-size: 1.1rem;
       font-weight: bold;
-      margin-top: 0;
-      line-height: 1.2;
     }
 
-    .buttons-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
+    .separator {
+      color: #ccc;
     }
 
-    .btn {
-      padding: 10px 16px;
-      font-size: 0.95rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      min-width: 180px;
-    }
-
-    .btn-gray {
-      background-color: var(--gray-btn-color);
-      color: white;
-    }
-
-    .btn-red {
-      background-color: var(--idbet-color);
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      justify-content: center;
-    }
-
-    .btn-red::after {
-      content: "⌄";
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 480px) {
-      .buttons-row {
-        flex-direction: column;
-        gap: 12px;
-      }
+    .slogan {
+      color: #555;
+      font-size: .9rem;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <!-- ✅ السطر الأول -->
-  <div class="header-top">
-    <span class="idbet">Idbet</span>
-    <span class="separator">|</span>
-    <span class="slogan">وكيل الشحن الرسمي</span>
-  </div>
-
-  <!-- ✅ RETRAIT فوق، ID تحته مباشرة بدون فراغ -->
-  <div class="account-section">
-    <div class="account-info">
-      <div class="title">RETRAIT DU COMPTE</div>
-      <div class="user-id" id="account-id">......</div>
+  <header>
+    <div class="header-brand">
+      <span class="idbet">Idbet</span>
+      <span class="separator">|</span>
+      <span class="slogan">وكيل الشحن الرسمي</span>
     </div>
-    <div class="buttons-row">
-      <button class="btn btn-gray">Types de systèmes de paiement</button>
-      <button class="btn btn-red">Demandes de retrait</button>
-    </div>
-  </div>
-</header>
+  </header>
 
-<script>
-  const userId = localStorage.getItem('userId') || 'غير معروف';
-  document.getElementById('account-id').textContent = userId;
-</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تسجيل الدخول</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --header-height: 60px;
+      --idbet-color: #e50914;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      height: var(--header-height);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
+      border-bottom: 1px solid #eee;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .idbet {
+      color: var(--idbet-color);
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .separator {
+      color: #ccc;
+    }
+
+    .slogan {
+      color: #555;
+      font-size: .9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-brand">
+      <span class="idbet">Idbet</span>
+      <span class="separator">|</span>
+      <span class="slogan">وكيل الشحن الرسمي</span>
+    </div>
+  </header>
 
 </body>
 </html>
