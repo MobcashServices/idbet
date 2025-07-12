@@ -55,7 +55,7 @@
     .login-box {
       background: #fff;
       padding: 28px 20px;
-      max-width: 400px;
+      max-width: 440px;
       width: 100%;
       border-radius: 14px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
@@ -80,7 +80,6 @@
       justify-content: center;
       font-size: 0.9rem;
     }
-
     .account-section {
       display: flex;
       justify-content: space-between;
@@ -94,18 +93,17 @@
       font-size: 0.95rem;
       color: #333;
     }
-
     .account-id {
       font-weight: bold;
       user-select: all;
     }
-
     .account-text {
       text-align: left;
       font-size: 0.9rem;
       color: #666;
     }
 
+    /* أيقونات المنصات */
     .platform-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -114,16 +112,15 @@
     }
 
     .icon {
-      position: relative;
-      width: 100%;
-      height: 70px;
+      height: 120px;
       border-radius: 12px;
       background: #fff;
       box-shadow: 0 2px 8px rgba(0, 0, 0, .04);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 12px;
-      padding: 0 16px;
+      justify-content: space-between;
+      padding: 10px;
       border: 1px solid #eee;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -156,16 +153,21 @@
     }
 
     .icon img {
-      height: 40px;
-      width: auto;
-      max-width: 100px;
+      max-height: 50%;
+      max-width: 100%;
       object-fit: contain;
     }
 
     .icon-name {
-      font-size: 1rem;
+      height: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
       color: #222;
       font-weight: 600;
+      text-align: center;
+      width: 100%;
     }
   </style>
 </head>
@@ -194,23 +196,23 @@
     <!-- المنصات -->
     <div class="platform-icons" id="platforms">
       <div class="icon" data-name="LineBet">
-        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet Logo" />
+        <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" />
         <div class="icon-name">LineBet</div>
       </div>
       <div class="icon" data-name="MegaPari">
-        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari Logo" />
+        <img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari" />
         <div class="icon-name">MegaPari</div>
       </div>
       <div class="icon" data-name="Melbet">
-        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet Logo" />
+        <img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet" />
         <div class="icon-name">Melbet</div>
       </div>
       <div class="icon" data-name="Gooobet">
-        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet Logo" />
+        <img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet" />
         <div class="icon-name">Gooobet</div>
       </div>
       <div class="icon" data-name="1xBet">
-        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet Logo" />
+        <img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet" />
         <div class="icon-name">1xBet</div>
       </div>
     </div>
