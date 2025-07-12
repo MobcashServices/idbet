@@ -219,5 +219,15 @@
   </section>
 </main>
 
+<script>
+  // قراءة رقم الحساب من localStorage وعرضه
+  const accountSpan = document.getElementById('account-number');
+  const storedNumber = localStorage.getItem('accountNumber');
+
+  if(storedNumber && accountSpan){
+    accountSpan.textContent = storedNumber;
+  }
+</script>
+
 </body>
 </html>
