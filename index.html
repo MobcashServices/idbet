@@ -1,10 +1,10 @@
-<!DOCTYPE html>  
-<html lang="ar" dir="rtl">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1" />  
-  <title>تسجيل الدخول</title>  
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />  
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تسجيل</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root { --header-height:70px; --idbet-color:#e50914; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,10 +56,11 @@
     .title-wrapper {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       font-size: 1.35rem;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .step-box {
       width: 36px;
@@ -70,25 +71,30 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
+    }
+    .step-box svg {
+      width: 20px;
+      height: 20px;
     }
     .input-label {
       margin-bottom: 8px;
       font-weight: 600;
+    }
+    .input-label .label-wrapper {
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .info-icon {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       border: 2px solid #666;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: help;
       color: #666;
       transition: .3s;
@@ -113,15 +119,14 @@
       font-size: .85rem;
       margin-top: 6px;
       min-height: 22px;
-      transition: color .3s ease;
       text-align: center;
     }
     .platform-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
+      gap: 12px;
       justify-items: center;
-      margin: 20px 0;
+      margin: 12px 0;
       align-items: center;
     }
     .icon {
@@ -167,7 +172,6 @@
       height: 50px;
       max-width: 90%;
       object-fit: contain;
-      display: block;
     }
     .icon-name {
       margin-top: 8px;
@@ -200,7 +204,6 @@
       border: 3px solid rgba(255, 255, 255, .6);
       border-top: 3px solid #fff;
       border-radius: 50%;
-      display: inline-block;
       animation: spin .8s linear infinite;
       margin-right: 6px;
       vertical-align: middle;
@@ -212,7 +215,7 @@
     @media (max-width: 420px) {
       .platform-icons {
         grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
+        gap: 10px;
       }
       .icon {
         width: 90px;
@@ -238,11 +241,18 @@
 
 <main>
   <section class="login-box">
-    <div class="title-wrapper"><div class="step-box">1</div><h2>تسجيل الدخول</h2></div>
+    <div class="title-wrapper">
+      <div class="step-box">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24"><path d="M2 12a10 10 0 1 0 3.1-7.2l1.4 1.4a1 1 0 0 1-1.4 1.4L2.3 5.3a1 1 0 0 1 0-1.4L5.1 1a1 1 0 1 1 1.4 1.4L5.2 4A12 12 0 1 1 2 12z"/></svg>
+      </div>
+      <h2>تسجيل</h2>
+    </div>
 
     <div class="input-label">
-      <label for="player-id-1">معرّف اللاعب</label>
-      <span class="info-icon" title="رقم مكوَّن من 10 أرقام">?</span>
+      <div class="label-wrapper">
+        <span class="info-icon" title="رقم مكوَّن من 10 أرقام">?</span>
+        <label for="player-id-1">معرّف اللاعب</label>
+      </div>
     </div>
 
     <div class="input-group">
@@ -251,11 +261,11 @@
     </div>
 
     <div class="platform-icons" id="platforms">
-      <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" /><div class="icon-name">LineBet</div></div>
-      <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" alt="MegaPari" /><div class="icon-name">MegaPari</div></div>
-      <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" alt="Melbet" /><div class="icon-name">Melbet</div></div>
-      <div class="icon" data-name="Gooobet"><img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" alt="Gooobet" /><div class="icon-name">Gooobet</div></div>
-      <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" alt="1xBet" /><div class="icon-name">1xBet</div></div>
+      <div class="icon" data-name="LineBet"><img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" /><div class="icon-name">LineBet</div></div>
+      <div class="icon" data-name="MegaPari"><img src="https://i.postimg.cc/3RRJsCtS/Wh7-Gu-Bom34-Xq4-Bu-QN5n-Qlj-XPXf-V6-CZothm-Lsl6a-S.webp" /><div class="icon-name">MegaPari</div></div>
+      <div class="icon" data-name="Melbet"><img src="https://i.postimg.cc/wjCr86FS/melbet.png" /><div class="icon-name">Melbet</div></div>
+      <div class="icon" data-name="Gooobet"><img src="https://i.postimg.cc/NMyXmrWn/c943dc665c7e8926e8fb15cadd4e1eee.jpg" /><div class="icon-name">Gooobet</div></div>
+      <div class="icon" data-name="1xBet"><img src="https://i.postimg.cc/PrMCL4Cx/1-XBet-Casino-1200x900-1.png" /><div class="icon-name">1xBet</div></div>
     </div>
 
     <button class="login-btn" id="login-btn" disabled>تسجيل الدخول</button>
