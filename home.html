@@ -80,12 +80,38 @@
       justify-content: center;
       font-size: 0.9rem;
     }
+
+    .account-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: #f9f9f9;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .account-id {
+      font-weight: bold;
+      user-select: all;
+    }
+
+    .account-text {
+      text-align: left;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
     .platform-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin: 16px 0 18px;
     }
+
     .icon {
       position: relative;
       width: 85px;
@@ -102,14 +128,17 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
+
     .icon:hover {
       background-color: #fafafa;
       box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
     }
+
     .icon.selected {
       border-color: var(--idbet-color);
       box-shadow: 0 0 8px rgba(229, 9, 20, .3);
     }
+
     .icon.selected::after {
       content: "✓";
       position: absolute;
@@ -125,29 +154,18 @@
       align-items: center;
       justify-content: center;
     }
+
     .icon img {
       height: 40px;
       max-width: 80%;
       object-fit: contain;
     }
+
     .icon-name {
       margin-top: 6px;
       font-size: 0.8rem;
       color: #222;
       text-align: center;
-    }
-    .account-number {
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-      user-select: all;
-    }
-    .subtitle {
-      text-align: center;
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 18px;
     }
   </style>
 </head>
@@ -167,11 +185,11 @@
       <h2>إعادة تعبئة الحساب</h2>
     </div>
 
-    <!-- رقم الحساب -->
-    <div class="account-number" id="account-number">1318192563</div>
-
-    <!-- النص التوضيحي -->
-    <div class="subtitle">حدد نظام الدفع الذي تُريد شحن حسابك من خلاله.</div>
+    <!-- رقم الحساب + الجملة بشكل أفقي -->
+    <div class="account-section">
+      <div class="account-id">رقم الحساب: <span id="account-number">1318192563</span></div>
+      <div class="account-text">حدد نظام الدفع الذي تُريد شحن حسابك من خلاله.</div>
+    </div>
 
     <!-- المنصات -->
     <div class="platform-icons" id="platforms">
