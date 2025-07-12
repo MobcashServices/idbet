@@ -61,29 +61,31 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
     }
 
-    /* القسم العلوي - التنسيق الجديد */
+    /* رأس الصفحة */
     .account-info {
-      text-align: center;
+      text-align: right;
       margin-bottom: 20px;
     }
 
     .page-title {
       font-size: 1.4rem;
-      color: #111;
-      margin-bottom: 10px;
+      color: #000;
+      margin-bottom: 12px;
       font-weight: bold;
     }
 
     .account-number {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: bold;
-      color: var(--idbet-color);
-      margin-bottom: 8px;
+      color: #000;
+      margin-bottom: 6px;
+      user-select: none;
+      direction: ltr;
     }
 
     .account-description {
-      font-size: 0.95rem;
-      color: #444;
+      font-size: 1rem;
+      color: #333;
     }
 
     /* أيقونات المنصات */
@@ -165,9 +167,9 @@
 
 <main>
   <section class="login-box">
-    <!-- القسم العلوي الجديد -->
+    <!-- العنوان ورقم الحساب -->
     <div class="account-info">
-      <h2 class="page-title">إعادة تعبئة الحساب</h2>
+      <div class="page-title">إعادة تعبئة الحساب</div>
       <div class="account-number">1318192563</div>
       <div class="account-description">حدد نظام الدفع الذي تُريد شحن حسابك من خلاله.</div>
     </div>
