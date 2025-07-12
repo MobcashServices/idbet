@@ -143,7 +143,7 @@
     }
 
     .status-check {
-      background: var(--idbet-color);
+      background: #28a745;
       color: white;
       font-size: 12px;
     }
@@ -330,16 +330,18 @@
     errMsg.textContent = '';
     btn.disabled = true;
 
+    if (val.length < 10) {
+      statusIcon.style.display = 'none';
+      statusIcon.className = 'status-icon';
+      statusIcon.innerHTML = '';
+      return;
+    }
+
     statusIcon.style.display = 'flex';
     statusIcon.className = 'status-icon status-spinner';
     statusIcon.innerHTML = '';
 
     setTimeout(() => {
-      if (val.length !== 10) {
-        errMsg.textContent = 'يجب إدخال المعرف ال ID';
-        statusIcon.style.display = 'none';
-        return;
-      }
       if (repReg.test(val)) {
         errMsg.textContent = 'المعرّف غير صالح';
         statusIcon.style.display = 'none';
@@ -354,7 +356,7 @@
       btn.disabled = false;
       statusIcon.className = 'status-icon status-check';
       statusIcon.innerHTML = '✓';
-    }, 400);
+    }, 500);
   }
 
   btn.addEventListener('click', async () => {
