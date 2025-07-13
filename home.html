@@ -60,10 +60,13 @@
       border-radius: 14px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
     }
+    /* تعديل العنوان والرقم 2 */
     .title-wrapper {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 8px;
+      direction: ltr; /* عكس الاتجاه فقط لهذا العنصر */
+      justify-content: flex-start;
       margin-bottom: 16px;
     }
     .title-wrapper h2 {
@@ -124,6 +127,7 @@
       border: 1px solid #eee;
       cursor: pointer;
       transition: all 0.3s ease;
+      position: relative;
     }
 
     .icon:hover {
@@ -182,8 +186,8 @@
 <main>
   <section class="login-box">
     <div class="title-wrapper">
-      <h2>إعادة تعبئة الحساب</h2>
       <div class="step-box">2</div>
+      <h2>إعادة تعبئة الحساب</h2>
     </div>
 
     <div class="account-section">
