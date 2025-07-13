@@ -60,60 +60,56 @@
       border-radius: 14px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
     }
-    /* تعديل العنوان والرقم 2 */
     .title-wrapper {
       display: flex;
       align-items: center;
       gap: 8px;
-      direction: ltr; /* عكس الاتجاه فقط لهذا العنصر */
+      direction: ltr; /* لجعل الرقم على اليسار والعنوان على اليمين */
       justify-content: flex-start;
       margin-bottom: 16px;
-    }
-    .title-wrapper h2 {
       font-size: 1.3rem;
       font-weight: bold;
       color: #222;
     }
     .step-box {
-      width: 22px;
-      height: 22px;
+      width: 32px;
+      height: 32px;
       background: var(--idbet-color);
       color: #fff;
       border-radius: 50%;
-      font-size: 0.8rem;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 0.9rem;
     }
-
     .account-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      background: #f9f9f9;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
       margin-bottom: 20px;
-      text-align: left;
-      direction: ltr;
+      font-size: 0.95rem;
+      color: #333;
     }
-
     .account-id {
       font-weight: bold;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      user-select: all;
     }
-
     .account-text {
-      background: #aaa;
-      color: white;
-      padding: 6px 12px;
-      display: inline-block;
-      border-radius: 4px;
-      font-size: 0.85rem;
+      text-align: left;
+      font-size: 0.9rem;
+      color: #666;
     }
-
     .platform-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       width: 100%;
     }
-
     .icon {
       height: 120px;
       border-radius: 12px;
@@ -129,17 +125,14 @@
       transition: all 0.3s ease;
       position: relative;
     }
-
     .icon:hover {
       background-color: #fafafa;
       box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
     }
-
     .icon.selected {
       border-color: var(--idbet-color);
       box-shadow: 0 0 8px rgba(229, 9, 20, .3);
     }
-
     .icon.selected::after {
       content: "✓";
       position: absolute;
@@ -155,13 +148,11 @@
       align-items: center;
       justify-content: center;
     }
-
     .icon img {
       max-height: 50%;
       max-width: 100%;
       object-fit: contain;
     }
-
     .icon-name {
       height: 50%;
       display: flex;
@@ -176,25 +167,21 @@
   </style>
 </head>
 <body>
-
 <header>
   <div class="header-brand">
     <span class="idbet">idbet</span><span class="separator">|</span><span class="slogan">وكيل الشحن الرسمي</span>
   </div>
 </header>
-
 <main>
   <section class="login-box">
     <div class="title-wrapper">
       <div class="step-box">2</div>
       <h2>إعادة تعبئة الحساب</h2>
     </div>
-
     <div class="account-section">
-      <div class="account-id" id="account-number">DÉPÔT 1314777475</div>
-      <div class="account-text">Types de systèmes de paiement</div>
+      <div class="account-id">رقم الحساب: <span id="account-number">••••••••••</span></div>
+      <div class="account-text">حدد نظام الدفع الذي تُريد شحن حسابك من خلاله.</div>
     </div>
-
     <div class="platform-icons" id="platforms">
       <div class="icon" data-name="LineBet">
         <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" />
@@ -219,6 +206,13 @@
     </div>
   </section>
 </main>
-
+<script>
+  // قراءة رقم الحساب من localStorage وعرضه
+  const accountSpan = document.getElementById('account-number');
+  const storedNumber = localStorage.getItem('userId');
+  if (storedNumber && accountSpan) {
+    accountSpan.textContent = storedNumber;
+  }
+</script>
 </body>
 </html>
