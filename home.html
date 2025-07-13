@@ -21,6 +21,9 @@
       font-family: 'Tajawal', sans-serif;
       background: #f5f5f5;
       color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -31,6 +34,7 @@
       padding: 0 16px;
       box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
       border-bottom: 1px solid #eee;
+      flex-shrink: 0;
     }
 
     .header-brand {
@@ -56,18 +60,26 @@
     }
 
     main {
+      flex: 1;
       display: flex;
       justify-content: center;
+      gap: 20px;
       padding: 24px 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
     }
 
+    /* المحتوى الرئيسي */
     .login-box {
       background: #fff;
       padding: 28px 20px;
-      max-width: 600px;
-      width: 100%;
+      width: 600px;
       border-radius: 14px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+      display: flex;
+      flex-direction: column;
     }
 
     .title-wrapper {
@@ -115,7 +127,7 @@
       color: #666;
     }
 
-    /* ==== الطرق الموصى بها ==== */
+    /* الطرق الموصى بها */
     .recommended-section {
       background: #eeeeee;
       padding: 10px 10px 25px;
@@ -189,18 +201,35 @@
       text-align: center;
     }
 
-    @media (max-width: 600px) {
-      .bank-card {
-        height: 90px;
+    /* الـ Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sidebar img {
+      max-width: 100%;
+      border-radius: 14px;
+      object-fit: contain;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+        align-items: center;
       }
 
-      .bottom-section {
-        font-size: 12px;
-      }
-
-      .recommended-wrapper {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+      .login-box, .sidebar {
+        width: 90%;
+        max-width: 600px;
+        margin-bottom: 20px;
       }
     }
 
@@ -208,10 +237,6 @@
       0% { transform: translateZ(0); }
       50% { transform: translateZ(-80px); }
       100% { transform: translateZ(0); }
-    }
-
-    .animate-back {
-      animation: goBack 0.5s ease;
     }
   </style>
 </head>
@@ -224,6 +249,7 @@
 </header>
 
 <main>
+  <!-- المحتوى الرئيسي -->
   <section class="login-box">
     <div class="title-wrapper">
       <div class="step-box">2</div>
@@ -231,12 +257,12 @@
     </div>
 
     <div class="account-section">
-      <div class="account-id">Dépôt: <span id="account-number">••••••••••</span></div>
+      <div class="account-id">رقم الحساب: <span id="account-number">••••••••••</span></div>
       <div class="account-text">حدد الطريقة الموصى بها لإعادة تعبئة الحساب.</div>
     </div>
 
     <section class="recommended-section" id="recommended">
-      <h3 class="recommended-title">Méthodes recommandées</h3>
+      <h3 class="recommended-title">الطرق الموصى بها</h3>
       <div class="recommended-wrapper">
         <div class="bank-card">
           <div class="top-section"><img src="https://i.postimg.cc/8cmsx5SR/albarid-mobcash.png" alt="Al Barid"></div>
@@ -267,6 +293,11 @@
       </div>
     </section>
   </section>
+
+  <!-- Sidebar الصورة في الجانب -->
+  <aside class="sidebar">
+    <img src="https://i.postimg.cc/rwstQsFy/idbet.jpg" alt="IDBet Image" />
+  </aside>
 </main>
 
 <script>
