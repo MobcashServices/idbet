@@ -62,10 +62,9 @@
 
     .top-section {
       background: #fff;
-      width: 98vw;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 12px 24px 12px 16px;
+      width: 320px;
+      margin: 20px auto;
+      padding: 16px 20px;
       box-sizing: border-box;
 
       display: flex;
@@ -73,18 +72,21 @@
       justify-content: space-between;
       gap: 12px;
 
-      height: 140px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      height: auto;
     }
 
     .account-info {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 4px;
       color: #000;
-      text-align: start;
+      text-align: center;
       direction: ltr;
       font-weight: bold;
       font-size: 15px;
+      align-items: center;
     }
 
     .account-info .number {
@@ -97,18 +99,16 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
-      align-items: flex-start;
+      align-items: center;
     }
 
     .btn {
-      padding: 8px 14px;
-      font-size: 13px;
-      border: none;
+      padding: 8px 20px;
+      font-size: 14px;
+      height: 40px;
+      border-radius: 4px;
       cursor: pointer;
-      border-radius: 2px;
-      color: #fff;
       user-select: none;
-      height: 36px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -117,22 +117,25 @@
     .btn-gray {
       background-color: #a7a39d;
       order: 1;
-      padding-left: 28px; /* زيادة الحشو الأيسر لسحبها لليسار في RTL */
+      padding-left: 24px;
+      width: 100%;
+      max-width: 280px;
     }
 
     .btn-red {
       background-color: var(--idbet-color);
       order: 2;
-      gap: 4px;
+      gap: 6px;
       margin-top: 0;
+      width: 100%;
+      max-width: 280px;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
     }
 
     .btn-red span.icon {
-      font-size: 10px;
-      transform: rotate(0deg);
-      line-height: 1;
+      font-size: 12px;
       margin: 0;
       padding: 0;
       display: flex;
