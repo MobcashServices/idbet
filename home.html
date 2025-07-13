@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>إعادة تعبئة الحساب</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -58,14 +58,14 @@
     main {
       display: flex;
       justify-content: center;
-      padding: 24px 8px;
+      padding: 16px;
     }
 
     .login-box {
       background: #fff;
-      padding: 28px 24px;
-      max-width: 1000px;
+      padding: 24px;
       width: 100%;
+      max-width: 1200px;
       border-radius: 14px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
     }
@@ -115,29 +115,25 @@
       color: #666;
     }
 
-    /* ==== الطرق الموصى بها ==== */
     .recommended-section {
       background: #eeeeee;
       padding: 10px 10px 25px;
       margin-top: 20px;
       width: 100%;
-      box-sizing: border-box;
       border-radius: 10px;
     }
 
     .recommended-title {
       font-size: 18px;
       color: #1a1a1a;
-      margin: 0 0 10px;
+      margin: 0 0 16px;
       text-align: center;
     }
 
     .recommended-wrapper {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 16px;
-      width: 100%;
-      margin: 0 auto;
     }
 
     .bank-card {
@@ -163,19 +159,12 @@
       justify-content: center;
       align-items: center;
       padding: 5px;
-      perspective: 600px;
     }
 
     .top-section img {
       max-width: 90%;
       max-height: 30px;
       object-fit: contain;
-      transform-style: preserve-3d;
-      transition: transform 0.4s ease;
-    }
-
-    .top-section img:hover {
-      animation: goBack 0.5s ease;
     }
 
     .bottom-section {
@@ -189,29 +178,24 @@
       text-align: center;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .recommended-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
       .bank-card {
         height: 90px;
       }
-
       .bottom-section {
         font-size: 12px;
       }
+    }
 
+    @media (max-width: 480px) {
       .recommended-wrapper {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr 1fr;
         gap: 10px;
       }
-    }
-
-    @keyframes goBack {
-      0% { transform: translateZ(0); }
-      50% { transform: translateZ(-80px); }
-      100% { transform: translateZ(0); }
-    }
-
-    .animate-back {
-      animation: goBack 0.5s ease;
     }
   </style>
 </head>
@@ -235,7 +219,7 @@
       <div class="account-text">حدد الطريقة الموصى بها لإعادة تعبئة الحساب.</div>
     </div>
 
-    <section class="recommended-section" id="recommended">
+    <section class="recommended-section">
       <h3 class="recommended-title">Méthodes recommandées</h3>
       <div class="recommended-wrapper">
         <div class="bank-card">
@@ -251,9 +235,7 @@
           <div class="bottom-section">CIH</div>
         </div>
         <div class="bank-card" onclick="location.href='cash-plus.html'">
-          <div class="top-section">
-            <img src="https://i.postimg.cc/DZjFzvL0/cash-plus-idbet.png" alt="Cash Plus" />
-          </div>
+          <div class="top-section"><img src="https://i.postimg.cc/DZjFzvL0/cash-plus-idbet.png" alt="Cash Plus"></div>
           <div class="bottom-section">Cash Plus</div>
         </div>
         <div class="bank-card">
