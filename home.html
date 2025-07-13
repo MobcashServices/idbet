@@ -62,8 +62,10 @@
 
     .top-section {
       background: #fff;
-      width: 100vw;
-      padding: 12px 16px;
+      width: 98vw;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 12px 24px 12px 16px;
       box-sizing: border-box;
 
       display: flex;
@@ -71,7 +73,7 @@
       justify-content: space-between;
       gap: 12px;
 
-      height: 130px; /* يمكنك تعديل الارتفاع حسب الحاجة */
+      height: 140px;
     }
 
     .account-info {
@@ -93,9 +95,9 @@
 
     .buttons-row {
       display: flex;
-      flex-direction: column; /* ترتيب عمودي */
-      gap: 8px; /* مسافة بين الأزرار */
-      align-items: flex-start; /* لمحاذاة الأزرار بداية السطر */
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-start;
     }
 
     .btn {
@@ -115,6 +117,7 @@
     .btn-gray {
       background-color: #a7a39d;
       order: 1;
+      padding-left: 28px; /* زيادة الحشو الأيسر لسحبها لليسار في RTL */
     }
 
     .btn-red {
