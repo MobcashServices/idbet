@@ -9,6 +9,9 @@
     :root {
       --header-height: 60px;
       --idbet-color: #e50914;
+      --max-content-width: 900px;
+      --card-height-desktop: 110px;
+      --card-height-mobile: 90px;
     }
 
     * {
@@ -24,32 +27,45 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding: 16px 10px;
     }
 
     header {
+      width: 100%;
+      max-width: var(--max-content-width);
       height: var(--header-height);
       background: #fff;
       display: flex;
       align-items: center;
-      padding: 0 16px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
-      border-bottom: 1px solid #eee;
+      padding: 0 20px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+      border-radius: 10px;
+      margin-bottom: 24px;
+      gap: 15px;
       flex-shrink: 0;
-      gap: 10px;
+    }
+
+    .header-image {
+      height: 45px;
+      width: auto;
+      border-radius: 6px;
+      object-fit: contain;
+      flex-shrink: 0;
     }
 
     .header-brand {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-weight: 500;
-      font-size: 1.1rem;
-      color: #333;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #222;
+      white-space: nowrap;
     }
 
     .idbet {
       color: var(--idbet-color);
-      font-weight: bold;
     }
 
     .separator {
@@ -58,141 +74,140 @@
 
     .slogan {
       color: #555;
-      font-size: 0.9rem;
-    }
-
-    .header-image {
-      height: 40px;
-      width: auto;
-      border-radius: 6px;
-      object-fit: contain;
+      font-size: 1rem;
+      font-weight: 400;
     }
 
     main {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 24px 12px;
-      max-width: 1200px;
-      margin: 0 auto;
       width: 100%;
-      box-sizing: border-box;
+      max-width: var(--max-content-width);
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
     }
 
     .login-box {
       background: #fff;
-      padding: 28px 20px;
-      width: 520px;
-      border-radius: 14px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+      padding: 32px 28px;
+      width: 100%;
+      max-width: 580px;
+      border-radius: 16px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
       display: flex;
       flex-direction: column;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .login-box:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
     }
 
     .title-wrapper {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin-bottom: 16px;
+      gap: 12px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 22px;
       color: #222;
     }
 
     .step-box {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       background: var(--idbet-color);
       color: #fff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
+      user-select: none;
     }
 
     .account-section {
+      background: #f9f9f9;
+      padding: 16px 18px;
+      border-radius: 10px;
+      border: 1.5px solid #ddd;
+      margin-bottom: 28px;
+      font-size: 1rem;
+      color: #333;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      background: #f9f9f9;
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
-      color: #333;
+      gap: 10px;
     }
 
     .account-id {
-      font-weight: bold;
+      font-weight: 700;
       user-select: all;
+      word-break: break-word;
     }
 
     .account-text {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: #666;
     }
 
     .recommended-section {
       background: #eeeeee;
-      padding: 10px 10px 25px;
-      margin-top: 20px;
+      padding: 20px 16px 28px;
       width: 100%;
-      box-sizing: border-box;
-      border-radius: 10px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
     }
 
     .recommended-title {
-      font-size: 18px;
+      font-size: 20px;
       color: #1a1a1a;
-      margin: 0 0 10px;
+      margin-bottom: 18px;
       text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
     .recommended-wrapper {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      width: 100%;
-      max-width: 600px;
-      overflow-x: auto;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 640px;
+      margin: 0 auto;
     }
 
     .bank-card {
-      background: #f9f9f9;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      background: #fff;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
       cursor: pointer;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      height: 100px;
-      border-radius: 6px;
-      transition: box-shadow 0.3s ease;
-      min-width: 80px;
+      height: var(--card-height-desktop);
+      border-radius: 10px;
+      transition: box-shadow 0.25s ease;
+      user-select: none;
     }
 
     .bank-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
 
     .top-section {
       background: #fff;
-      height: 55%;
+      height: 60%;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 5px;
+      padding: 8px 12px;
       perspective: 600px;
     }
 
     .top-section img {
-      max-width: 90%;
-      max-height: 30px;
+      max-width: 85%;
+      max-height: 36px;
       object-fit: contain;
       transform-style: preserve-3d;
-      transition: transform 0.4s ease;
+      transition: transform 0.3s ease;
     }
 
     .top-section img:hover {
@@ -202,27 +217,17 @@
     .bottom-section {
       background: #444;
       color: #fff;
-      height: 45%;
+      height: 40%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 600;
       text-align: center;
-      padding: 0 2px;
+      padding: 0 4px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-    }
-
-    @media (max-width: 600px) {
-      .recommended-wrapper {
-        max-width: 100%;
-        grid-template-columns: repeat(4, minmax(80px, 1fr));
-      }
-      .bank-card {
-        height: 80px;
-        min-width: 80px;
-      }
     }
 
     @keyframes goBack {
@@ -230,6 +235,77 @@
       50% { transform: translateZ(-80px); }
       100% { transform: translateZ(0); }
     }
+
+    /* Responsive for smaller screens */
+    @media (max-width: 800px) {
+      .recommended-wrapper {
+        max-width: 100%;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .bank-card {
+        height: var(--card-height-mobile);
+      }
+
+      .top-section img {
+        max-height: 28px;
+      }
+
+      .bottom-section {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      header {
+        padding: 0 12px;
+        gap: 8px;
+      }
+
+      .header-image {
+        height: 36px;
+      }
+
+      .header-brand {
+        font-size: 1rem;
+        gap: 6px;
+      }
+
+      .login-box {
+        max-width: 100%;
+        padding: 24px 16px;
+      }
+
+      .title-wrapper {
+        font-size: 1.2rem;
+        gap: 6px;
+      }
+
+      .step-box {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+      }
+
+      .recommended-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .bank-card {
+        height: 80px;
+      }
+
+      .top-section img {
+        max-height: 24px;
+      }
+
+      .bottom-section {
+        font-size: 12px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -258,30 +334,28 @@
     <section class="recommended-section" id="recommended">
       <h3 class="recommended-title">الطرق الموصى بها</h3>
       <div class="recommended-wrapper">
-        <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/8cmsx5SR/albarid-mobcash.png" alt="Al Barid"></div>
-          <div class="bottom-section">Al Barid</div>
-        </div>
-        <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/sgvD4Kv9/attijariwafa-mobcash.png" alt="Attijari"></div>
-          <div class="bottom-section">Attijari</div>
-        </div>
-        <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/g07jHhK5/cih.png" alt="CIH"></div>
-          <div class="bottom-section">CIH</div>
-        </div>
         <div class="bank-card" onclick="location.href='cash-plus.html'">
-          <div class="top-section">
-            <img src="https://i.postimg.cc/DZjFzvL0/cash-plus-idbet.png" alt="Cash Plus" />
-          </div>
+          <div class="top-section"><img src="https://i.postimg.cc/DZjFzvL0/cash-plus-idbet.png" alt="Cash Plus" /></div>
           <div class="bottom-section">Cash Plus</div>
         </div>
         <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/Gm528FQW/barid-pay-mobcash.png" alt="Barid Pay"></div>
+          <div class="top-section"><img src="https://i.postimg.cc/8cmsx5SR/albarid-mobcash.png" alt="Al Barid" /></div>
+          <div class="bottom-section">Al Barid</div>
+        </div>
+        <div class="bank-card">
+          <div class="top-section"><img src="https://i.postimg.cc/sgvD4Kv9/attijariwafa-mobcash.png" alt="Attijari" /></div>
+          <div class="bottom-section">Attijari</div>
+        </div>
+        <div class="bank-card">
+          <div class="top-section"><img src="https://i.postimg.cc/g07jHhK5/cih.png" alt="CIH" /></div>
+          <div class="bottom-section">CIH</div>
+        </div>
+        <div class="bank-card">
+          <div class="top-section"><img src="https://i.postimg.cc/Gm528FQW/barid-pay-mobcash.png" alt="Barid Pay" /></div>
           <div class="bottom-section">Barid Pay</div>
         </div>
         <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/Vs2dDQbJ/banque-populaire-mobcah.png" alt="Banque Populaire"></div>
+          <div class="top-section"><img src="https://i.postimg.cc/Vs2dDQbJ/banque-populaire-mobcah.png" alt="Banque Populaire" /></div>
           <div class="bottom-section">Banque Populaire</div>
         </div>
       </div>
