@@ -62,12 +62,22 @@
     }
 
     .login-box {
-      background: #fff;
+      background: #eeeeee; /* خلفية رمادية */
       padding: 24px;
       width: 100%;
       max-width: 1200px;
-      border-radius: 14px;
+      /* حواف حادة */
+      /* border-radius: 0; افتراضياً بدون حواف */
       box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+    }
+
+    /* تغليف العنوان والقسم الحسابي بخلفية بيضاء بحواف حادة */
+    .title-account-wrapper {
+      background: #fff;
+      padding: 16px 24px 24px;
+      margin-bottom: 20px;
+      /* حواف حادة */
+      /* border-radius: 0; */
     }
 
     .title-wrapper {
@@ -98,9 +108,7 @@
       gap: 8px;
       background: #f9f9f9;
       padding: 10px 14px;
-      border-radius: 8px;
       border: 1px solid #ddd;
-      margin-bottom: 20px;
       font-size: 0.95rem;
       color: #333;
     }
@@ -118,11 +126,12 @@
     .recommended-section {
       background: #eeeeee;
       padding: 16px;
-      margin-top: 20px;
+      margin-top: 0;
       width: calc(100% + 48px);
       margin-left: -24px;
       margin-right: -24px;
-      border-radius: 10px;
+      /* بدون حواف */
+      /* border-radius: 0; */
       box-sizing: border-box;
     }
 
@@ -238,14 +247,17 @@
 
 <main>
   <section class="login-box">
-    <div class="title-wrapper">
-      <div class="step-box">2</div>
-      <h2>إعادة تعبئة الحساب</h2>
-    </div>
 
-    <div class="account-section">
-      <div class="account-id">Dépôt: <span id="account-number">••••••••••</span></div>
-      <div class="account-text">حدد الطريقة الموصى بها لإعادة تعبئة الحساب.</div>
+    <div class="title-account-wrapper">
+      <div class="title-wrapper">
+        <div class="step-box">2</div>
+        <h2>إعادة تعبئة الحساب</h2>
+      </div>
+
+      <div class="account-section">
+        <div class="account-id">Dépôt: <span id="account-number">••••••••••</span></div>
+        <div class="account-text">حدد الطريقة الموصى بها لإعادة تعبئة الحساب.</div>
+      </div>
     </div>
 
     <section class="recommended-section">
@@ -277,6 +289,7 @@
         </div>
       </div>
     </section>
+
   </section>
 </main>
 
