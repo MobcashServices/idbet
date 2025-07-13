@@ -25,7 +25,7 @@
 
     header {
       height: var(--header-height);
-      background: #fff;
+      background: #121212; /* ← تم تغيير اللون هنا */
       display: flex;
       align-items: center;
       padding: 0 16px;
@@ -43,6 +43,7 @@
       align-items: center;
       gap: 8px;
       font-weight: 500;
+      color: #eee; /* ← لجعل النص واضح على الخلفية الغامقة */
     }
 
     .idbet {
@@ -52,16 +53,16 @@
     }
 
     .separator {
-      color: #ccc;
+      color: #aaa;
     }
 
     .slogan {
-      color: #555;
+      color: #ccc;
       font-size: .9rem;
     }
 
     main {
-      background-color: #eeeeee; /* خلفية رمادية */
+      background-color: #eeeeee;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -73,7 +74,6 @@
       z-index: 1;
     }
 
-    /* الجزء الأبيض ممتد عرض كامل الشاشة */
     .title-account-wrapper {
       background: #fff;
       width: 100vw;
@@ -130,134 +130,6 @@
       font-size: 0.9rem;
       color: #666;
     }
-
-    /* الهيكل الرمادي محدود العرض */
-    .login-box {
-      background: #eeeeee;
-      padding: 0;
-      width: 100%;
-      max-width: 1200px;
-      box-sizing: border-box;
-      border-radius: 0;
-      box-shadow: none;
-      margin: 0;
-    }
-
-    .recommended-section {
-      background: #eeeeee;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      box-sizing: border-box;
-      border-radius: 0;
-    }
-
-    .recommended-title {
-      font-size: 18px;
-      color: #1a1a1a;
-      margin: 8px 0 12px;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    .recommended-wrapper {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px 12px;
-      width: 100%;
-    }
-
-    .bank-card {
-      background: #f9f9f9;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      height: 100px;
-      border-radius: 6px;
-      transition: box-shadow 0.3s ease, transform 0.1s ease;
-    }
-
-    .bank-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .bank-card:active {
-      transform: scale(0.97);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-
-    .top-section {
-      background: #fff;
-      height: 70%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 5px;
-    }
-
-    .top-section img {
-      max-width: 90%;
-      max-height: 30px;
-      object-fit: contain;
-    }
-
-    .bottom-section {
-      background: #444;
-      color: #fff;
-      height: 30%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      text-align: center;
-      padding: 0 6px;
-      word-break: break-word;
-    }
-
-    @media (max-width: 768px) {
-      .recommended-wrapper {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px 8px;
-      }
-
-      .bank-card {
-        height: 90px;
-      }
-
-      .bottom-section {
-        font-size: 12px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      main {
-        padding: 0 12px 20px;
-      }
-
-      .recommended-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px 6px;
-      }
-
-      .bank-card {
-        height: 85px;
-      }
-
-      .top-section img {
-        max-height: 25px;
-      }
-
-      .bottom-section {
-        font-size: 11px;
-      }
-
-      .title-account-wrapper {
-        padding: 14px 12px 20px;
-        margin-bottom: 6px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -280,38 +152,6 @@
       <div class="account-text">حدد الطريقة الموصى بها لإعادة تعبئة الحساب.</div>
     </div>
   </div>
-
-  <section class="login-box">
-    <section class="recommended-section">
-      <h3 class="recommended-title">Méthodes recommandées</h3>
-      <div class="recommended-wrapper">
-        <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/8cmsx5SR/albarid-mobcash.png" alt="Al Barid"></div>
-          <div class="bottom-section">Al Barid</div>
-        </div>
-        <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/sgvD4Kv9/attijariwafa-mobcash.png" alt="Attijari"></div>
-          <div class="bottom-section">Attijari</div>
-        </div>
-        <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/g07jHhK5/cih.png" alt="CIH"></div>
-          <div class="bottom-section">CIH</div>
-        </div>
-        <div class="bank-card" onclick="location.href='cash-plus.html'">
-          <div class="top-section"><img src="https://i.postimg.cc/DZjFzvL0/cash-plus-idbet.png" alt="Cash Plus"></div>
-          <div class="bottom-section">Cash Plus</div>
-        </div>
-        <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/Gm528FQW/barid-pay-mobcash.png" alt="Barid Pay"></div>
-          <div class="bottom-section">Barid Pay</div>
-        </div>
-        <div class="bank-card">
-          <div class="top-section"><img src="https://i.postimg.cc/Vs2dDQbJ/banque-populaire-mobcah.png" alt="Banque Populaire"></div>
-          <div class="bottom-section">Banque Populaire</div>
-        </div>
-      </div>
-    </section>
-  </section>
 </main>
 
 <script>
