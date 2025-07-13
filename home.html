@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --header-height: 60px;
       --idbet-color: #e50914;
     }
 
@@ -24,8 +23,8 @@
     }
 
     header {
-      height: var(--header-height);
-      background: #121212; /* ← تم تغيير اللون هنا */
+      height: 60px;
+      background: #121212;
       display: flex;
       align-items: center;
       padding: 0 16px;
@@ -35,7 +34,8 @@
       box-sizing: border-box;
       position: relative;
       z-index: 10;
-      margin-bottom: 12px;
+      margin-bottom: 0; /* إزالة الهامش أسفل الهيدر لكي يلتصق الهيكل */
+      color: #fff;
     }
 
     .header-brand {
@@ -43,7 +43,7 @@
       align-items: center;
       gap: 8px;
       font-weight: 500;
-      color: #eee; /* ← لجعل النص واضح على الخلفية الغامقة */
+      color: #eee;
     }
 
     .idbet {
@@ -61,74 +61,67 @@
       font-size: .9rem;
     }
 
-    main {
-      background-color: #eeeeee;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 16px 24px;
-      gap: 0;
-      width: 100vw;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 1;
-    }
+    /* الهيكل الأبيض الجديد */
 
-    .title-account-wrapper {
+    .top-section {
       background: #fff;
       width: 100vw;
-      padding: 16px 16px 24px;
+      padding: 16px;
       box-sizing: border-box;
-      max-width: 100vw;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
-      margin-left: calc(-50vw + 50%);
-      margin-right: calc(-50vw + 50%);
-      border-radius: 0;
-      margin-bottom: 8px;
-    }
-
-    .title-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      margin-bottom: 16px;
-      color: #222;
-    }
-
-    .step-box {
-      width: 32px;
-      height: 32px;
-      background: var(--idbet-color);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-    }
-
-    .account-section {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      background: #f9f9f9;
-      padding: 10px 14px;
-      border: 1px solid #ddd;
-      font-size: 0.95rem;
-      color: #333;
-      border-radius: 0;
+      gap: 16px;
+      margin: 0; /* لتجنب فراغات */
     }
 
-    .account-id {
+    .account-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: #000;
+      text-align: start;
+      direction: ltr;
       font-weight: bold;
-      user-select: all;
+      font-size: 17px;
     }
 
-    .account-text {
-      font-size: 0.9rem;
-      color: #666;
+    .account-info .number {
+      font-weight: normal;
+      font-size: 16px;
+      color: #111;
+    }
+
+    .buttons-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      color: #fff;
+      user-select: none;
+    }
+
+    .btn-gray {
+      background-color: #a7a39d;
+    }
+
+    .btn-red {
+      background-color: var(--idbet-color);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-red span.icon {
+      display: inline-block;
+      transform: rotate(90deg);
+      font-size: 12px;
+      margin-top: 1px;
     }
   </style>
 </head>
@@ -140,19 +133,21 @@
   </div>
 </header>
 
-<main>
-  <div class="title-account-wrapper">
-    <div class="title-wrapper">
-      <div class="step-box">2</div>
-      <h2>إعادة تعبئة الحساب</h2>
-    </div>
-
-    <div class="account-section">
-      <div class="account-id">Dépôt: <span id="account-number">••••••••••</span></div>
-      <div class="account-text">حدد الطريقة الموصى بها لإعادة تعبئة الحساب.</div>
-    </div>
+<!-- الهيكل الأبيض الجديد الملتصق بالهيدر -->
+<section class="top-section">
+  <div class="account-info">
+    <div class="title">RETRAIT DU COMPTE</div>
+    <div class="number" id="account-number">••••••••••</div>
   </div>
-</main>
+
+  <div class="buttons-row">
+    <button class="btn btn-gray">Types de systèmes de paiement</button>
+    <button class="btn btn-red">
+      Demandes de retrait
+      <span class="icon">❯</span>
+    </button>
+  </div>
+</section>
 
 <script>
   const accountSpan = document.getElementById('account-number');
