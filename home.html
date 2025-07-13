@@ -61,7 +61,7 @@
     }
 
     main {
-      background-color: #eeeeee;
+      background-color: #eeeeee; /* خلفية رمادية */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -73,6 +73,7 @@
       z-index: 1;
     }
 
+    /* الجزء الأبيض ممتد عرض كامل الشاشة */
     .title-account-wrapper {
       background: #fff;
       width: 100vw;
@@ -130,6 +131,7 @@
       color: #666;
     }
 
+    /* الهيكل الرمادي محدود العرض */
     .login-box {
       background: #eeeeee;
       padding: 0;
@@ -186,28 +188,25 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    /* إضافة تأثير حركة على الصور */
+    .top-section {
+      background: #fff;
+      height: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+    }
+
     .top-section img {
       max-width: 90%;
       max-height: 30px;
       object-fit: contain;
-      transition: transform 0.3s ease;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .bank-card:hover .top-section img {
-      transform: scale(1.1);
-    }
-
-    .bank-card:active .top-section img {
-      transform: scale(0.95);
     }
 
     .bottom-section {
       background: #444;
       color: #fff;
-      height: 45%;
+      height: 30%;
       display: flex;
       align-items: center;
       justify-content: center;
