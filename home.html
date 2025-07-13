@@ -147,24 +147,6 @@
       text-align: center;
       width: 100%;
     }
-
-    /* تحريك الزر الرمادي ليكون أسفل DÉPÔT مباشرة */
-    .deposit-wrapper {
-      direction: ltr;
-      font-weight: bold;
-      font-size: 1.05rem;
-      margin-bottom: 8px;
-    }
-    .payment-types {
-      background-color: #999;
-      color: white;
-      font-size: 0.85rem;
-      padding: 6px 12px;
-      border-radius: 6px;
-      display: inline-block;
-      margin-bottom: 20px;
-      margin-top: 6px;
-    }
   </style>
 </head>
 <body>
@@ -184,12 +166,14 @@
       <h2>إعادة تعبئة الحساب</h2>
     </div>
 
-    <!-- رقم الحساب والزر الرمادي تحت الرقم -->
-    <div class="deposit-wrapper">
+    <!-- رقم الحساب -->
+    <div style="direction: ltr; font-weight: bold; font-size: 1.05rem; margin-bottom: 8px;">
       DÉPÔT <span id="account-number" style="margin-left: 8px;">••••••••••</span>
-      <div class="payment-types">
-        Types de systèmes de paiement
-      </div>
+    </div>
+
+    <!-- الزر الرمادي مع النص في اليسار -->
+    <div style="background-color: #999; color: white; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; display: inline-block; margin-bottom: 20px; text-align: left;">
+      Types de systèmes de paiement
     </div>
 
     <!-- الشبكة -->
