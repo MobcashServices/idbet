@@ -63,11 +63,13 @@
     .title-wrapper {
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      gap: 12px;
       font-size: 1.3rem;
       font-weight: bold;
       margin-bottom: 16px;
       color: #222;
+      flex-wrap: wrap;
     }
     .step-box {
       width: 32px;
@@ -80,14 +82,12 @@
       justify-content: center;
       font-size: 0.9rem;
     }
-
     .platform-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       width: 100%;
     }
-
     .icon {
       height: 120px;
       border-radius: 12px;
@@ -103,17 +103,14 @@
       transition: all 0.3s ease;
       position: relative;
     }
-
     .icon:hover {
       background-color: #fafafa;
       box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
     }
-
     .icon.selected {
       border-color: var(--idbet-color);
       box-shadow: 0 0 8px rgba(229, 9, 20, .3);
     }
-
     .icon.selected::after {
       content: "✓";
       position: absolute;
@@ -129,13 +126,11 @@
       align-items: center;
       justify-content: center;
     }
-
     .icon img {
       max-height: 50%;
       max-width: 100%;
       object-fit: contain;
     }
-
     .icon-name {
       height: 50%;
       display: flex;
@@ -160,20 +155,20 @@
 <main>
   <section class="login-box">
 
-    <!-- رقم المرحلة (2) والعنوان -->
+    <!-- العنوان والمربع الرمادي بجانبه -->
     <div class="title-wrapper">
-      <div class="step-box">2</div>
-      <h2>إعادة تعبئة الحساب</h2>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div class="step-box">2</div>
+        <h2>إعادة تعبئة الحساب</h2>
+      </div>
+      <div style="background-color: #999; color: white; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; direction: ltr; text-align: left; width: max-content;">
+        Types de systèmes de paiement
+      </div>
     </div>
 
     <!-- رقم الحساب -->
-    <div style="direction: ltr; font-weight: bold; font-size: 1.05rem; margin-bottom: 8px;">
+    <div style="direction: ltr; font-weight: bold; font-size: 1.05rem; margin-bottom: 20px;">
       DÉPÔT <span id="account-number" style="margin-left: 8px;">••••••••••</span>
-    </div>
-
-    <!-- النص الرمادي بمحاذاة اليسار الفعلي -->
-    <div style="background-color: #999; color: white; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; display: block; margin-bottom: 20px; direction: ltr; text-align: left; width: max-content;">
-      Types de systèmes de paiement
     </div>
 
     <!-- الشبكة -->
