@@ -60,7 +60,6 @@
       font-size: .9rem;
     }
 
-    /* القسم الأبيض */
     .top-section {
       background: #fff;
       width: 100vw;
@@ -106,26 +105,30 @@
       color: #fff;
       user-select: none;
       height: 36px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
     }
 
     .btn-gray {
       background-color: #a7a39d;
-      order: 2; /* جعله في اليسار */
+      order: 2;
     }
 
     .btn-red {
       background-color: var(--idbet-color);
-      order: 1; /* يبقى على اليمين */
+      order: 1;
       gap: 4px;
     }
 
     .btn-red span.icon {
       font-size: 10px;
       transform: rotate(0deg);
-      margin-top: 1px;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
     }
   </style>
 </head>
