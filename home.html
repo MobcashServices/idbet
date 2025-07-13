@@ -64,66 +64,68 @@
     .top-section {
       background: #fff;
       width: 100vw;
-      padding: 16px;
+      padding: 12px 16px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-top: -1px; /* إزالة الفاصل بين الهيدر والجزء الأبيض */
+      gap: 12px;
+      margin-top: -1px;
     }
 
     .account-info {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
       color: #000;
       text-align: start;
       direction: ltr;
       font-weight: bold;
-      font-size: 17px;
+      font-size: 15px;
     }
 
     .account-info .number {
       font-weight: normal;
-      font-size: 16px;
+      font-size: 15px;
       color: #111;
     }
 
     .buttons-row {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
       gap: 12px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .btn {
-      padding: 10px 18px;
-      font-size: 14px;
+      padding: 8px 14px;
+      font-size: 13px;
       border: none;
       cursor: pointer;
       border-radius: 2px;
       color: #fff;
       user-select: none;
-      min-width: 200px;
-      height: 42px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .btn-gray {
       background-color: #a7a39d;
+      order: 2; /* جعله في اليسار */
     }
 
     .btn-red {
       background-color: var(--idbet-color);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      justify-content: center;
+      order: 1; /* يبقى على اليمين */
+      gap: 4px;
     }
 
     .btn-red span.icon {
-      transform: rotate(0deg); /* سهم لأسفل */
-      font-size: 16px;
+      font-size: 10px;
+      transform: rotate(0deg);
+      margin-top: 1px;
     }
   </style>
 </head>
@@ -135,7 +137,6 @@
   </div>
 </header>
 
-<!-- القسم الأبيض -->
 <section class="top-section">
   <div class="account-info">
     <div class="title">RETRAIT DU COMPTE</div>
@@ -143,11 +144,11 @@
   </div>
 
   <div class="buttons-row">
-    <button class="btn btn-gray">Types de systèmes de paiement</button>
     <button class="btn btn-red">
       Demandes de retrait
       <span class="icon">▼</span>
     </button>
+    <button class="btn btn-gray">Types de systèmes de paiement</button>
   </div>
 </section>
 
