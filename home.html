@@ -71,7 +71,7 @@
       justify-content: space-between;
       gap: 12px;
 
-      height: 130px; /* عدل الارتفاع حسب الحاجة */
+      height: 130px; /* يمكنك تعديل الارتفاع حسب الحاجة */
     }
 
     .account-info {
@@ -93,10 +93,9 @@
 
     .buttons-row {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
-      flex-wrap: nowrap;
+      flex-direction: column; /* ترتيب عمودي */
+      gap: 8px; /* مسافة بين الأزرار */
+      align-items: flex-start; /* لمحاذاة الأزرار بداية السطر */
     }
 
     .btn {
@@ -115,14 +114,14 @@
 
     .btn-gray {
       background-color: #a7a39d;
-      order: 2;
+      order: 1;
     }
 
     .btn-red {
       background-color: var(--idbet-color);
-      order: 1;
+      order: 2;
       gap: 4px;
-      margin-top: 0; /* أزلنا الهامش لكي يكون السقف مستقيماً */
+      margin-top: 0;
       display: inline-flex;
       align-items: center;
     }
@@ -153,11 +152,11 @@
   </div>
 
   <div class="buttons-row">
+    <button class="btn btn-gray">Types de systèmes de paiement</button>
     <button class="btn btn-red">
       Demandes de retrait
       <span class="icon">▼</span>
     </button>
-    <button class="btn btn-gray">Types de systèmes de paiement</button>
   </div>
 </section>
 
