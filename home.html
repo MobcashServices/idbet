@@ -35,6 +35,7 @@
       box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
       border-bottom: 1px solid #eee;
       flex-shrink: 0;
+      gap: 10px; /* مسافة بين الصورة والنص */
     }
 
     .header-brand {
@@ -42,11 +43,12 @@
       align-items: center;
       gap: 8px;
       font-weight: 500;
+      font-size: 1.1rem;
+      color: #333;
     }
 
     .idbet {
       color: var(--idbet-color);
-      font-size: 1.1rem;
       font-weight: bold;
     }
 
@@ -56,7 +58,14 @@
 
     .slogan {
       color: #555;
-      font-size: .9rem;
+      font-size: 0.9rem;
+    }
+
+    .header-image {
+      height: 40px;
+      width: auto;
+      border-radius: 6px;
+      object-fit: contain;
     }
 
     main {
@@ -201,35 +210,15 @@
       text-align: center;
     }
 
-    /* الـ Sidebar */
-    .sidebar {
-      width: 250px;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .sidebar img {
-      max-width: 100%;
-      border-radius: 14px;
-      object-fit: contain;
-    }
-
-    /* Responsive */
     @media (max-width: 900px) {
       main {
         flex-direction: column;
         align-items: center;
       }
 
-      .login-box, .sidebar {
+      .login-box {
         width: 90%;
         max-width: 600px;
-        margin-bottom: 20px;
       }
     }
 
@@ -243,8 +232,11 @@
 <body>
 
 <header>
+  <img class="header-image" src="https://i.postimg.cc/rwstQsFy/idbet.jpg" alt="IDBet Logo" />
   <div class="header-brand">
-    <span class="idbet">idbet</span><span class="separator">|</span><span class="slogan">وكيل الشحن الرسمي</span>
+    <span class="idbet">idbet</span>
+    <span class="separator">|</span>
+    <span class="slogan">وكيل الشحن الرسمي</span>
   </div>
 </header>
 
@@ -293,11 +285,6 @@
       </div>
     </section>
   </section>
-
-  <!-- Sidebar الصورة في الجانب -->
-  <aside class="sidebar">
-    <img src="https://i.postimg.cc/rwstQsFy/idbet.jpg" alt="IDBet Image" />
-  </aside>
 </main>
 
 <script>
