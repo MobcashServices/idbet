@@ -80,28 +80,6 @@
       justify-content: center;
       font-size: 0.9rem;
     }
-    .account-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      background: #f9f9f9;
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
-      color: #333;
-    }
-    .account-id {
-      font-weight: bold;
-      user-select: all;
-    }
-    .account-text {
-      text-align: left;
-      font-size: 0.9rem;
-      color: #666;
-    }
 
     .platform-icons {
       display: grid;
@@ -180,16 +158,24 @@
 
 <main>
   <section class="login-box">
+
+    <!-- عنوان "إعادة تعبئة الحساب" -->
     <div class="title-wrapper">
       <div class="step-box">2</div>
       <h2>إعادة تعبئة الحساب</h2>
     </div>
 
-    <div class="account-section">
-      <div class="account-id">رقم الحساب: <span id="account-number">••••••••••</span></div>
-      <div class="account-text">حدد نظام الدفع الذي تُريد شحن حسابك من خلاله.</div>
+    <!-- رقم الحساب بالشكل الصحيح -->
+    <div style="direction: ltr; font-weight: bold; font-size: 1.05rem; margin-bottom: 12px;">
+      DÉPÔT <span id="account-number" style="margin-left: 8px;">••••••••••</span>
     </div>
 
+    <!-- الزر الرمادي -->
+    <div style="background-color: #999; color: white; font-size: 0.85rem; padding: 6px 12px; border-radius: 6px; display: inline-block; margin-bottom: 20px;">
+      Types de systèmes de paiement
+    </div>
+
+    <!-- الأيقونات (كما هي حالياً) -->
     <div class="platform-icons" id="platforms">
       <div class="icon" data-name="LineBet">
         <img src="https://i.postimg.cc/x1p0KbfL/cropped-linebet-logo.png" alt="LineBet" />
@@ -212,6 +198,7 @@
         <div class="icon-name">1xBet</div>
       </div>
     </div>
+
   </section>
 </main>
 
