@@ -35,7 +35,7 @@
       box-sizing: border-box;
       position: relative;
       z-index: 10;
-      margin-bottom: 12px; /* الفراغ الرمادي أسفل الهيدر */
+      margin-bottom: 12px;
     }
 
     .header-brand {
@@ -61,12 +61,12 @@
     }
 
     main {
-      background-color: #eeeeee; /* الخلفية الرمادية بين الهيدر والجزء الأبيض */
+      background-color: #eeeeee; /* خلفية رمادية */
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0;
-      gap: 20px;
+      padding: 0 16px 24px; /* حواف جانبية ومسافة تحت */
+      gap: 0; /* لا فراغ كبير */
       width: 100vw;
       box-sizing: border-box;
       position: relative;
@@ -84,7 +84,7 @@
       margin-left: calc(-50vw + 50%);
       margin-right: calc(-50vw + 50%);
       border-radius: 0;
-      margin-bottom: 12px; /* الفراغ الرمادي بين الأبيض والرمادي */
+      margin-bottom: 8px; /* تقليل الفراغ بين القسمين */
     }
 
     .title-wrapper {
@@ -133,19 +133,20 @@
 
     /* الهيكل الرمادي محدود العرض */
     .login-box {
-      background: #eeeeee;
-      padding: 24px;
+      background: #eeeeee; /* نفس لون الخلفية الرئيسية */
+      padding: 0;
       width: 100%;
       max-width: 1200px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
-      border-radius: 0;
       box-sizing: border-box;
+      border-radius: 0;
+      box-shadow: none;
+      margin: 0;
     }
 
     .recommended-section {
-      background: #eeeeee;
-      padding: 16px;
-      margin-top: 0;
+      background: #eeeeee; /* فلتر رمادي */
+      padding: 0;
+      margin: 0;
       width: 100%;
       box-sizing: border-box;
       border-radius: 0;
@@ -154,14 +155,15 @@
     .recommended-title {
       font-size: 18px;
       color: #1a1a1a;
-      margin: 0 0 16px;
+      margin: 8px 0 12px;
       text-align: center;
+      font-weight: 700;
     }
 
     .recommended-wrapper {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(3, 1fr); /* 3 أعمدة ثابتة */
+      gap: 8px 12px; /* تباعد عمودي وأفقي مناسب */
       width: 100%;
     }
 
@@ -205,12 +207,15 @@
       justify-content: center;
       font-size: 13px;
       text-align: center;
+      padding: 0 6px;
+      word-break: break-word;
     }
 
+    /* هواتف */
     @media (max-width: 768px) {
       .recommended-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        grid-template-columns: repeat(3, 1fr); /* 3 أعمدة تبقى */
+        gap: 8px 8px;
       }
 
       .bank-card {
@@ -223,18 +228,13 @@
     }
 
     @media (max-width: 480px) {
-      .title-account-wrapper {
-        padding: 12px 16px 16px;
-        margin-bottom: 10px;
-      }
-
-      .login-box {
-        padding: 16px;
+      main {
+        padding: 0 12px 20px;
       }
 
       .recommended-wrapper {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        grid-template-columns: repeat(2, 1fr); /* 2 أعمدة على الشاشات الصغيرة */
+        gap: 6px 6px;
       }
 
       .bank-card {
@@ -247,6 +247,11 @@
 
       .bottom-section {
         font-size: 11px;
+      }
+
+      .title-account-wrapper {
+        padding: 14px 12px 20px;
+        margin-bottom: 6px;
       }
     }
   </style>
