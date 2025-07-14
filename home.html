@@ -29,6 +29,11 @@
       display: flex;
       align-items: center;
       padding: 0 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
+      border-bottom: 1px solid #eee;
+      width: 100vw;
+      position: relative;
+      z-index: 10;
       color: #fff;
     }
 
@@ -37,6 +42,7 @@
       align-items: center;
       gap: 8px;
       font-weight: 500;
+      color: #eee;
     }
 
     .idbet {
@@ -54,58 +60,54 @@
       font-size: .9rem;
     }
 
-    /* ✅ الحاوية الرئيسية (لتقليص العرض) */
-    .container {
-      max-width: 520px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 16px;
-    }
-
     .top-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 12px;
+      background: #fff;
+      width: 100vw;
+      padding: 16px;
+      box-sizing: border-box;
     }
 
     .account-info {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      margin-bottom: 16px;
     }
 
     .account-info .title {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       color: #000;
     }
 
     .account-info .number {
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 500;
       color: #000;
     }
 
     .buttons-row {
       display: flex;
-      gap: 10px;
-      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      padding: 8px 12px;
-      font-size: 13px;
+      padding: 8px 16px;
+      font-size: 14px;
       border: none;
+      cursor: pointer;
       border-radius: 2px;
       color: #fff;
       font-weight: 500;
       height: 36px;
-      cursor: pointer;
-      white-space: nowrap;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
+      white-space: nowrap;
     }
 
     .btn-gray {
@@ -114,7 +116,7 @@
 
     .btn-red {
       background-color: var(--idbet-color);
-      gap: 4px;
+      gap: 6px;
     }
 
     .btn-red .icon {
@@ -131,22 +133,20 @@
   </div>
 </header>
 
-<div class="container">
-  <section class="top-section">
-    <div class="account-info">
-      <div class="title">RETRAIT DU COMPTE</div>
-      <div class="number" id="account-number">1319066099</div>
-    </div>
+<section class="top-section">
+  <div class="account-info">
+    <div class="title">RETRAIT DU COMPTE</div>
+    <div class="number" id="account-number">1319066099</div>
+  </div>
 
-    <div class="buttons-row">
-      <button class="btn btn-gray">Types de systèmes de paiement</button>
-      <button class="btn btn-red">
-        Demandes de retrait
-        <span class="icon">▼</span>
-      </button>
-    </div>
-  </section>
-</div>
+  <div class="buttons-row">
+    <button class="btn btn-gray">Types de systèmes de paiement</button>
+    <button class="btn btn-red">
+      Demandes de retrait
+      <span class="icon">▼</span>
+    </button>
+  </div>
+</section>
 
 <script>
   const accountSpan = document.getElementById('account-number');
