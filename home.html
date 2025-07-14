@@ -9,6 +9,8 @@
     :root {
       --main-red: #e50914;
       --gray-btn: #a7a39d;
+      --header-height: 50px;
+      --container-padding: 16px 20px;
     }
 
     * {
@@ -30,24 +32,23 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 420px;
-      background: #fff;
-      padding: 16px 12px 20px 12px;
+      justify-content: flex-start;
+      padding: 20px 0;
+      gap: 20px;
     }
 
     header {
       background-color: #121212;
-      height: 50px;
+      height: var(--header-height);
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      padding: 0 14px;
+      padding: 0 20px;
       width: 100%;
       max-width: 420px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.2);
+      user-select: none;
     }
 
     .header-brand {
@@ -55,64 +56,76 @@
       align-items: center;
       font-size: 13px;
       color: #ccc;
+      gap: 5px;
     }
 
     .header-brand .separator {
       color: #999;
-      margin: 0 5px;
     }
 
     .header-brand .idbet {
       color: var(--main-red);
-      font-weight: bold;
+      font-weight: 700;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      padding: var(--container-padding);
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      user-select: none;
     }
 
     .account-info {
-      margin-bottom: 10px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      gap: 4px;
     }
 
     .account-info .title {
-      font-size: 13px;
-      font-weight: bold;
-      margin-bottom: 2px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #333;
     }
 
     .account-info .number {
-      font-size: 13px;
-      font-weight: normal;
+      font-size: 16px;
+      font-weight: 600;
       direction: ltr;
+      color: #111;
+      letter-spacing: 1.2px;
     }
 
     .buttons-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 6px;
+      gap: 12px;
       width: 100%;
     }
 
     .btn {
-      height: 32px;
-      font-size: 12px;
-      padding: 0 8px;
+      height: 36px;
+      font-size: 13px;
+      padding: 0 14px;
       border: none;
-      border-radius: 2px;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 500;
+      font-weight: 600;
       white-space: nowrap;
       cursor: pointer;
       flex: 1;
       min-width: 0;
-    }
-
-    .btn-gray {
-      background-color: var(--gray-btn);
-      color: #fff;
+      transition: background-color 0.3s ease;
+      user-select: none;
     }
 
     .btn-red {
@@ -120,16 +133,39 @@
       color: #fff;
     }
 
-    .btn-red .icon {
-      font-size: 10px;
-      margin-right: 4px;
-      margin-top: -1px;
+    .btn-red:hover {
+      background-color: #b20710;
     }
 
-    /* ثبات التصميم في جميع الشاشات */
-    @media (min-width: 600px) {
-      body {
-        justify-content: center;
+    .btn-gray {
+      background-color: var(--gray-btn);
+      color: #fff;
+    }
+
+    .btn-gray:hover {
+      background-color: #8c8a82;
+    }
+
+    .btn .icon {
+      font-size: 12px;
+      margin-right: 6px;
+      margin-top: -1px;
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* التوافق مع الشاشات الصغيرة */
+    @media (max-width: 380px) {
+      .container {
+        padding: 12px 14px;
+      }
+      .btn {
+        font-size: 12px;
+        height: 34px;
+        padding: 0 10px;
+      }
+      .account-info .number {
+        font-size: 14px;
       }
     }
   </style>
