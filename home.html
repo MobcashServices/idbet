@@ -8,6 +8,8 @@
   <style>
     :root {
       --idbet-color: #e50914;
+      --gray-btn: #a7a39d;
+      --green-dot: #00c853;
     }
 
     * {
@@ -31,7 +33,6 @@
       box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
       border-bottom: 1px solid #eee;
       width: 100vw;
-      box-sizing: border-box;
       position: relative;
       z-index: 10;
       color: #fff;
@@ -63,37 +64,48 @@
     .top-section {
       background: #fff;
       width: 100vw;
-      padding: 12px 16px;
+      padding: 16px;
       box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: -1px;
-      direction: ltr; /* لجعل الترتيب مطابق للصورة */
     }
 
     .account-info {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .account-info .title {
+      font-size: 18px;
+      font-weight: 700;
       color: #000;
-      text-align: left;
-      font-weight: bold;
-      font-size: 15px;
+    }
+
+    .account-info .number-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .account-info .number {
-      font-weight: normal;
-      font-size: 15px;
-      color: #111;
+      font-size: 17px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .green-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--green-dot);
+      border-radius: 50%;
     }
 
     .buttons-row {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
       gap: 12px;
-      flex-wrap: nowrap;
     }
 
     .btn {
@@ -108,25 +120,21 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      white-space: nowrap;
     }
 
     .btn-gray {
-      background-color: #a7a39d;
+      background-color: var(--gray-btn);
     }
 
     .btn-red {
       background-color: var(--idbet-color);
-      gap: 4px;
+      gap: 6px;
     }
 
-    .btn-red span.icon {
+    .btn-red .icon {
       font-size: 10px;
-      transform: rotate(0deg);
-      line-height: 1;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
+      margin-top: 2px;
     }
   </style>
 </head>
@@ -141,7 +149,10 @@
 <section class="top-section">
   <div class="account-info">
     <div class="title">RETRAIT DU COMPTE</div>
-    <div class="number" id="account-number">••••••••••</div>
+    <div class="number-status">
+      <div class="number" id="account-number">1319066099</div>
+      <div class="green-dot"></div>
+    </div>
   </div>
 
   <div class="buttons-row">
