@@ -120,7 +120,6 @@
       margin-right: 4px;
     }
 
-    /* تحسين شكل الزر الرمادي في الشاشات الصغيرة */
     @media (max-width: 480px) {
       .btn {
         font-size: 11.5px;
@@ -148,7 +147,7 @@
   <section class="top-section">
     <div class="account-info">
       <div class="title">RETRAIT DU COMPTE</div>
-      <div class="number" id="account-number">1319066099</div>
+      <div class="number" id="account-number">غير مسجل</div>
     </div>
 
     <div class="buttons-row">
@@ -159,6 +158,19 @@
       <button class="btn btn-gray">Types de systèmes de paiement</button>
     </div>
   </section>
+
+  <script>
+    // قراءة الرقم من localStorage
+    const savedID = localStorage.getItem('user_id');
+
+    // تعديل النص إذا وُجد رقم
+    const numberElement = document.getElementById('account-number');
+    if (savedID && savedID.length >= 5) {
+      numberElement.textContent = savedID;
+    } else {
+      numberElement.textContent = 'غير مسجل';
+    }
+  </script>
 
 </body>
 </html>
