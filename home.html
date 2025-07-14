@@ -28,7 +28,12 @@
       display: flex;
       align-items: center;
       padding: 0 16px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
+      border-bottom: 1px solid #eee;
       width: 100vw;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 10;
       color: #fff;
     }
 
@@ -36,6 +41,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      font-weight: 500;
+      color: #eee;
     }
 
     .idbet {
@@ -57,16 +64,19 @@
       background: #fff;
       width: 100vw;
       padding: 12px 16px;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      direction: ltr;
+      margin-top: -1px;
+      direction: ltr; /* لجعل الترتيب مطابق للصورة */
     }
 
     .account-info {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
+      color: #000;
       text-align: left;
       font-weight: bold;
       font-size: 15px;
@@ -74,57 +84,27 @@
 
     .account-info .number {
       font-weight: normal;
+      font-size: 15px;
       color: #111;
-    }
-
-    .extra-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .btn-thin-gray {
-      background-color: #a7a39d;
-      color: #fff;
-      border: none;
-      border-radius: 2px;
-      padding: 6px 16px;
-      font-size: 14px;
-      font-weight: 400;
-      width: 100%;
-      text-align: left;
-    }
-
-    .btn-small-red {
-      background-color: var(--idbet-color);
-      color: #fff;
-      border: none;
-      border-radius: 2px;
-      padding: 5px 10px;
-      font-size: 12px;
-      font-weight: 400;
-      align-self: flex-end;
-      width: fit-content;
     }
 
     .buttons-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      width: 100%;
-      margin-top: 10px;
+      gap: 12px;
+      flex-wrap: nowrap;
     }
 
     .btn {
-      min-width: 180px;
-      height: 48px;
-      padding: 0 20px;
-      font-size: 15px;
-      font-weight: 400;
+      padding: 8px 16px;
+      font-size: 14px;
       border: none;
-      border-radius: 3px;
       cursor: pointer;
+      border-radius: 2px;
+      color: #fff;
+      font-weight: 500;
+      height: 36px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -132,17 +112,19 @@
 
     .btn-gray {
       background-color: #a7a39d;
-      color: #fff;
     }
 
     .btn-red {
       background-color: var(--idbet-color);
-      color: #fff;
       gap: 4px;
     }
 
     .btn-red span.icon {
       font-size: 10px;
+      transform: rotate(0deg);
+      line-height: 1;
+      margin: 0;
+      padding: 0;
       display: flex;
       align-items: center;
     }
@@ -162,17 +144,11 @@
     <div class="number" id="account-number">••••••••••</div>
   </div>
 
-  <!-- الأزرار الرقيقة تحت الرقم -->
-  <div class="extra-buttons">
-    <button class="btn-thin-gray">Types de systèmes de paiement</button>
-    <button class="btn-small-red">Demandes de retrait</button>
-  </div>
-
-  <!-- الأزرار الكبيرة تحتهم -->
   <div class="buttons-row">
     <button class="btn btn-gray">Types de systèmes de paiement</button>
     <button class="btn btn-red">
-      Demandes de retrait <span class="icon">▼</span>
+      Demandes de retrait
+      <span class="icon">▼</span>
     </button>
   </div>
 </section>
