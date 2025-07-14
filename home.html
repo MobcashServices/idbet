@@ -26,14 +26,28 @@
       min-height: 100vh;
     }
 
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: #fff;
+      padding: 16px 12px 20px 12px;
+    }
+
     header {
       background-color: #121212;
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      padding: 0 16px;
+      padding: 0 14px;
       width: 100%;
+      max-width: 420px;
     }
 
     .header-brand {
@@ -53,29 +67,21 @@
       font-weight: bold;
     }
 
-    .top-section {
-      background-color: #fff;
-      padding: 16px 14px 20px 14px;
-      width: 100%;
-    }
-
     .account-info {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
     }
 
     .account-info .title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
-      color: #000;
       margin-bottom: 2px;
     }
 
     .account-info .number {
-      font-size: 14px;
-      color: #111;
+      font-size: 13px;
       font-weight: normal;
       direction: ltr;
     }
@@ -84,14 +90,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       width: 100%;
     }
 
     .btn {
-      height: 36px;
-      font-size: 13px;
-      padding: 0 10px;
+      height: 32px;
+      font-size: 12px;
+      padding: 0 8px;
       border: none;
       border-radius: 2px;
       display: flex;
@@ -115,20 +121,15 @@
     }
 
     .btn-red .icon {
-      font-size: 11px;
+      font-size: 10px;
       margin-right: 4px;
+      margin-top: -1px;
     }
 
-    /* تحسين العرض الكامل في كل الشاشات */
-    @media (min-width: 768px) {
+    /* ثبات التصميم في جميع الشاشات */
+    @media (min-width: 600px) {
       body {
-        max-width: 100%;
-        margin: 0 auto;
-      }
-
-      .top-section {
-        max-width: 600px;
-        margin: auto;
+        justify-content: center;
       }
     }
   </style>
@@ -143,7 +144,7 @@
     </div>
   </header>
 
-  <section class="top-section">
+  <div class="container">
     <div class="account-info">
       <div class="title">RETRAIT DU COMPTE</div>
       <div class="number" id="account-number">1319066099</div>
@@ -152,11 +153,13 @@
     <div class="buttons-row">
       <button class="btn btn-red">
         <span class="icon">▼</span>
-        Demandes de retrait
+        <span>Demandes de retrait</span>
       </button>
-      <button class="btn btn-gray">Types de systèmes de paiement</button>
+      <button class="btn btn-gray">
+        Types de systèmes de paiement
+      </button>
     </div>
-  </section>
+  </div>
 
 </body>
 </html>
