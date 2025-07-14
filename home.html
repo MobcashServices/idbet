@@ -160,16 +160,9 @@
   </section>
 
   <script>
-    // قراءة الرقم من localStorage
-    const savedID = localStorage.getItem('user_id');
-
-    // تعديل النص إذا وُجد رقم
-    const numberElement = document.getElementById('account-number');
-    if (savedID && savedID.length >= 5) {
-      numberElement.textContent = savedID;
-    } else {
-      numberElement.textContent = 'غير مسجل';
-    }
+    const accountNumber = document.getElementById('account-number');
+    const savedNumber = localStorage.getItem('userId');
+    accountNumber.textContent = (savedNumber && savedNumber.trim() !== '') ? savedNumber : 'غير مسجل';
   </script>
 
 </body>
