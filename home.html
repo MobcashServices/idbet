@@ -79,14 +79,14 @@
     }
 
     .bank-section {
-      background-color: #f0f0f0;
+      background-color: #efefef; /* أخف من السابق */
       width: 100vw;
-      padding: 24px 0;
+      padding: 16px 0;
     }
 
     .section-title {
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       color: #333;
       font-size: 1rem;
       text-align: left;
@@ -96,7 +96,7 @@
     .bank-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
+      gap: 12px;
       padding: 0 16px;
     }
 
@@ -106,7 +106,6 @@
       flex-direction: column;
       border: 1px solid #ccc;
       width: 100%;
-      aspect-ratio: 1 / 1.1;
       overflow: hidden;
     }
 
@@ -128,9 +127,9 @@
 
     .bank-card-name {
       height: 36px;
-      background: #bdbab7;
+      background: #c0bebc; /* رمادي أقرب للتصميم في الصورة */
       color: #fff;
-      font-size: 0.9rem;
+      font-size: 0.85rem; /* تكبير بسيط */
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -143,7 +142,6 @@
       .bank-grid {
         grid-template-columns: repeat(3, 1fr);
         padding: 0 8px;
-        gap: 12px;
       }
     }
   </style>
