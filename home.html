@@ -134,6 +134,13 @@
       align-items: center;
       justify-content: center;
     }
+
+    /* ✅ على الهاتف: 3 بطاقات في الصف */
+    @media (max-width: 480px) {
+      .bank-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
