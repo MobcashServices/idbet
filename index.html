@@ -108,11 +108,9 @@
     .input-group {
       margin-bottom: 12px;
     }
-
     .input-wrapper {
       position: relative;
     }
-
     .input-wrapper input {
       width: 100%;
       padding: 8px;
@@ -122,7 +120,6 @@
       outline: none;
       padding-left: 40px;
     }
-
     .status-icon {
       position: absolute;
       left: 10px;
@@ -135,19 +132,16 @@
       align-items: center;
       justify-content: center;
     }
-
     .status-spinner {
       border: 2px solid #ccc;
       border-top: 2px solid var(--idbet-color);
       animation: spin 0.8s linear infinite;
     }
-
     .status-check {
       background: #28a745;
       color: white;
       font-size: 12px;
     }
-
     .error-message {
       font-size: 0.8rem;
       margin-top: 4px;
@@ -155,14 +149,12 @@
       text-align: center;
       color: #d32f2f;
     }
-
     .platform-icons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin: 16px 0 18px;
     }
-
     .icon {
       position: relative;
       width: 85px;
@@ -179,17 +171,14 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-
     .icon:hover {
       background-color: #fafafa;
       box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
     }
-
     .icon.selected {
       border-color: var(--idbet-color);
       box-shadow: 0 0 8px rgba(229, 9, 20, .3);
     }
-
     .icon.selected::after {
       content: "✓";
       position: absolute;
@@ -205,20 +194,17 @@
       align-items: center;
       justify-content: center;
     }
-
     .icon img {
       height: 40px;
       max-width: 80%;
       object-fit: contain;
     }
-
     .icon-name {
       margin-top: 6px;
       font-size: 0.8rem;
       color: #222;
       text-align: center;
     }
-
     .login-btn {
       background: var(--idbet-color);
       color: #fff;
@@ -231,20 +217,16 @@
       transition: all 0.3s ease;
       font-size: 1rem;
     }
-
     .login-btn:disabled {
       background: #ccc;
       cursor: not-allowed;
     }
-
     .login-btn:hover:not(:disabled) {
       background: #b20710;
     }
-
     .login-btn:active:not(:disabled) {
       transform: scale(0.98);
     }
-
     .btn-spinner {
       width: 16px;
       height: 16px;
@@ -256,7 +238,6 @@
       margin-right: 5px;
       vertical-align: middle;
     }
-
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
@@ -276,7 +257,7 @@
 
     <div class="input-label">
       <label for="player-id-1">معرّف اللاعب</label>
-      <span class="info-icon" title="رقم مكوَّن من 10 أرقام">?</span>
+      <span class="info-icon" title="رقم مكوَّن من 9 أو 10 أرقام">?</span>
     </div>
 
     <div class="input-group">
@@ -306,7 +287,7 @@
   const icons = document.querySelectorAll('.icon');
   const statusIcon = document.getElementById('status-icon');
   let platform = null;
-  const repReg = /^(\d)\1{9}$/;
+  const repReg = /^(\d)\1{8,9}$/;
 
   input.addEventListener('keydown', e => {
     const ok = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
@@ -330,7 +311,7 @@
     errMsg.textContent = '';
     btn.disabled = true;
 
-    if (val.length < 10) {
+    if (val.length < 9 || val.length > 10) {
       statusIcon.style.display = 'none';
       statusIcon.className = 'status-icon';
       statusIcon.innerHTML = '';
