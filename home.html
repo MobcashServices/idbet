@@ -9,6 +9,8 @@
     :root {
       --header-height: 60px;
       --idbet-color: #e50914;
+      --gray-bg: #f0f0f0;
+      --card-bg: #ddd;
     }
 
     * {
@@ -61,13 +63,14 @@
     }
 
     main {
-      padding: calc(var(--header-height) + 24px) 0 24px;
+      padding: calc(var(--header-height) + 24px) 16px 24px;
     }
 
     .account-info {
       direction: ltr;
       text-align: left;
-      padding-left: 40px;
+      padding-left: 16px;
+      margin-bottom: 24px;
     }
 
     .account-number {
@@ -79,6 +82,42 @@
     .instruction {
       font-size: 0.95rem;
       color: #444;
+      margin-bottom: 16px;
+    }
+
+    .bank-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .bank-card {
+      background-color: var(--card-bg);
+      border-radius: 6px;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .bank-card:hover {
+      transform: scale(1.03);
+    }
+
+    .bank-card img {
+      width: 100%;
+      height: 80px;
+      object-fit: contain;
+      background: white;
+      padding: 10px;
+    }
+
+    .bank-card-name {
+      background: #999;
+      color: white;
+      padding: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
     }
   </style>
 </head>
@@ -96,13 +135,41 @@
   <div class="account-info">
     <div class="account-number">ACCOUNT <span id="account-number">0000000000</span></div>
     <div class="instruction">Select payment method to top up your account:</div>
+
+    <!-- بطاقات البنوك -->
+    <div class="bank-grid">
+      <div class="bank-card">
+        <img src="https://i.ibb.co/6n45X4Z/attijariwafa.png" alt="Attijari Bank" />
+        <div class="bank-card-name">Attijari</div>
+      </div>
+      <div class="bank-card">
+        <img src="https://i.ibb.co/jRbdLKq/cihbank.png" alt="CIH Bank" />
+        <div class="bank-card-name">CIH</div>
+      </div>
+      <div class="bank-card">
+        <img src="https://i.ibb.co/WPkj2mK/albaridbank.png" alt="Al Barid Bank" />
+        <div class="bank-card-name">Al Barid Bank</div>
+      </div>
+      <div class="bank-card">
+        <img src="https://i.ibb.co/x2Wk1B3/socgen.png" alt="Société Générale" />
+        <div class="bank-card-name">Société Générale Bank</div>
+      </div>
+      <div class="bank-card">
+        <img src="https://i.ibb.co/SVX0hFY/cashplus.png" alt="CashPlus" />
+        <div class="bank-card-name">CashPlus</div>
+      </div>
+      <div class="bank-card">
+        <img src="https://i.ibb.co/V9BCFbY/banque-populaire.png" alt="Banque Populaire" />
+        <div class="bank-card-name">Banque Populaire</div>
+      </div>
+    </div>
   </div>
 </main>
 
 <script>
   const storedId = localStorage.getItem('userId');
   if (!storedId) {
-    window.location.href = 'index.html'; // ← غيّرها لاسم صفحة تسجيل الدخول إن لزم
+    window.location.href = 'index.html'; // ← غيّرها إذا لزم
   } else {
     document.getElementById('account-number').textContent = storedId;
   }
