@@ -9,7 +9,6 @@
     :root {
       --header-height: 60px;
       --idbet-color: #e50914;
-      --gray-footer: #8a8885;
     }
 
     * {
@@ -80,7 +79,7 @@
     }
 
     .bank-section {
-      background-color: #e3e3e3;
+      background-color: #e0e0e0;
       width: 100vw;
       padding: 16px 0;
     }
@@ -96,51 +95,48 @@
 
     .bank-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 12px;
       padding: 0 16px;
     }
 
     .bank-card {
-      background-color: #fff;
-      border: 1px solid #ccc;
+      background-color: #f5f5f5;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      height: 100px;
+      border: 1px solid #ccc;
+      width: 100%;
+      overflow: hidden;
+      padding: 0;
     }
 
     .logo-space {
-      flex: 1;
+      height: 52px;
+      background-color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 8px;
+      border-bottom: 1px solid #ccc;
     }
 
     .logo-space img {
-      max-height: 38px;
+      max-height: 36px;
       max-width: 90%;
       object-fit: contain;
     }
 
     .bank-card-name {
-      height: 34px;
-      background-color: var(--gray-footer);
+      height: 36px;
+      background: #8b8886;
       color: #fff;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.82rem;
+      font-weight: 500;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 0 4px;
-    }
-
-    @media (min-width: 601px) {
-      .bank-grid {
-        grid-template-columns: repeat(6, 1fr);
-      }
     }
 
     @media (max-width: 600px) {
