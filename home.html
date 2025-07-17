@@ -2,12 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>عرض الحساب</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --header-height: 60px;
+      --idbet-color: #e50914;
     }
 
     * {
@@ -23,39 +24,45 @@
     }
 
     header {
-      position: sticky;
-      top: 0;
-      background: #fff;
       height: var(--header-height);
+      background: #fff;
       display: flex;
       align-items: center;
       padding: 0 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
       border-bottom: 1px solid #ddd;
-      z-index: 1000;
     }
 
     .header-brand {
       display: flex;
       align-items: center;
       gap: 8px;
+      font-weight: 500;
     }
 
     .idbet {
-      color: #e50914;
+      color: var(--idbet-color);
+      font-size: 1.1rem;
       font-weight: bold;
-      font-size: 1.2rem;
+    }
+
+    .separator {
+      color: #ccc;
     }
 
     .slogan {
-      font-size: 0.95rem;
-      color: #777;
+      color: #555;
+      font-size: .9rem;
     }
 
     main {
-      padding: 20px 16px 40px;
+      padding: 24px 0;
     }
 
     .account-info {
+      direction: ltr;
+      text-align: left;
+      padding: 0 16px;
       margin-bottom: 24px;
     }
 
@@ -68,72 +75,77 @@
     .instruction {
       font-size: 0.95rem;
       color: #444;
+      margin-bottom: 16px;
+    }
+
+    .bank-section {
+      background-color: #e0e0e0;
+      width: 100vw;
+      padding: 16px 0;
     }
 
     .section-title {
       font-weight: bold;
-      font-size: 1rem;
       margin-bottom: 12px;
+      color: #333;
+      font-size: 1rem;
+      text-align: left;
+      padding-left: 16px;
     }
 
-    .cards-wrapper {
-      background-color: #dcdcdc;
-      padding: 16px;
-      border-radius: 6px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .bank-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 💻 5 بطاقات في الصف */
       gap: 12px;
+      padding: 0 16px;
     }
 
-    .card {
-      width: 120px;
-      height: 160px;
+    .bank-card {
+      background-color: #e0e0e0;
+      border: 1px solid #ccc;
       display: flex;
       flex-direction: column;
-      border: 1px solid #ccc;
-      background: white;
+      height: 120px;
       border-radius: 0;
     }
 
-    .card .top {
-      flex: 65%;
-      background: #fff;
+    .bank-card .logo-space {
+      height: 70px;
+      background-color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      padding: 5px;
     }
 
-    .card .top img {
-      max-width: 80%;
-      max-height: 80%;
+    .bank-card .logo-space img {
+      max-height: 100%;
+      max-width: 100%;
       object-fit: contain;
-      image-rendering: crisp-edges;
     }
 
-    .card .bottom {
-      flex: 35%;
-      background: #8d8a86;
+    .bank-card-name {
+      height: 50px;
+      background: #999;
       color: #fff;
-      font-size: 13px;
+      font-size: 0.85rem;
+      font-weight: 500;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 4px;
+      padding: 0 4px;
     }
 
-    @media (max-width: 768px) {
-      .card {
-        width: calc((100% - 32px) / 3);
-        max-width: 120px;
+    /* 📱 الهاتف: 3 بطاقات في الصف */
+    @media (max-width: 600px) {
+      .bank-grid {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 0 8px;
       }
-    }
 
-    @media (min-width: 769px) {
-      .card {
-        width: 120px;
+      .bank-card {
+        min-width: 100%;
       }
     }
   </style>
@@ -142,8 +154,9 @@
 
 <header>
   <div class="header-brand">
-    <span class="slogan">وكيل الشحن الرسمي</span>
     <span class="idbet">idbet</span>
+    <span class="separator">|</span>
+    <span class="slogan">وكيل الشحن الرسمي</span>
   </div>
 </header>
 
@@ -153,40 +166,59 @@
     <div class="instruction">Select payment method to top up your account:</div>
   </div>
 
-  <div class="section-title">BANK TRANSFER</div>
-
-  <div class="cards-wrapper">
-    <div class="card">
-      <div class="top"><img src="https://i.postimg.cc/Y9P019NK/attijari-bank.png" alt="Attijari" /></div>
-      <div class="bottom">Attijari</div>
-    </div>
-    <div class="card">
-      <div class="top"><img src="https://i.postimg.cc/xjkyBN4m/cih.png" alt="CIH" /></div>
-      <div class="bottom">CIH</div>
-    </div>
-    <div class="card">
-      <div class="top"><img src="https://i.postimg.cc/htnLJyP8/al-barid-logo.png" alt="Al Barid Bank" /></div>
-      <div class="bottom">Al Barid Bank</div>
-    </div>
-    <div class="card">
-      <div class="top"><img src="https://i.postimg.cc/nr7mr7yw/societe-generale.png" alt="Société Générale" /></div>
-      <div class="bottom">Société Générale Bank</div>
-    </div>
-    <div class="card">
-      <div class="top"><img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" /></div>
-      <div class="bottom">CashPlus</div>
-    </div>
-    <div class="card">
-      <div class="top"><img src="https://i.postimg.cc/1R6VpGdv/naji-icon-banque-populaire.png" alt="Banque Populaire" /></div>
-      <div class="bottom">Banque Populaire</div>
+  <!-- ✅ قسم طرق الدفع -->
+  <div class="bank-section">
+    <div class="section-title">BANK TRANSFER</div>
+    <div class="bank-grid">
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/Y9P019NK/attijari-bank.png" alt="Attijari Bank">
+        </div>
+        <div class="bank-card-name">Attijari</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/xjkyBN4m/cih.png" alt="CIH Bank">
+        </div>
+        <div class="bank-card-name">CIH</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/htnLJyP8/al-barid-logo.png" alt="Al Barid Bank">
+        </div>
+        <div class="bank-card-name">Al Barid Bank</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/nr7mr7yw/societe-generale.png" alt="Société Générale Bank">
+        </div>
+        <div class="bank-card-name">Société Générale Bank</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus">
+        </div>
+        <div class="bank-card-name">CashPlus</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/1R6VpGdv/naji-icon-banque-populaire.png" alt="Banque Populaire">
+        </div>
+        <div class="bank-card-name">Banque Populaire</div>
+      </div>
     </div>
   </div>
 </main>
 
 <script>
-  const storedId = localStorage.getItem('userId') || '8765643547';
-  document.getElementById('account-number').textContent = storedId;
+  const storedId = localStorage.getItem('userId');
+  if (!storedId) {
+    window.location.href = 'index.html';
+  } else {
+    document.getElementById('account-number').textContent = storedId;
+  }
 </script>
 
 </body>
 </html>
+Footer
