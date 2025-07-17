@@ -81,7 +81,7 @@
     .bank-section {
       background-color: #e0e0e0;
       width: 100vw;
-      padding: 16px;
+      padding: 16px 0;
     }
 
     .section-title {
@@ -95,7 +95,7 @@
 
     .bank-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(5, 1fr); /* 💻 5 بطاقات في الصف */
       gap: 12px;
       padding: 0 16px;
     }
@@ -133,12 +133,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      padding: 0 4px;
     }
 
-    /* ✅ على الهاتف: 3 بطاقات في الصف */
-    @media (max-width: 480px) {
+    /* 📱 الهاتف: 3 بطاقات في الصف */
+    @media (max-width: 600px) {
       .bank-grid {
         grid-template-columns: repeat(3, 1fr);
+        padding: 0 8px;
+      }
+
+      .bank-card {
+        min-width: 100%;
       }
     }
   </style>
