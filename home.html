@@ -105,32 +105,35 @@
     .bank-card {
       background-color: #e0e0e0;
       border: 1px solid #ccc;
-      text-align: center;
       overflow: hidden;
       border-radius: 0;
       display: flex;
       flex-direction: column;
-      height: 100px;
+      height: 120px;
     }
 
     .bank-card .logo-space {
-      flex: 1;
+      height: 70px;
       background-color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
+      padding: 5px;
     }
 
     .bank-card .logo-space img {
       max-height: 100%;
-      max-width: 100%;
+      max-width: 90%;
+      object-fit: contain;
     }
 
     .bank-card-name {
+      height: 50px;
       background: #999;
       color: white;
-      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 0.85rem;
       font-weight: 500;
     }
@@ -157,7 +160,7 @@
     <div class="account-number">ACCOUNT <span id="account-number">0000000000</span></div>
     <div class="instruction">Select payment method to top up your account:</div>
 
-    <!-- ✅ هيكل Bank Transfer -->
+    <!-- ✅ هيكل Bank Transfer بعد الإصلاح -->
     <div class="bank-section">
       <div class="section-title">BANK TRANSFER</div>
       <div class="bank-grid">
