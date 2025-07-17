@@ -9,8 +9,6 @@
     :root {
       --header-height: 60px;
       --idbet-color: #e50914;
-      --gray-bg: #f0f0f0;
-      --card-bg: #ddd;
     }
 
     * {
@@ -85,28 +83,27 @@
       margin-bottom: 16px;
     }
 
+    /* البطاقات */
     .bank-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
 
     .bank-card {
-      background-color: var(--card-bg);
-      border-radius: 6px;
+      background-color: #e0e0e0;
+      border: 1px solid #ccc;
       text-align: center;
       overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
-    }
-
-    .bank-card:hover {
-      transform: scale(1.03);
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100px;
     }
 
     .bank-card img {
+      flex: 1;
       width: 100%;
-      height: 80px;
       object-fit: contain;
       background: white;
       padding: 10px;
@@ -115,9 +112,15 @@
     .bank-card-name {
       background: #999;
       color: white;
-      padding: 8px;
-      font-size: 0.9rem;
+      padding: 6px;
+      font-size: 0.85rem;
       font-weight: 500;
+    }
+
+    @media (max-width: 480px) {
+      .bank-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
@@ -136,7 +139,7 @@
     <div class="account-number">ACCOUNT <span id="account-number">0000000000</span></div>
     <div class="instruction">Select payment method to top up your account:</div>
 
-    <!-- بطاقات البنوك -->
+    <!-- بطاقات الدفع -->
     <div class="bank-grid">
       <div class="bank-card">
         <img src="https://i.ibb.co/6n45X4Z/attijariwafa.png" alt="Attijari Bank" />
@@ -169,7 +172,7 @@
 <script>
   const storedId = localStorage.getItem('userId');
   if (!storedId) {
-    window.location.href = 'index.html'; // ← غيّرها إذا لزم
+    window.location.href = 'index.html';
   } else {
     document.getElementById('account-number').textContent = storedId;
   }
