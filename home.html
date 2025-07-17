@@ -61,13 +61,11 @@
     }
 
     main {
-      padding: calc(var(--header-height) + 24px) 20px 24px;
-      direction: ltr;
+      padding: calc(var(--header-height) + 24px) 0 24px;
     }
 
     .account-info {
-      max-width: 600px;
-      margin: 0 auto;
+      padding-inline-start: 20px;
       text-align: left;
     }
 
@@ -102,9 +100,8 @@
 
 <script>
   const storedId = localStorage.getItem('userId');
-
   if (!storedId) {
-    window.location.href = 'index.html'; // ← غيّر الرابط حسب صفحة تسجيل الدخول
+    window.location.href = 'index.html';
   } else {
     document.getElementById('account-number').textContent = storedId;
   }
