@@ -29,7 +29,7 @@
       display: flex;
       align-items: center;
       padding: 0 16px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
       border-bottom: 1px solid #ddd;
     }
 
@@ -56,13 +56,13 @@
     }
 
     main {
-      padding: 24px 16px;
+      padding: 24px 0; /* أزلنا الهامش الجانبي */
     }
 
     .account-info {
       direction: ltr;
       text-align: left;
-      padding-left: 16px;
+      padding: 0 16px;
       margin-bottom: 24px;
     }
 
@@ -81,7 +81,7 @@
     .bank-section {
       background-color: #e0e0e0;
       padding: 16px;
-      border-radius: 4px;
+      width: 100%;
     }
 
     .section-title {
@@ -89,19 +89,21 @@
       margin-bottom: 12px;
       color: #333;
       font-size: 0.95rem;
+      text-align: left;
+      padding-left: 16px;
     }
 
     .bank-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
+      padding: 0 16px;
     }
 
     .bank-card {
       background-color: #e0e0e0;
       border: 1px solid #ccc;
       overflow: hidden;
-      border-radius: 0;
       display: flex;
       flex-direction: column;
       height: 120px;
@@ -133,9 +135,15 @@
       font-weight: 500;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       .bank-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bank-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -154,47 +162,47 @@
   <div class="account-info">
     <div class="account-number">ACCOUNT <span id="account-number">0000000000</span></div>
     <div class="instruction">Select payment method to top up your account:</div>
+  </div>
 
-    <!-- ✅ قسم Bank Transfer -->
-    <div class="bank-section">
-      <div class="section-title">BANK TRANSFER</div>
-      <div class="bank-grid">
-        <div class="bank-card">
-          <div class="logo-space">
-            <img src="https://i.postimg.cc/Y9P019NK/attijari-bank.png" alt="Attijari Bank">
-          </div>
-          <div class="bank-card-name">Attijari</div>
+  <!-- ✅ القسم الرمادي الكامل لطرق الدفع -->
+  <div class="bank-section">
+    <div class="section-title">BANK TRANSFER</div>
+    <div class="bank-grid">
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/Y9P019NK/attijari-bank.png" alt="Attijari Bank">
         </div>
-        <div class="bank-card">
-          <div class="logo-space">
-            <img src="https://i.postimg.cc/xjkyBN4m/cih.png" alt="CIH Bank">
-          </div>
-          <div class="bank-card-name">CIH</div>
+        <div class="bank-card-name">Attijari</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/xjkyBN4m/cih.png" alt="CIH Bank">
         </div>
-        <div class="bank-card">
-          <div class="logo-space">
-            <img src="https://i.postimg.cc/htnLJyP8/al-barid-logo.png" alt="Al Barid Bank">
-          </div>
-          <div class="bank-card-name">Al Barid Bank</div>
+        <div class="bank-card-name">CIH</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/htnLJyP8/al-barid-logo.png" alt="Al Barid Bank">
         </div>
-        <div class="bank-card">
-          <div class="logo-space">
-            <img src="https://i.postimg.cc/nr7mr7yw/societe-generale.png" alt="Société Générale Bank">
-          </div>
-          <div class="bank-card-name">Société Générale Bank</div>
+        <div class="bank-card-name">Al Barid Bank</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/nr7mr7yw/societe-generale.png" alt="Société Générale Bank">
         </div>
-        <div class="bank-card">
-          <div class="logo-space">
-            <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus">
-          </div>
-          <div class="bank-card-name">CashPlus</div>
+        <div class="bank-card-name">Société Générale Bank</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus">
         </div>
-        <div class="bank-card">
-          <div class="logo-space">
-            <img src="https://i.postimg.cc/1R6VpGdv/naji-icon-banque-populaire.png" alt="Banque Populaire">
-          </div>
-          <div class="bank-card-name">Banque Populaire</div>
+        <div class="bank-card-name">CashPlus</div>
+      </div>
+      <div class="bank-card">
+        <div class="logo-space">
+          <img src="https://i.postimg.cc/1R6VpGdv/naji-icon-banque-populaire.png" alt="Banque Populaire">
         </div>
+        <div class="bank-card-name">Banque Populaire</div>
       </div>
     </div>
   </div>
