@@ -98,7 +98,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 12px;
-      padding: 0 8px;
+      padding: 0 12px;
     }
 
     .bank-card {
@@ -140,13 +140,8 @@
     }
 
     @media (max-width: 600px) {
-      .bank-grid {
-        justify-content: center;
-        gap: 8px;
-      }
-
       .bank-card {
-        width: 110px; /* ثابت للهاتف لعرض 3 */
+        width: calc((100% - 48px) / 3); /* 3 بطاقات ثابتة في كل صف */
       }
     }
   </style>
@@ -171,6 +166,7 @@
   <div class="bank-section">
     <div class="section-title">BANK TRANSFER</div>
     <div class="bank-grid">
+      <!-- بطاقة نموذجية - كررها أو عدلها حسب الحاجة -->
       <div class="bank-card">
         <div class="logo-space">
           <img src="https://i.postimg.cc/Y9P019NK/attijari-bank.png" alt="Attijari Bank">
@@ -193,7 +189,7 @@
         <div class="logo-space">
           <img src="https://i.postimg.cc/nr7mr7yw/societe-generale.png" alt="Société Générale Bank">
         </div>
-        <div class="bank-card-name">Société Générale Bank</div>
+        <div class="bank-card-name">Société Générale</div>
       </div>
       <div class="bank-card">
         <div class="logo-space">
