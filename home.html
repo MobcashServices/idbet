@@ -95,27 +95,30 @@
 
     .bank-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr); /* 💻 5 بطاقات في الصف */
+      grid-template-columns: repeat(5, 1fr);
       gap: 12px;
       padding: 0 16px;
     }
 
     .bank-card {
-      background-color: #e0e0e0;
-      border: 1px solid #ccc;
+      background-color: transparent;
+      border: none;
       display: flex;
       flex-direction: column;
-      height: 120px;
+      width: 100%;
       border-radius: 0;
+      overflow: hidden;
     }
 
     .bank-card .logo-space {
-      height: 70px;
+      height: 60px;
       background-color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 5px;
+      border: 1px solid #ccc;
+      border-bottom: none;
     }
 
     .bank-card .logo-space img {
@@ -125,8 +128,8 @@
     }
 
     .bank-card-name {
-      height: 50px;
-      background: #999;
+      height: 38px;
+      background: #8b8886;
       color: #fff;
       font-size: 0.85rem;
       font-weight: 500;
@@ -135,9 +138,10 @@
       justify-content: center;
       text-align: center;
       padding: 0 4px;
+      border: 1px solid #ccc;
+      border-top: none;
     }
 
-    /* 📱 الهاتف: 3 بطاقات في الصف */
     @media (max-width: 600px) {
       .bank-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -166,7 +170,6 @@
     <div class="instruction">Select payment method to top up your account:</div>
   </div>
 
-  <!-- ✅ قسم طرق الدفع -->
   <div class="bank-section">
     <div class="section-title">BANK TRANSFER</div>
     <div class="bank-grid">
@@ -221,4 +224,3 @@
 
 </body>
 </html>
-
