@@ -2,13 +2,13 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>طرق الدفع</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>عرض الحساب</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --gray-bg: #dedddc;
-      --card-footer: #a7a39d;
+      --header-height: 60px;
+      --idbet-color: #e50914;
     }
 
     * {
@@ -19,42 +19,99 @@
 
     body {
       font-family: 'Tajawal', sans-serif;
+      background: #ffffff;
+      color: #333;
+    }
+
+    header {
+      height: var(--header-height);
       background: #fff;
-      color: #000;
-      direction: rtl;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .idbet {
+      color: var(--idbet-color);
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .separator {
+      color: #ccc;
+    }
+
+    .slogan {
+      color: #555;
+      font-size: .9rem;
+    }
+
+    main {
+      padding: 24px 0;
+    }
+
+    .account-info {
+      direction: ltr;
+      text-align: left;
+      padding: 0 16px;
+      margin-bottom: 24px;
+    }
+
+    .account-number {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .instruction {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 16px;
     }
 
     .bank-section {
-      background-color: var(--gray-bg);
-      padding: 16px 0;
+      background-color: #e3e3e3; /* خلفية القسم BANK TRANSFER */
       width: 100vw;
+      padding: 16px 0;
     }
 
     .section-title {
       font-weight: bold;
-      font-size: 1rem;
-      padding: 0 16px 12px;
+      margin-bottom: 12px;
       color: #333;
+      font-size: 1rem;
+      text-align: left;
+      padding-left: 16px;
     }
 
     .bank-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 12px;
       padding: 0 16px;
     }
 
     .bank-card {
+      background-color: #f5f5f5;
       display: flex;
       flex-direction: column;
-      background-color: #f5f5f5;
       border: 1px solid #ccc;
+      width: 100%;
       overflow: hidden;
     }
 
     .logo-space {
-      background: #fff;
-      height: 60px;
+      height: 52px;
+      background-color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -69,10 +126,10 @@
     }
 
     .bank-card-name {
-      height: 40px;
-      background-color: var(--card-footer);
-      color: #fff;
-      font-size: 0.875rem;
+      height: 36px;
+      background: #a7a39d; /* نفس اللون في الصورة */
+      color: #ffffff;
+      font-size: 0.85rem;
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -81,17 +138,32 @@
       padding: 0 4px;
     }
 
-    @media (min-width: 768px) {
+    @media (max-width: 600px) {
       .bank-grid {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        padding: 0 8px;
       }
     }
   </style>
 </head>
 <body>
 
+<header>
+  <div class="header-brand">
+    <span class="idbet">idbet</span>
+    <span class="separator">|</span>
+    <span class="slogan">وكيل الشحن الرسمي</span>
+  </div>
+</header>
+
+<main>
+  <div class="account-info">
+    <div class="account-number">ACCOUNT <span id="account-number">0000000000</span></div>
+    <div class="instruction">Select payment method to top up your account:</div>
+  </div>
+
   <div class="bank-section">
-    <div class="section-title">MÉTHODES RECOMMANDÉES</div>
+    <div class="section-title">BANK TRANSFER</div>
     <div class="bank-grid">
       <div class="bank-card">
         <div class="logo-space">
@@ -99,113 +171,48 @@
         </div>
         <div class="bank-card-name">Attijari</div>
       </div>
-
       <div class="bank-card">
         <div class="logo-space">
           <img src="https://i.postimg.cc/xjkyBN4m/cih.png" alt="CIH Bank">
         </div>
         <div class="bank-card-name">CIH</div>
       </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tether_logo.svg" alt="USDT TRC20">
-        </div>
-        <div class="bank-card-name">USDT (TRC20)</div>
-      </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://i.postimg.cc/yxkJQxqs/jetonbank.png" alt="JetonBank">
-        </div>
-        <div class="bank-card-name">JetonBank</div>
-      </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Tether_logo.svg" alt="USDT BEP20">
-        </div>
-        <div class="bank-card-name">USDT (BEP20)</div>
-      </div>
-
       <div class="bank-card">
         <div class="logo-space">
           <img src="https://i.postimg.cc/htnLJyP8/al-barid-logo.png" alt="Al Barid Bank">
         </div>
         <div class="bank-card-name">Al Barid Bank</div>
       </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://i.postimg.cc/SK6yQ3hC/lbanka.png" alt="L'Banka Lik">
-        </div>
-        <div class="bank-card-name">L'Banka Lik</div>
-      </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://i.postimg.cc/sgKWh1p6/bank-of-africa.png" alt="Bank of Africa">
-        </div>
-        <div class="bank-card-name">Bank of Africa</div>
-      </div>
-
       <div class="bank-card">
         <div class="logo-space">
           <img src="https://i.postimg.cc/nr7mr7yw/societe-generale.png" alt="Société Générale Bank">
         </div>
         <div class="bank-card-name">Société Générale Bank</div>
       </div>
-
       <div class="bank-card">
         <div class="logo-space">
           <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus">
         </div>
         <div class="bank-card-name">CashPlus</div>
       </div>
-
       <div class="bank-card">
         <div class="logo-space">
-          <img src="https://i.postimg.cc/VkPndS6L/umnia.png" alt="Umnia Bank">
+          <img src="https://i.postimg.cc/1R6VpGdv/naji-icon-banque-populaire.png" alt="Banque Populaire">
         </div>
-        <div class="bank-card-name">Umnia Bank</div>
-      </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://i.postimg.cc/3w6D2N4c/bmci.png" alt="BMCI">
-        </div>
-        <div class="bank-card-name">BMCI</div>
-      </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://i.postimg.cc/PJhzpsFR/credit-agricole.png" alt="Crédit Agricole">
-        </div>
-        <div class="bank-card-name">Crédit Agricole</div>
-      </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://i.postimg.cc/hGpYPmVh/cdm.png" alt="Crédit du Maroc">
-        </div>
-        <div class="bank-card-name">Crédit du Maroc</div>
-      </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://i.postimg.cc/43QFmkYt/assafa.png" alt="Bank Assafa">
-        </div>
-        <div class="bank-card-name">Bank Assafa</div>
-      </div>
-
-      <div class="bank-card">
-        <div class="logo-space">
-          <img src="https://i.postimg.cc/PrPZy3LC/orange.png" alt="Orange Money">
-        </div>
-        <div class="bank-card-name">Orange Money</div>
+        <div class="bank-card-name">Banque Populaire</div>
       </div>
     </div>
   </div>
+</main>
+
+<script>
+  const storedId = localStorage.getItem('userId');
+  if (!storedId) {
+    window.location.href = 'index.html';
+  } else {
+    document.getElementById('account-number').textContent = storedId;
+  }
+</script>
 
 </body>
 </html>
