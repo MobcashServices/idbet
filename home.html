@@ -79,14 +79,14 @@
     }
 
     .bank-section {
-      background-color: #e0e0e0;
+      background-color: #d6d6d6;
       width: 100%;
       padding: 16px 0;
     }
 
     .section-title {
       font-weight: bold;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       color: #333;
       font-size: 1rem;
       text-align: left;
@@ -102,22 +102,24 @@
     }
 
     .bank-card {
-      width: 120px;
-      height: 120px;
-      background-color: #e0e0e0;
-      border: 1px solid #ccc;
+      width: 130px;
+      height: 130px;
+      background-color: #d6d6d6;
+      border: 1px solid #c2c2c2;
+      border-radius: 6px;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       flex: 0 0 auto;
     }
 
     .logo-space {
-      height: 70px;
+      height: 75px;
       background-color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 5px;
+      padding: 6px;
     }
 
     .logo-space img {
@@ -127,21 +129,22 @@
     }
 
     .bank-card-name {
-      height: 50px;
-      background: #999;
+      height: 55px;
+      background: #888;
       color: #fff;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 0 4px;
+      padding: 0 6px;
     }
 
     @media (max-width: 600px) {
       .bank-card {
-        width: calc((100% - 48px) / 3); /* 3 بطاقات ثابتة في كل صف */
+        width: calc((100% - 48px) / 3); /* 3 بطاقات في صف واحد ثابتة */
+        height: 130px;
       }
     }
   </style>
@@ -166,7 +169,6 @@
   <div class="bank-section">
     <div class="section-title">BANK TRANSFER</div>
     <div class="bank-grid">
-      <!-- بطاقة نموذجية - كررها أو عدلها حسب الحاجة -->
       <div class="bank-card">
         <div class="logo-space">
           <img src="https://i.postimg.cc/Y9P019NK/attijari-bank.png" alt="Attijari Bank">
