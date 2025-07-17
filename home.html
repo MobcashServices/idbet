@@ -19,7 +19,7 @@
 
     body {
       font-family: 'Tajawal', sans-serif;
-      background: #f5f5f5;
+      background: #ffffff;
       color: #333;
     }
 
@@ -83,7 +83,7 @@
       margin-bottom: 16px;
     }
 
-    /* البطاقات */
+    /* الشبكة */
     .bank-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -101,11 +101,12 @@
       height: 100px;
     }
 
-    .bank-card img {
+    .bank-card .logo-space {
       flex: 1;
-      width: 100%;
-      object-fit: contain;
-      background: white;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 10px;
     }
 
@@ -142,27 +143,27 @@
     <!-- بطاقات الدفع -->
     <div class="bank-grid">
       <div class="bank-card">
-        <img src="https://i.ibb.co/6n45X4Z/attijariwafa.png" alt="Attijari Bank" />
+        <div class="logo-space"><!-- صورة Attijari لاحقاً --></div>
         <div class="bank-card-name">Attijari</div>
       </div>
       <div class="bank-card">
-        <img src="https://i.ibb.co/jRbdLKq/cihbank.png" alt="CIH Bank" />
+        <div class="logo-space"><!-- صورة CIH لاحقاً --></div>
         <div class="bank-card-name">CIH</div>
       </div>
       <div class="bank-card">
-        <img src="https://i.ibb.co/WPkj2mK/albaridbank.png" alt="Al Barid Bank" />
+        <div class="logo-space"><!-- صورة Al Barid Bank لاحقاً --></div>
         <div class="bank-card-name">Al Barid Bank</div>
       </div>
       <div class="bank-card">
-        <img src="https://i.ibb.co/x2Wk1B3/socgen.png" alt="Société Générale" />
+        <div class="logo-space"><!-- صورة Société Générale لاحقاً --></div>
         <div class="bank-card-name">Société Générale Bank</div>
       </div>
       <div class="bank-card">
-        <img src="https://i.ibb.co/SVX0hFY/cashplus.png" alt="CashPlus" />
+        <div class="logo-space"><!-- صورة CashPlus لاحقاً --></div>
         <div class="bank-card-name">CashPlus</div>
       </div>
       <div class="bank-card">
-        <img src="https://i.ibb.co/V9BCFbY/banque-populaire.png" alt="Banque Populaire" />
+        <div class="logo-space"><!-- صورة Banque Populaire لاحقاً --></div>
         <div class="bank-card-name">Banque Populaire</div>
       </div>
     </div>
