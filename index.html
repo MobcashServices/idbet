@@ -8,58 +8,72 @@
   <style>
     :root {
       --header-height: 60px;
-      --idbet-color: #e50914;
+      --megapari-red: #ed1c24;
+      --megapari-blue: #009ddf;
+      --dark-gray-bg: #2c2c2c;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Tajawal', sans-serif;
-      background: #f5f5f5;
-      color: #333;
+      background: var(--megapari-blue);
+      color: #fff;
     }
+
     header {
       height: var(--header-height);
-      background: #fff;
+      background: var(--dark-gray-bg);
       display: flex;
       align-items: center;
       padding: 0 16px;
       box-shadow: 0 1px 4px rgba(0, 0, 0, .05);
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #444;
+      color: #fff;
     }
+
     .header-brand {
       display: flex;
       align-items: center;
       gap: 8px;
       font-weight: 500;
     }
+
     .idbet {
-      color: var(--idbet-color);
+      color: var(--megapari-red);
       font-size: 1.1rem;
       font-weight: bold;
     }
+
     .separator {
       color: #ccc;
     }
+
     .slogan {
-      color: #555;
+      color: #ddd;
       font-size: .9rem;
     }
+
     main {
       display: flex;
       justify-content: center;
       padding: 24px 12px;
     }
+
     .login-box {
       background: #fff;
+      color: #000;
       padding: 28px 20px;
       max-width: 400px;
       width: 100%;
       border-radius: 14px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
     }
+
     .title-wrapper {
       display: flex;
       align-items: center;
@@ -69,10 +83,11 @@
       margin-bottom: 16px;
       color: #222;
     }
+
     .step-box {
       width: 32px;
       height: 32px;
-      background: var(--idbet-color);
+      background: var(--megapari-red);
       color: #fff;
       border-radius: 50%;
       display: flex;
@@ -80,6 +95,7 @@
       justify-content: center;
       font-size: 0.9rem;
     }
+
     .input-label {
       margin-bottom: 6px;
       font-weight: 600;
@@ -87,6 +103,7 @@
       align-items: center;
       gap: 4px;
     }
+
     .info-icon {
       width: 20px;
       height: 20px;
@@ -100,11 +117,13 @@
       color: #666;
       transition: all 0.3s ease;
     }
+
     .info-icon:hover {
-      border-color: var(--idbet-color);
-      background: rgba(229, 9, 20, 0.08);
-      color: var(--idbet-color);
+      border-color: var(--megapari-red);
+      background: rgba(237, 28, 36, 0.08);
+      color: var(--megapari-red);
     }
+
     .input-group {
       margin-bottom: 12px;
     }
@@ -138,7 +157,7 @@
 
     .status-spinner {
       border: 2px solid #ccc;
-      border-top: 2px solid var(--idbet-color);
+      border-top: 2px solid var(--megapari-red);
       animation: spin 0.8s linear infinite;
     }
 
@@ -186,8 +205,8 @@
     }
 
     .icon.selected {
-      border-color: var(--idbet-color);
-      box-shadow: 0 0 8px rgba(229, 9, 20, .3);
+      border-color: var(--megapari-red);
+      box-shadow: 0 0 8px rgba(237, 28, 36, .3);
     }
 
     .icon.selected::after {
@@ -197,7 +216,7 @@
       left: 5px;
       width: 18px;
       height: 18px;
-      background: var(--idbet-color);
+      background: var(--megapari-red);
       color: #fff;
       border-radius: 50%;
       font-size: 11px;
@@ -220,7 +239,7 @@
     }
 
     .login-btn {
-      background: var(--idbet-color);
+      background: var(--megapari-red);
       color: #fff;
       font-weight: bold;
       border: none;
@@ -238,7 +257,7 @@
     }
 
     .login-btn:hover:not(:disabled) {
-      background: #b20710;
+      background: #c3141b;
     }
 
     .login-btn:active:not(:disabled) {
@@ -266,7 +285,7 @@
 
 <header>
   <div class="header-brand">
-    <span class="idbet">idbet</span><span class="separator">|</span><span class="slogan">وكيل الشحن الرسمي</span>
+    <span class="idbet">MEGA•PARI</span><span class="separator">|</span><span class="slogan">وكيل الشحن الرسمي</span>
   </div>
 </header>
 
