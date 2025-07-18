@@ -110,13 +110,18 @@
       padding: 4px 8px;
       font-size: 14px;
       font-weight: 500;
-      border: 1px solid #bcbcbc;
-      border-radius: 0;
+      border: none;
+      border-bottom: 2px solid #bcbcbc; /* فقط حد سفلي رمادي */
       background-color: #ffffff;
       color: #000000;
       text-align: center;
       outline: none;
       box-shadow: none;
+    }
+
+    .amount-input:focus {
+      border-bottom: 2px solid #4d90fe; /* عند التحديد فقط */
+      outline: none;
     }
 
     .amount-input::-webkit-outer-spin-button,
@@ -129,12 +134,6 @@
       -moz-appearance: textfield;
     }
 
-    .amount-input:focus {
-      border-color: #4d90fe;
-      outline: none;
-    }
-
-    /* زر الإيداع بالشكل النهائي */
     .deposit-button {
       width: 100%;
       background: #e53935;
