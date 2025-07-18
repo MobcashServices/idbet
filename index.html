@@ -30,7 +30,7 @@
 
     .modal-header {
       background: #fff;
-      height: 88px; /* تكبير الهيدر */
+      height: 88px;
       position: relative;
       display: flex;
       align-items: center;
@@ -39,7 +39,7 @@
     }
 
     .modal-header img {
-      height: 50px; /* الشعار متناسب مع الهيدر */
+      height: 50px;
       object-fit: contain;
     }
 
@@ -134,21 +134,31 @@
       outline: none;
     }
 
+    /* زر الإيداع بالشكل النهائي */
     .deposit-button {
       width: 100%;
       background: #e53935;
       color: #fff;
       border: none;
-      padding: 11px;
-      font-weight: bold;
-      font-size: 15px;
+      padding: 13px 0;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
       cursor: pointer;
       border-radius: 0;
       letter-spacing: 0.5px;
+      box-shadow: none;
+      outline: none;
     }
 
-    .deposit-button:hover {
-      background: #c62828;
+    .deposit-button:hover,
+    .deposit-button:focus,
+    .deposit-button:active {
+      background: #e53935;
+      color: #fff;
+      border: none;
+      outline: none;
+      box-shadow: none;
     }
   </style>
 </head>
