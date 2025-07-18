@@ -45,20 +45,15 @@
       font-weight: normal;
     }
 
-    .separator {
-      height: 4px;
+    .progress-wrapper {
       background: #f3f3f3;
-    }
-
-    .modal-body {
-      padding: 20px 18px 22px;
+      padding: 16px 0;
     }
 
     .progress-bar {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
     }
 
     .circle {
@@ -79,6 +74,10 @@
       width: 40px;
       background: #dce4ef;
       margin: 0 5px;
+    }
+
+    .modal-body {
+      padding: 20px 18px 22px;
     }
 
     .amount-section {
@@ -138,8 +137,9 @@
     <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
     <div class="close-btn" onclick="alert('Close')">×</div>
   </div>
-  <div class="separator"></div>
-  <div class="modal-body">
+
+  <!-- ✅ خلفية رمادية خلف شريط التقدم -->
+  <div class="progress-wrapper">
     <div class="progress-bar">
       <div class="circle active"></div>
       <div class="line"></div>
@@ -147,6 +147,9 @@
       <div class="line"></div>
       <div class="circle"></div>
     </div>
+  </div>
+
+  <div class="modal-body">
     <div class="amount-section">
       <div class="amount-label">
         Amount (Min 100.00<br>
