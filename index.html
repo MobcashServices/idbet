@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box; 
+      box-sizing: border-box;
     }
 
     body {
@@ -30,24 +30,26 @@
 
     .modal-header {
       background: #fff;
-      padding: 20px 0 14px;
-      text-align: center;
+      height: 64px;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .modal-header img {
-      height: 42px;
+      height: 40px;
       object-fit: contain;
     }
 
     .close-btn {
       position: absolute;
-      top: 10px;
+      top: 8px;
       right: 12px;
-      font-size: 18px;
-      color: #ccc;
+      font-size: 22px;
+      color: #444;
       cursor: pointer;
-      font-weight: normal;
+      font-weight: bold;
       line-height: 1;
     }
 
@@ -116,6 +118,16 @@
       box-shadow: none;
     }
 
+    .amount-input::-webkit-outer-spin-button,
+    .amount-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .amount-input[type=number] {
+      -moz-appearance: textfield;
+    }
+
     .amount-input:focus {
       border-color: #4d90fe;
       outline: none;
@@ -142,13 +154,11 @@
 <body>
 
 <div class="modal">
-  <!-- رأس النموذج -->
   <div class="modal-header">
     <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
     <div class="close-btn" onclick="alert('Close')">×</div>
   </div>
 
-  <!-- جسم النموذج -->
   <div class="body-wrapper">
     <div class="progress-bar">
       <div class="circle active"></div>
