@@ -10,37 +10,31 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Tajawal', sans-serif;
-      background: #f0f0f0; /* لون رمادي متناسق موحد */
-      height: 100%;
-    }
-
     body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      background: rgba(0, 0, 0, 0.4);
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      height: 100vh;
     }
 
     .modal {
-      width: 100%;
-      max-width: 360px;
-      background: #ffffff;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
+      width: 340px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
     }
 
     .modal-header {
-      background: #ffffff;
+      background: #fff;
       height: 90px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 0;
     }
 
     .modal-header img {
@@ -53,13 +47,13 @@
       top: 10px;
       right: 10px;
       font-size: 18px;
-      color: #aaa;
+      color: #999;
       cursor: pointer;
       font-weight: bold;
     }
 
     .body-wrapper {
-      background: #ffffff;
+      background: #f3f3f3;
     }
 
     .progress-bar {
@@ -96,8 +90,6 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 8px;
     }
 
     .amount-label {
@@ -105,7 +97,6 @@
       color: #003366;
       font-weight: 700;
       line-height: 1.6;
-      flex: 1 1 100px;
     }
 
     .amount-input {
@@ -117,8 +108,20 @@
       background-color: #ffffff;
       color: #000000;
       text-align: center;
-      border: 1px solid #9eaab7;
-      border-radius: 6px;
+      border-top: 1px solid #9eaab7;
+      border-left: 1px solid #9eaab7;
+      border-right: none;
+      border-bottom: none;
+      border-radius: 0;
+      outline: none;
+      box-shadow: none;
+    }
+
+    .amount-input:focus {
+      border-top: 1px solid #9eaab7;
+      border-left: 1px solid #9eaab7;
+      border-right: none;
+      border-bottom: none;
       outline: none;
       box-shadow: none;
     }
@@ -134,10 +137,10 @@
       font-weight: bold;
       font-size: 15px;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 0;
       letter-spacing: 0.5px;
-      z-index: 0;
       transition: background 0.3s ease;
+      z-index: 0;
     }
 
     .deposit-button::before {
@@ -150,11 +153,11 @@
       background: linear-gradient(
         120deg,
         rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.4) 50%,
+        rgba(255, 255, 255, 0.5) 50%,
         rgba(255, 255, 255, 0) 100%
       );
-      transform: skewX(-20deg);
       z-index: 1;
+      transform: skewX(-20deg);
     }
 
     .deposit-button:hover::before {
@@ -167,13 +170,6 @@
       }
       100% {
         left: 100%;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .modal {
-        margin: 10px;
-        border-radius: 10px;
       }
     }
   </style>
