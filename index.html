@@ -13,22 +13,25 @@
     html, body {
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
       font-family: 'Tajawal', sans-serif;
       background: rgba(0, 0, 0, 0.4);
-      overflow: auto; /* يسمح بالتمرير عند ظهور الكيبورد */
+      width: 100%;
     }
 
-    .modal {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100dvh; /* ضمان التغطية الكاملة للشاشة */
+      padding: 16px;
+    }
+
+    .modal-content {
       width: 100%;
       max-width: 340px;
       background: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
       border-radius: 0;
     }
 
@@ -125,7 +128,7 @@
     }
 
     .amount-input:focus {
-      border-color: #7bb33d;
+      border: 1px solid #7bb33d;
     }
 
     .deposit-button {
@@ -177,31 +180,33 @@
 </head>
 <body>
 
-<div class="modal">
-  <div class="modal-header">
-    <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
-    <div class="close-btn" onclick="alert('Close')">×</div>
-  </div>
-
-  <div class="body-wrapper">
-    <div class="progress-bar">
-      <div class="step-circle active"></div>
-      <div class="step-line"></div>
-      <div class="step-circle"></div>
-      <div class="step-line"></div>
-      <div class="step-circle"></div>
+<div class="wrapper">
+  <div class="modal-content">
+    <div class="modal-header">
+      <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
+      <div class="close-btn" onclick="alert('Close')">×</div>
     </div>
 
-    <div class="modal-body">
-      <div class="amount-section">
-        <div class="amount-label">
-          Amount (Min 100.00<br>
-          MAD / Max 5 000.00<br>
-          MAD):
-        </div>
-        <input type="number" class="amount-input" value="100.00">
+    <div class="body-wrapper">
+      <div class="progress-bar">
+        <div class="step-circle active"></div>
+        <div class="step-line"></div>
+        <div class="step-circle"></div>
+        <div class="step-line"></div>
+        <div class="step-circle"></div>
       </div>
-      <button class="deposit-button">DEPOSIT</button>
+
+      <div class="modal-body">
+        <div class="amount-section">
+          <div class="amount-label">
+            Amount (Min 100.00<br>
+            MAD / Max 5 000.00<br>
+            MAD):
+          </div>
+          <input type="number" class="amount-input" value="100.00">
+        </div>
+        <button class="deposit-button">DEPOSIT</button>
+      </div>
     </div>
   </div>
 </div>
