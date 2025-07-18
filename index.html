@@ -17,16 +17,16 @@
       height: 100%;
       font-family: 'Tajawal', sans-serif;
       background: rgba(0, 0, 0, 0.4);
-      overflow: hidden; /* يمنع تحرك الشاشة مع الكيبورد */
+      overflow: hidden;
     }
 
     .modal {
       position: fixed;
-      inset: 0; /* top: 0; right: 0; bottom: 0; left: 0 */
+      inset: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgba(0, 0, 0, 0.4); /* في حالة نسيت body */
+      background: rgba(0, 0, 0, 0.4);
       z-index: 9999;
     }
 
@@ -36,7 +36,7 @@
       background: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
-      border-radius: 6px;
+      border-radius: 0; /* حواف حادة */
     }
 
     .modal-header {
