@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>CashPlus Modal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -21,7 +21,7 @@
     }
 
     .modal {
-      width: 340px;
+      width: 330px;
       background: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       border-radius: 0;
@@ -30,27 +30,27 @@
 
     .modal-header {
       background: #fff;
-      height: 90px;
+      padding: 24px 16px 18px;
+      text-align: center;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
     }
 
     .modal-header img {
-      height: 50px;
+      height: 40px;
       object-fit: contain;
     }
 
     .close-btn {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 18px;
-      color: #999;
+      top: 12px;
+      right: 12px;
+      width: 22px;
+      height: 22px;
       cursor: pointer;
-      font-weight: bold;
+    }
+
+    .close-btn svg path {
+      stroke: #ccc;
     }
 
     .body-wrapper {
@@ -101,30 +101,31 @@
     }
 
     .amount-input {
-      width: 140px;
-      height: 32px;
-      padding: 4px 8px;
+      width: 120px;
+      padding: 6px 8px;
       font-size: 14px;
       font-weight: 500;
+      border: 1px solid #a5a5a5;
+      border-radius: 0;
       background-color: #ffffff;
       color: #000000;
       text-align: center;
-      border-top: 1px solid #9eaab7;
-      border-left: 1px solid #9eaab7;
-      border-right: none;
-      border-bottom: none;
-      border-radius: 0;
       outline: none;
-      box-shadow: none;
     }
 
     .amount-input:focus {
-      border-top: 1px solid #9eaab7;
-      border-left: 1px solid #9eaab7;
-      border-right: none;
-      border-bottom: none;
-      outline: none;
-      box-shadow: none;
+      border: 1px solid #4d90fe;
+    }
+
+    /* إزالة الأسهم من input type=number في الحاسوب */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type=number] {
+      -moz-appearance: textfield;
     }
 
     .deposit-button {
@@ -132,7 +133,7 @@
       background: #e53935;
       color: #fff;
       border: none;
-      padding: 13px;
+      padding: 11px;
       font-weight: bold;
       font-size: 15px;
       cursor: pointer;
@@ -141,20 +142,24 @@
     }
 
     .deposit-button:hover {
-      background: #e53935; /* لا يتغير الشكل عند الضغط */
+      background: #e53935; /* بدون تغيير عند الضغط */
     }
   </style>
 </head>
 <body>
 
 <div class="modal">
-  <!-- رأس النموذج -->
+  <!-- ✅ رأس النموذج -->
   <div class="modal-header">
     <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
-    <div class="close-btn" onclick="alert('Close')">×</div>
+    <div class="close-btn" onclick="alert('Close')">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M7 7 L15 15 M15 7 L7 15" stroke="#ccc" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
   </div>
 
-  <!-- باقي النموذج -->
+  <!-- ✅ باقي النموذج -->
   <div class="body-wrapper">
     <div class="progress-bar">
       <div class="step-circle active"></div>
