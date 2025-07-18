@@ -17,36 +17,34 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      height: 100vh;
     }
 
     .modal {
-      width: 100%;
-      max-width: 400px;
+      width: 330px;
       background: #fff;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       border-radius: 0;
       overflow: hidden;
     }
 
     .modal-header {
       background: #fff;
-      padding: 16px;
+      padding: 14px 16px 10px;
       text-align: center;
       position: relative;
     }
 
     .modal-header img {
-      height: 42px;
+      height: 40px;
       object-fit: contain;
     }
 
     .close-btn {
       position: absolute;
-      top: 10px;
-      right: 16px;
-      font-size: 18px;
+      top: 6px;
+      right: 12px;
+      font-size: 16px;
       color: #aaa;
       cursor: pointer;
       font-weight: normal;
@@ -84,15 +82,13 @@
     }
 
     .modal-body {
-      padding: 20px 18px 24px;
+      padding: 20px 18px 22px;
     }
 
     .amount-section {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
       margin-bottom: 20px;
     }
 
@@ -101,12 +97,11 @@
       color: #003366;
       font-weight: 700;
       line-height: 1.6;
-      flex: 1 1 50%;
     }
 
     .amount-input {
-      flex: 1 1 40%;
-      padding: 8px;
+      width: 110px;
+      padding: 6px 8px;
       font-size: 14px;
       font-weight: 500;
       border: 1px solid #a5a5a5;
@@ -127,7 +122,7 @@
       background: #e53935;
       color: #fff;
       border: none;
-      padding: 13px;
+      padding: 11px;
       font-weight: bold;
       font-size: 15px;
       cursor: pointer;
@@ -138,30 +133,18 @@
     .deposit-button:hover {
       background: #c62828;
     }
-
-    @media (min-width: 1024px) {
-      .modal {
-        max-width: 450px;
-      }
-
-      .modal-body {
-        padding: 24px 24px 30px;
-      }
-
-      .amount-input {
-        font-size: 15px;
-      }
-    }
   </style>
 </head>
 <body>
 
 <div class="modal">
+  <!-- ✅ رأس النموذج: أبيض -->
   <div class="modal-header">
     <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
     <div class="close-btn" onclick="alert('Close')">×</div>
   </div>
 
+  <!-- ✅ باقي النموذج: رمادي -->
   <div class="body-wrapper">
     <div class="progress-bar">
       <div class="circle active"></div>
