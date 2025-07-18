@@ -113,16 +113,14 @@
       background-color: #ffffff;
       color: #000000;
       text-align: center;
-      border: none;
-      border-bottom: 1px solid #a5a5a5;
+      border: 1px solid #a5a5a5;
       border-radius: 0;
       outline: none;
       box-shadow: none;
     }
 
     .amount-input:focus {
-      border: none;
-      border-bottom: 1px solid #a5a5a5;
+      border: 1px solid #a5a5a5;
       outline: none;
       box-shadow: none;
     }
@@ -137,11 +135,15 @@
       -moz-appearance: textfield;
     }
 
+    /* زر DEPOSIT مع حدود داكنة (أعلى + يمين + يسار فقط) */
     .deposit-button {
       width: 100%;
       background: #e53935;
       color: #fff;
-      border: none;
+      border-top: 1px solid #888;
+      border-left: 1px solid #888;
+      border-right: 1px solid #888;
+      border-bottom: none;
       padding: 13px 0;
       font-size: 14px;
       font-weight: 700;
@@ -158,9 +160,12 @@
     .deposit-button:active {
       background: #e53935;
       color: #fff;
-      border: none;
-      outline: none;
+      border-top: 1px solid #888;
+      border-left: 1px solid #888;
+      border-right: 1px solid #888;
+      border-bottom: none;
       box-shadow: none;
+      outline: none;
     }
   </style>
 </head>
