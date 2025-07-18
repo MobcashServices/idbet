@@ -17,11 +17,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 16px;
     }
 
     .modal {
-      width: 340px;
+      width: 100%;
+      max-width: 340px;
       background: #fff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
       overflow: hidden;
@@ -90,6 +92,8 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
     .amount-label {
