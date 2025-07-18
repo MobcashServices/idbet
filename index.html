@@ -16,13 +16,15 @@
       font-family: 'Tajawal', sans-serif;
       background: rgba(0, 0, 0, 0.4);
       width: 100%;
+      height: 100%;
+      overflow-x: hidden;
     }
 
     .wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100dvh; /* ضمان التغطية الكاملة للشاشة */
+      min-height: 100dvh;
       padding: 16px;
     }
 
@@ -181,7 +183,7 @@
 <body>
 
 <div class="wrapper">
-  <div class="modal-content">
+  <div class="modal-content" id="modalBox">
     <div class="modal-header">
       <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
       <div class="close-btn" onclick="alert('Close')">×</div>
@@ -210,6 +212,20 @@
     </div>
   </div>
 </div>
+
+<script>
+  // تمرير النموذج تلقائيًا إلى المنتصف عند التركيز على الحقل
+  document.addEventListener('DOMContentLoaded', () => {
+    const amountInput = document.querySelector('.amount-input');
+    const modal = document.getElementById('modalBox');
+
+    amountInput.addEventListener('focus', () => {
+      setTimeout(() => {
+        modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    });
+  });
+</script>
 
 </body>
 </html>
