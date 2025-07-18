@@ -24,42 +24,29 @@
       overflow: hidden;
     }
 
+    .modal-header {
+      padding: 10px 16px;
+      background: #f3f3f3;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-header img {
+      height: 48px;
+      transition: transform 0.25s ease;
+    }
+
+    .modal-header:active img {
+      transform: scale(0.85) translateY(2px);
+    }
+
     .close-btn {
       position: absolute;
-      top: 10px;
+      top: 8px;
       right: 12px;
       font-size: 20px;
       color: #999;
       cursor: pointer;
-    }
-
-    .logo-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-
-    .logo-circle {
-      background: #f2f2f2;
-      border-radius: 50%;
-      width: 96px;
-      height: 96px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.25s ease;
-    }
-
-    .logo-circle:active {
-      transform: scale(0.95);
-    }
-
-    .logo-circle img {
-      max-height: 50px;
-      max-width: 80px;
-      object-fit: contain;
     }
 
     .modal-body {
@@ -70,7 +57,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 10px 0 20px;
+      margin-bottom: 20px;
     }
 
     .circle {
@@ -133,14 +120,10 @@
 <body>
 
 <div class="modal">
-  <div class="close-btn" onclick="alert('Close')">×</div>
-
-  <div class="logo-wrapper">
-    <div class="logo-circle">
-      <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
-    </div>
+  <div class="modal-header">
+    <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
+    <div class="close-btn" onclick="alert('Close')">×</div>
   </div>
-
   <div class="modal-body">
     <div class="progress-bar">
       <div class="circle active"></div>
