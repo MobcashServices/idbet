@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
-      box-sizing: border-box;
+      box-sizing: border-box; 
     }
 
     body {
@@ -30,21 +30,21 @@
 
     .modal-header {
       background: #fff;
-      padding: 14px 16px 10px;
+      padding: 20px 0 14px;
       text-align: center;
       position: relative;
     }
 
     .modal-header img {
-      height: 40px;
+      height: 42px;
       object-fit: contain;
     }
 
     .close-btn {
       position: absolute;
-      top: 6px;
-      right: 8px;
-      font-size: 14px;
+      top: 10px;
+      right: 12px;
+      font-size: 18px;
       color: #ccc;
       cursor: pointer;
       font-weight: normal;
@@ -52,22 +52,23 @@
     }
 
     .body-wrapper {
-      background: #f3f3f3;
+      background: #efefef;
     }
 
     .progress-bar {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px 0 8px;
+      padding: 20px 0 12px;
     }
 
     .circle {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: #dce4ef;
       border: none;
+      transition: 0.3s;
     }
 
     .circle.active {
@@ -79,16 +80,16 @@
       height: 2px;
       width: 40px;
       background: #dce4ef;
-      margin: 0 5px;
+      margin: 0 6px;
     }
 
     .modal-body {
-      padding: 20px 18px 22px;
+      padding: 16px 18px 20px;
     }
 
     .amount-section {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       margin-bottom: 20px;
     }
@@ -96,13 +97,13 @@
     .amount-label {
       font-size: 13px;
       color: #003366;
-      font-weight: 700;
-      line-height: 1.6;
+      font-weight: 600;
+      line-height: 1.5;
     }
 
     .amount-input {
-      width: 110px;
-      padding: 6px 8px;
+      width: 120px;
+      padding: 6px 10px;
       font-size: 14px;
       font-weight: 500;
       border: 1px solid #a5a5a5;
@@ -115,7 +116,6 @@
 
     .amount-input:focus {
       border: 1px solid #4d90fe;
-      box-shadow: none;
     }
 
     .deposit-button {
@@ -139,13 +139,13 @@
 <body>
 
 <div class="modal">
-  <!-- ✅ رأس النموذج: أبيض -->
+  <!-- رأس النموذج -->
   <div class="modal-header">
     <img src="https://i.postimg.cc/JzRX7sPP/cash-plus.png" alt="CashPlus" />
     <div class="close-btn" onclick="alert('Close')">×</div>
   </div>
 
-  <!-- ✅ باقي النموذج: رمادي -->
+  <!-- جسم النموذج -->
   <div class="body-wrapper">
     <div class="progress-bar">
       <div class="circle active"></div>
